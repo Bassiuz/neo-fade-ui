@@ -1,0 +1,494 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:neo_fade_ui/neo_fade_ui.dart';
+
+void main() {
+  runApp(const NeoFadeShowcase());
+}
+
+class NeoFadeShowcase extends StatefulWidget {
+  const NeoFadeShowcase({super.key});
+
+  @override
+  State<NeoFadeShowcase> createState() => NeoFadeShowcaseState();
+}
+
+class NeoFadeShowcaseState extends State<NeoFadeShowcase> {
+  Color primaryColor = const Color(0xFF6366F1);
+  Color secondaryColor = const Color(0xFFF472B6);
+  Color tertiaryColor = const Color(0xFF22D3EE);
+  bool isDarkMode = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = NeoFadeThemeData.fromColors(
+      primary: primaryColor,
+      secondary: secondaryColor,
+      tertiary: tertiaryColor,
+      brightness: isDarkMode ? Brightness.dark : Brightness.light,
+    );
+
+    return NeoFadeTheme(
+      data: theme,
+      child: MaterialApp(
+        title: 'Neo Fade UI Showcase',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        home: ShowcaseHome(
+          isDarkMode: isDarkMode,
+          onThemeToggle: () => setState(() => isDarkMode = !isDarkMode),
+          primaryColor: primaryColor,
+          secondaryColor: secondaryColor,
+          tertiaryColor: tertiaryColor,
+          onPrimaryColorChanged: (color) => setState(() => primaryColor = color),
+          onSecondaryColorChanged: (color) => setState(() => secondaryColor = color),
+          onTertiaryColorChanged: (color) => setState(() => tertiaryColor = color),
+        ),
+      ),
+    );
+  }
+}
+
+class ShowcaseHome extends StatelessWidget {
+  final bool isDarkMode;
+  final VoidCallback onThemeToggle;
+  final Color primaryColor;
+  final Color secondaryColor;
+  final Color tertiaryColor;
+  final ValueChanged<Color> onPrimaryColorChanged;
+  final ValueChanged<Color> onSecondaryColorChanged;
+  final ValueChanged<Color> onTertiaryColorChanged;
+
+  const ShowcaseHome({
+    super.key,
+    required this.isDarkMode,
+    required this.onThemeToggle,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.tertiaryColor,
+    required this.onPrimaryColorChanged,
+    required this.onSecondaryColorChanged,
+    required this.onTertiaryColorChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = NeoFadeTheme.of(context);
+
+    // Use simple gradient on web, mesh gradient on native
+    Widget background;
+    if (kIsWeb) {
+      background = SizedBox.expand(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                theme.colors.primary,
+                theme.colors.secondary,
+                theme.colors.tertiary,
+                theme.colors.surface,
+              ],
+            ),
+          ),
+        ),
+      );
+    } else {
+      background = MeshBackground(
+        colors: [
+          theme.colors.primary,
+          theme.colors.secondary,
+          theme.colors.tertiary,
+          theme.colors.surface,
+        ],
+        child: const SizedBox.expand(),
+      );
+    }
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        background,
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(NeoFadeSpacing.xl),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Neo Fade UI',
+                        style: theme.typography.headlineLarge,
+                      ),
+                      NeoIconButton(
+                        icon: isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                        onPressed: onThemeToggle,
+                        variant: NeoButtonVariant.ghost,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.xxl),
+                  Text(
+                    'Theme Colors',
+                    style: theme.typography.titleLarge,
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.lg),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ColorPickerTile(
+                          label: 'Primary',
+                          color: primaryColor,
+                          onColorChanged: onPrimaryColorChanged,
+                        ),
+                      ),
+                      const SizedBox(width: NeoFadeSpacing.md),
+                      Expanded(
+                        child: ColorPickerTile(
+                          label: 'Secondary',
+                          color: secondaryColor,
+                          onColorChanged: onSecondaryColorChanged,
+                        ),
+                      ),
+                      const SizedBox(width: NeoFadeSpacing.md),
+                      Expanded(
+                        child: ColorPickerTile(
+                          label: 'Tertiary',
+                          color: tertiaryColor,
+                          onColorChanged: onTertiaryColorChanged,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.xxl),
+                  Text(
+                    'Buttons',
+                    style: theme.typography.titleLarge,
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.lg),
+                  const ButtonShowcase(),
+                  const SizedBox(height: NeoFadeSpacing.xxl),
+                  Text(
+                    'Glass Container',
+                    style: theme.typography.titleLarge,
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.lg),
+                  GlassContainer(
+                    padding: const EdgeInsets.all(NeoFadeSpacing.xl),
+                    borderRadius: NeoFadeRadii.lgRadius,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Glassmorphism Effect',
+                          style: theme.typography.titleMedium,
+                        ),
+                        const SizedBox(height: NeoFadeSpacing.sm),
+                        Text(
+                          'This container features backdrop blur, semi-transparent tint, and an inner glow border for that modern glass aesthetic.',
+                          style: theme.typography.bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.xxl),
+                  Text(
+                    'Components (Coming Soon)',
+                    style: theme.typography.titleLarge,
+                  ),
+                  const SizedBox(height: NeoFadeSpacing.lg),
+                  Wrap(
+                    spacing: NeoFadeSpacing.md,
+                    runSpacing: NeoFadeSpacing.md,
+                    children: const [
+                      ComponentPreview(label: 'TextField'),
+                      ComponentPreview(label: 'Checkbox'),
+                      ComponentPreview(label: 'Radio'),
+                      ComponentPreview(label: 'Switch'),
+                      ComponentPreview(label: 'Slider'),
+                      ComponentPreview(label: 'Dropdown'),
+                      ComponentPreview(label: 'Card'),
+                      ComponentPreview(label: 'Dialog'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ButtonShowcase extends StatelessWidget {
+  const ButtonShowcase({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = NeoFadeTheme.of(context);
+
+    return GlassContainer(
+      padding: const EdgeInsets.all(NeoFadeSpacing.lg),
+      borderRadius: NeoFadeRadii.lgRadius,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Variants', style: theme.typography.titleSmall),
+          const SizedBox(height: NeoFadeSpacing.md),
+          Wrap(
+            spacing: NeoFadeSpacing.md,
+            runSpacing: NeoFadeSpacing.md,
+            children: [
+              NeoButton(
+                label: 'Filled',
+                variant: NeoButtonVariant.filled,
+                onPressed: () {},
+              ),
+              NeoButton(
+                label: 'Outlined',
+                variant: NeoButtonVariant.outlined,
+                onPressed: () {},
+              ),
+              NeoButton(
+                label: 'Ghost',
+                variant: NeoButtonVariant.ghost,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: NeoFadeSpacing.xl),
+          Text('Sizes', style: theme.typography.titleSmall),
+          const SizedBox(height: NeoFadeSpacing.md),
+          Wrap(
+            spacing: NeoFadeSpacing.md,
+            runSpacing: NeoFadeSpacing.md,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              NeoButton(
+                label: 'Small',
+                size: NeoButtonSize.small,
+                onPressed: () {},
+              ),
+              NeoButton(
+                label: 'Medium',
+                size: NeoButtonSize.medium,
+                onPressed: () {},
+              ),
+              NeoButton(
+                label: 'Large',
+                size: NeoButtonSize.large,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: NeoFadeSpacing.xl),
+          Text('With Icons', style: theme.typography.titleSmall),
+          const SizedBox(height: NeoFadeSpacing.md),
+          Wrap(
+            spacing: NeoFadeSpacing.md,
+            runSpacing: NeoFadeSpacing.md,
+            children: [
+              NeoButton(
+                label: 'Settings',
+                icon: Icons.settings,
+                onPressed: () {},
+              ),
+              NeoButton(
+                label: 'Next',
+                trailingIcon: Icons.arrow_forward,
+                variant: NeoButtonVariant.outlined,
+                onPressed: () {},
+              ),
+              NeoButton(
+                icon: Icons.add,
+                label: 'Add Item',
+                variant: NeoButtonVariant.ghost,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: NeoFadeSpacing.xl),
+          Text('States', style: theme.typography.titleSmall),
+          const SizedBox(height: NeoFadeSpacing.md),
+          Wrap(
+            spacing: NeoFadeSpacing.md,
+            runSpacing: NeoFadeSpacing.md,
+            children: [
+              const NeoButton(
+                label: 'Disabled',
+                enabled: false,
+              ),
+              NeoButton(
+                label: 'Loading',
+                loading: true,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: NeoFadeSpacing.xl),
+          Text('Icon Buttons', style: theme.typography.titleSmall),
+          const SizedBox(height: NeoFadeSpacing.md),
+          Wrap(
+            spacing: NeoFadeSpacing.md,
+            runSpacing: NeoFadeSpacing.md,
+            children: [
+              NeoIconButton(
+                icon: Icons.favorite,
+                variant: NeoButtonVariant.filled,
+                onPressed: () {},
+              ),
+              NeoIconButton(
+                icon: Icons.share,
+                variant: NeoButtonVariant.outlined,
+                onPressed: () {},
+              ),
+              NeoIconButton(
+                icon: Icons.more_vert,
+                variant: NeoButtonVariant.ghost,
+                onPressed: () {},
+              ),
+              NeoIconButton(
+                icon: Icons.search,
+                size: NeoButtonSize.small,
+                onPressed: () {},
+              ),
+              NeoIconButton(
+                icon: Icons.play_arrow,
+                size: NeoButtonSize.large,
+                variant: NeoButtonVariant.filled,
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ColorPickerTile extends StatelessWidget {
+  final String label;
+  final Color color;
+  final ValueChanged<Color> onColorChanged;
+
+  const ColorPickerTile({
+    super.key,
+    required this.label,
+    required this.color,
+    required this.onColorChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = NeoFadeTheme.of(context);
+
+    return GlassContainer(
+      padding: const EdgeInsets.all(NeoFadeSpacing.md),
+      borderRadius: NeoFadeRadii.mdRadius,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: theme.typography.labelMedium,
+          ),
+          const SizedBox(height: NeoFadeSpacing.sm),
+          GestureDetector(
+            onTap: () => showColorPicker(context),
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: NeoFadeRadii.smRadius,
+                border: Border.all(
+                  color: theme.colors.border,
+                  width: 1,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void showColorPicker(BuildContext context) {
+    final presetColors = [
+      const Color(0xFF6366F1),
+      const Color(0xFFF472B6),
+      const Color(0xFF22D3EE),
+      const Color(0xFF10B981),
+      const Color(0xFFF59E0B),
+      const Color(0xFFEF4444),
+      const Color(0xFF8B5CF6),
+      const Color(0xFF3B82F6),
+      const Color(0xFF14B8A6),
+      const Color(0xFFEC4899),
+      const Color(0xFFF97316),
+      const Color(0xFF84CC16),
+    ];
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: NeoFadeTheme.of(context).colors.surface,
+        title: Text('Select $label Color'),
+        content: Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: presetColors.map((presetColor) {
+            return GestureDetector(
+              onTap: () {
+                onColorChanged(presetColor);
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: presetColor,
+                  borderRadius: BorderRadius.circular(8),
+                  border: presetColor == color
+                      ? Border.all(color: Colors.white, width: 3)
+                      : null,
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class ComponentPreview extends StatelessWidget {
+  final String label;
+
+  const ComponentPreview({
+    super.key,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = NeoFadeTheme.of(context);
+
+    return GlassContainer(
+      padding: const EdgeInsets.symmetric(
+        horizontal: NeoFadeSpacing.lg,
+        vertical: NeoFadeSpacing.md,
+      ),
+      borderRadius: NeoFadeRadii.mdRadius,
+      child: Text(
+        label,
+        style: theme.typography.labelLarge,
+      ),
+    );
+  }
+}
