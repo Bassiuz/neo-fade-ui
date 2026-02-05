@@ -21,6 +21,7 @@ class NeoNavCTAButton extends StatefulWidget {
   final NeoFadeColors colors;
   final double size;
   final double borderRadius;
+  final bool animated;
 
   const NeoNavCTAButton({
     super.key,
@@ -29,6 +30,7 @@ class NeoNavCTAButton extends StatefulWidget {
     required this.colors,
     this.size = 56,
     this.borderRadius = NeoFadeRadii.lg,
+    this.animated = true,
   });
 
   @override
@@ -51,7 +53,11 @@ class NeoNavCTAButtonState extends State<NeoNavCTAButton>
     _floatController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
-    )..repeat(reverse: true);
+    );
+
+    if (widget.animated) {
+      _floatController.repeat(reverse: true);
+    }
 
     _floatAnimation = Tween<double>(
       begin: 0,
@@ -114,7 +120,7 @@ class NeoNavCTAButtonState extends State<NeoNavCTAButton>
         animation: Listenable.merge([_floatAnimation, _pressController]),
         builder: (context, child) {
           return Transform.translate(
-            offset: Offset(0, -_floatAnimation.value),
+            offset: Offset(0, widget.animated ? -_floatAnimation.value : 0),
             child: Transform.scale(
               scale: _scaleAnimation.value,
               child: Transform.rotate(

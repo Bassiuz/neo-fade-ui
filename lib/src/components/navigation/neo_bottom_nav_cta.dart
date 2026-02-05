@@ -25,6 +25,7 @@ class NeoBottomNavCTA extends StatelessWidget {
   final List<NeoBottomNavItem> items;
   final VoidCallback onCenterPressed;
   final IconData centerIcon;
+  final bool animated;
 
   const NeoBottomNavCTA({
     super.key,
@@ -34,6 +35,7 @@ class NeoBottomNavCTA extends StatelessWidget {
     required this.onCenterPressed,
     this.centerIcon =
         const IconData(0xe3b0, fontFamily: 'MaterialIcons'), // camera icon
+    this.animated = true,
   });
 
   @override
@@ -120,6 +122,7 @@ class NeoBottomNavCTA extends StatelessWidget {
               colors: colors,
               size: ctaSize,
               borderRadius: NeoFadeRadii.lg,
+              animated: animated,
             ),
           ),
         ],
