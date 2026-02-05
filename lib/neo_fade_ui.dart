@@ -72,6 +72,7 @@ export 'src/components/selectors/neo_segmented_control_1.dart';
 export 'src/components/selectors/neo_segmented_control_2.dart';
 export 'src/components/selectors/neo_segmented_control_3.dart';
 export 'src/components/selectors/neo_segmented_control_4.dart';
+export 'src/components/selectors/neo_segmented_control_icons.dart';
 
 // Components - Inputs
 export 'src/components/inputs/neo_slider.dart';
