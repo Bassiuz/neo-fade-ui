@@ -151,6 +151,67 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
             ),
           ),
 
+          const SizedBox(height: NeoFadeSpacing.xl),
+
+          // NeoFloatingActions Section
+          Text('NeoFloatingActions - Floating Action Bar', style: theme.typography.titleMedium),
+          const SizedBox(height: NeoFadeSpacing.xs),
+          Text(
+            'A minimal liquid glass bar with quick action buttons.',
+            style: theme.typography.bodySmall,
+          ),
+          const SizedBox(height: NeoFadeSpacing.md),
+
+          // Preview container
+          Container(
+            height: 120,
+            decoration: BoxDecoration(
+              color: theme.colors.surface.withValues(alpha: 0.5),
+              borderRadius: NeoFadeRadii.lgRadius,
+              border: Border.all(color: theme.colors.border),
+            ),
+            child: Stack(
+              children: [
+                Center(
+                  child: Text('Content Area', style: theme.typography.bodySmall),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: NeoFloatingActions(
+                      items: [
+                        NeoFloatingActionItem(
+                          icon: Icons.home,
+                          onPressed: () {},
+                        ),
+                        NeoFloatingActionItem(
+                          icon: Icons.search,
+                          onPressed: () {},
+                        ),
+                        NeoFloatingActionItem(
+                          icon: Icons.add,
+                          onPressed: () {},
+                        ),
+                        NeoFloatingActionItem(
+                          icon: Icons.favorite,
+                          onPressed: () {},
+                        ),
+                        NeoFloatingActionItem(
+                          icon: Icons.person,
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: NeoFadeSpacing.lg),
+
           const SizedBox(height: NeoFadeSpacing.xxl),
         ],
       ),
