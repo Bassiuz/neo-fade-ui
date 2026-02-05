@@ -8,6 +8,9 @@ class NeoSliderPainter extends CustomPainter {
   final Color secondaryColor;
   final Color borderColor;
   final bool isDragging;
+  final double trackHeight;
+  final double thumbSize;
+  final Color? inactiveTrackColor;
 
   NeoSliderPainter({
     required this.value,
@@ -15,25 +18,29 @@ class NeoSliderPainter extends CustomPainter {
     required this.secondaryColor,
     required this.borderColor,
     required this.isDragging,
+    this.trackHeight = 3.0,
+    this.thumbSize = 8.0,
+    this.inactiveTrackColor,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final double trackHeight = 3.0;
-    final double thumbRadius = isDragging ? 10.0 : 8.0;
-    final double trackY = (size.height - trackHeight) / 2;
+    final double effectiveTrackHeight = trackHeight;
+    final double thumbRadius = isDragging ? thumbSize + 2.0 : thumbSize;
+    final double trackY = (size.height - effectiveTrackHeight) / 2;
     final double trackLeft = thumbRadius;
     final double trackRight = size.width - thumbRadius;
     final double trackWidth = trackRight - trackLeft;
 
     // Track background (thin, subtle)
     final trackRect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight),
-      Radius.circular(trackHeight / 2),
+      Rect.fromLTWH(trackLeft, trackY, trackWidth, effectiveTrackHeight),
+      Radius.circular(effectiveTrackHeight / 2),
     );
 
+    final effectiveInactiveColor = inactiveTrackColor ?? borderColor.withValues(alpha: 0.3);
     final trackPaint = Paint()
-      ..color = borderColor.withValues(alpha: 0.3)
+      ..color = effectiveInactiveColor
       ..style = PaintingStyle.fill;
     canvas.drawRRect(trackRect, trackPaint);
 
@@ -41,14 +48,14 @@ class NeoSliderPainter extends CustomPainter {
     final fillWidth = trackWidth * value;
     if (fillWidth > 0) {
       final fillRect = RRect.fromRectAndRadius(
-        Rect.fromLTWH(trackLeft, trackY, fillWidth, trackHeight),
-        Radius.circular(trackHeight / 2),
+        Rect.fromLTWH(trackLeft, trackY, fillWidth, effectiveTrackHeight),
+        Radius.circular(effectiveTrackHeight / 2),
       );
 
       final gradientPaint = Paint()
         ..shader = LinearGradient(
           colors: [primaryColor, secondaryColor],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight))
+        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, effectiveTrackHeight))
         ..style = PaintingStyle.fill;
       canvas.drawRRect(fillRect, gradientPaint);
     }
@@ -83,6 +90,9 @@ class NeoSliderPainter extends CustomPainter {
         primaryColor != oldDelegate.primaryColor ||
         secondaryColor != oldDelegate.secondaryColor ||
         borderColor != oldDelegate.borderColor ||
-        isDragging != oldDelegate.isDragging;
+        isDragging != oldDelegate.isDragging ||
+        trackHeight != oldDelegate.trackHeight ||
+        thumbSize != oldDelegate.thumbSize ||
+        inactiveTrackColor != oldDelegate.inactiveTrackColor;
   }
 }

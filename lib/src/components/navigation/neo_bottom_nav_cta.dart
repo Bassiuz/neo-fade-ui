@@ -27,6 +27,21 @@ class NeoBottomNavCTA extends StatelessWidget {
   final IconData centerIcon;
   final bool animated;
 
+  /// Optional height for the navigation bar. Defaults to 80.
+  final double? height;
+
+  /// Optional size for the CTA button. Defaults to 56.
+  final double? ctaSize;
+
+  /// Optional border radius for the CTA button. Defaults to NeoFadeRadii.lg.
+  final double? ctaBorderRadius;
+
+  /// Optional border radius for the navigation bar. Defaults to NeoFadeRadii.xl.
+  final double? navBorderRadius;
+
+  /// Optional overlap amount for the CTA button above the nav bar. Defaults to 8.
+  final double? ctaOverlap;
+
   const NeoBottomNavCTA({
     super.key,
     required this.selectedIndex,
@@ -36,6 +51,11 @@ class NeoBottomNavCTA extends StatelessWidget {
     this.centerIcon =
         const IconData(0xe3b0, fontFamily: 'MaterialIcons'), // camera icon
     this.animated = true,
+    this.height,
+    this.ctaSize,
+    this.ctaBorderRadius,
+    this.navBorderRadius,
+    this.ctaOverlap,
   });
 
   @override
@@ -47,30 +67,33 @@ class NeoBottomNavCTA extends StatelessWidget {
     final leftItems = items.take((items.length / 2).floor()).toList();
     final rightItems = items.skip((items.length / 2).floor()).toList();
 
-    // CTA button size and positioning
-    const ctaSize = 56.0;
-    const ctaOverlap = 8.0; // How much the CTA floats above the nav bar
+    // CTA button size and positioning with effective defaults
+    final effectiveCtaSize = ctaSize ?? 56.0;
+    final effectiveCtaOverlap = ctaOverlap ?? 8.0;
+    final effectiveHeight = height ?? 80.0;
+    final effectiveCtaBorderRadius = ctaBorderRadius ?? NeoFadeRadii.lg;
+    final effectiveNavBorderRadius = navBorderRadius ?? NeoFadeRadii.xl;
 
     return SizedBox(
-      height: 80 + ctaOverlap,
+      height: effectiveHeight + effectiveCtaOverlap,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.bottomCenter,
         children: [
           // Glass nav bar
           ClipRRect(
-            borderRadius: BorderRadius.circular(NeoFadeRadii.xl),
+            borderRadius: BorderRadius.circular(effectiveNavBorderRadius),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
               child: Container(
-                height: 80,
+                height: effectiveHeight,
                 padding: const EdgeInsets.symmetric(
                   horizontal: NeoFadeSpacing.sm,
                   vertical: NeoFadeSpacing.xs,
                 ),
                 decoration: BoxDecoration(
                   color: colors.surface.withValues(alpha: glass.tintOpacity),
-                  borderRadius: BorderRadius.circular(NeoFadeRadii.xl),
+                  borderRadius: BorderRadius.circular(effectiveNavBorderRadius),
                   border: Border.all(
                     color: colors.border.withValues(alpha: 0.3),
                     width: 1,
@@ -93,7 +116,7 @@ class NeoBottomNavCTA extends StatelessWidget {
                     }),
 
                     // Gap for CTA button
-                    SizedBox(width: ctaSize + NeoFadeSpacing.md),
+                    SizedBox(width: effectiveCtaSize + NeoFadeSpacing.md),
 
                     // Right items
                     ...rightItems.asMap().entries.map((entry) {
@@ -115,13 +138,13 @@ class NeoBottomNavCTA extends StatelessWidget {
 
           // Floating CTA button (positioned to overlap the nav bar)
           Positioned(
-            bottom: 80 - ctaOverlap - ctaSize / 2,
+            bottom: effectiveHeight - effectiveCtaOverlap - effectiveCtaSize / 2,
             child: NeoNavCTAButton(
               icon: centerIcon,
               onPressed: onCenterPressed,
               colors: colors,
-              size: ctaSize,
-              borderRadius: NeoFadeRadii.lg,
+              size: effectiveCtaSize,
+              borderRadius: effectiveCtaBorderRadius,
               animated: animated,
             ),
           ),

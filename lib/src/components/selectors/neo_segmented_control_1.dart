@@ -6,10 +6,9 @@ import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
 import '../../theme/neo_fade_theme.dart';
 import '../../utils/animation_utils.dart';
-import 'neo_segmented_control_1.dart';
 
-/// Glass segmented control with icons displayed above labels and a sliding gradient indicator.
-class NeoSegmentedControlIcons<T> extends StatelessWidget {
+/// Glass segmented control with sliding gradient indicator.
+class NeoSegmentedControl1<T> extends StatelessWidget {
   final T selectedValue;
   final ValueChanged<T> onValueChanged;
   final List<NeoSegment<T>> segments;
@@ -20,29 +19,25 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
   /// Optional padding inside the container. Defaults to NeoFadeSpacing.xxs.
   final double? padding;
 
-  /// Optional icon size. Defaults to 22.
-  final double? iconSize;
-
-  /// Optional label text style. Color will be applied based on selection state.
-  final TextStyle? labelStyle;
-
   /// Optional indicator padding. Defaults to NeoFadeSpacing.xxs.
   final double? indicatorPadding;
 
   /// Optional indicator border radius. Defaults to NeoFadeRadii.sm.
   final double? indicatorBorderRadius;
 
-  const NeoSegmentedControlIcons({
+  /// Optional text style for segments. Color will be applied based on selection state.
+  final TextStyle? textStyle;
+
+  const NeoSegmentedControl1({
     super.key,
     required this.selectedValue,
     required this.onValueChanged,
     required this.segments,
     this.borderRadius,
     this.padding,
-    this.iconSize,
-    this.labelStyle,
     this.indicatorPadding,
     this.indicatorBorderRadius,
+    this.textStyle,
   });
 
   @override
@@ -55,10 +50,9 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
 
     final effectiveBorderRadius = borderRadius ?? NeoFadeRadii.md;
     final effectivePadding = padding ?? NeoFadeSpacing.xxs;
-    final effectiveIconSize = iconSize ?? 22.0;
-    final baseLabelStyle = labelStyle ?? const TextStyle(fontSize: 12);
     final effectiveIndicatorPadding = indicatorPadding ?? NeoFadeSpacing.xxs;
     final effectiveIndicatorBorderRadius = indicatorBorderRadius ?? NeoFadeRadii.sm;
+    final baseTextStyle = textStyle ?? const TextStyle(fontSize: 14);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(effectiveBorderRadius),
@@ -120,30 +114,14 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
                               vertical: NeoFadeSpacing.sm,
                               horizontal: NeoFadeSpacing.xs,
                             ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                if (segment.icon != null)
-                                  Icon(
-                                    segment.icon,
-                                    size: effectiveIconSize,
-                                    color: isSelected
-                                        ? colors.onPrimary
-                                        : colors.onSurfaceVariant,
-                                  ),
-                                if (segment.icon != null)
-                                  const SizedBox(height: NeoFadeSpacing.xxs),
-                                Text(
-                                  segment.label,
-                                  style: baseLabelStyle.copyWith(
-                                    fontWeight:
-                                        isSelected ? FontWeight.w600 : FontWeight.normal,
-                                    color: isSelected
-                                        ? colors.onPrimary
-                                        : colors.onSurfaceVariant,
-                                  ),
+                            child: Center(
+                              child: Text(
+                                segment.label,
+                                style: baseTextStyle.copyWith(
+                                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                                  color: isSelected ? colors.onPrimary : colors.onSurface,
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
@@ -158,4 +136,16 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
       ),
     );
   }
+}
+
+class NeoSegment<T> {
+  final T value;
+  final String label;
+  final IconData? icon;
+
+  const NeoSegment({
+    required this.value,
+    required this.label,
+    this.icon,
+  });
 }
