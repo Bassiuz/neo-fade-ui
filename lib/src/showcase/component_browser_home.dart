@@ -197,9 +197,11 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                       vertical: NeoFadeSpacing.sm,
                     ),
                     borderRadius: NeoFadeRadii.lgRadius,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: List.generate(categories.length, (index) {
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(categories.length, (index) {
                         final isSelected = selectedCategoryIndex == index;
                         final category = categories[index];
                         return GestureDetector(
@@ -246,6 +248,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                           ),
                         );
                       }),
+                    ),
                     ),
                   ),
                 ),

@@ -4,13 +4,15 @@ import '../../theme/neo_fade_theme.dart';
 import 'neo_emoji_avatar_picker.dart';
 
 /// Emoji avatar picker with spiral animation - emojis spiral out with staggered timing.
+/// Uses inner and outer circles to prevent overlap.
 class NeoEmojiAvatarPickerSpiral extends StatefulWidget {
   final String? selectedEmoji;
   final ValueChanged<String> onEmojiSelected;
   final List<String>? emojis;
   final double? avatarSize;
   final double? emojiSize;
-  final double? circleRadius;
+  final double? innerCircleRadius;
+  final double? outerCircleRadius;
   final Duration? animationDuration;
   final Duration? staggerDelay;
 
@@ -21,7 +23,8 @@ class NeoEmojiAvatarPickerSpiral extends StatefulWidget {
     this.emojis,
     this.avatarSize,
     this.emojiSize,
-    this.circleRadius,
+    this.innerCircleRadius,
+    this.outerCircleRadius,
     this.animationDuration,
     this.staggerDelay,
   });
@@ -40,10 +43,22 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
   List<String> get effectiveEmojis =>
       widget.emojis ?? NeoEmojiAvatarPicker.defaultEmojis;
   double get effectiveAvatarSize => widget.avatarSize ?? 64.0;
-  double get effectiveEmojiSize => widget.emojiSize ?? 32.0;
-  double get effectiveCircleRadius => widget.circleRadius ?? 100.0;
+  double get effectiveEmojiSize => widget.emojiSize ?? 28.0;
+  double get effectiveInnerRadius => widget.innerCircleRadius ?? 70.0;
+  double get effectiveOuterRadius => widget.outerCircleRadius ?? 115.0;
   Duration get effectiveStaggerDelay =>
-      widget.staggerDelay ?? const Duration(milliseconds: 30);
+      widget.staggerDelay ?? const Duration(milliseconds: 25);
+
+  // Split emojis into inner and outer circles
+  List<String> get innerEmojis {
+    final count = (effectiveEmojis.length / 2).floor();
+    return effectiveEmojis.take(count).toList();
+  }
+
+  List<String> get outerEmojis {
+    final count = (effectiveEmojis.length / 2).floor();
+    return effectiveEmojis.skip(count).toList();
+  }
 
   @override
   void initState() {
@@ -52,13 +67,13 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
   }
 
   void _setupAnimations() {
-    // Total duration = base animation + (stagger * num items)
-    final totalStaggerTime =
-        effectiveStaggerDelay.inMilliseconds * effectiveEmojis.length;
+    final totalEmojis = effectiveEmojis.length;
+    final totalStaggerTime = effectiveStaggerDelay.inMilliseconds * totalEmojis;
     final baseDuration =
-        (widget.animationDuration ?? const Duration(milliseconds: 400))
+        (widget.animationDuration ?? const Duration(milliseconds: 350))
             .inMilliseconds;
-    final totalDuration = Duration(milliseconds: baseDuration + totalStaggerTime);
+    final totalDuration =
+        Duration(milliseconds: baseDuration + totalStaggerTime);
 
     _controller = AnimationController(
       duration: totalDuration,
@@ -67,11 +82,12 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
 
     // Create staggered animations for each emoji
     _itemAnimations.clear();
-    for (int i = 0; i < effectiveEmojis.length; i++) {
+    for (int i = 0; i < totalEmojis; i++) {
       final startTime = (effectiveStaggerDelay.inMilliseconds * i) /
           totalDuration.inMilliseconds;
-      final endTime = (effectiveStaggerDelay.inMilliseconds * i + baseDuration) /
-          totalDuration.inMilliseconds;
+      final endTime =
+          (effectiveStaggerDelay.inMilliseconds * i + baseDuration) /
+              totalDuration.inMilliseconds;
 
       _itemAnimations.add(
         Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -117,15 +133,16 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
   }
 
   void _selectEmoji(String emoji) {
+    setState(() => _isExpanded = false);
+    _controller.reverse();
     widget.onEmojiSelected(emoji);
-    _toggleExpand();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
-    final totalSize = effectiveCircleRadius * 2 + effectiveEmojiSize + 20;
+    final totalSize = effectiveOuterRadius * 2 + effectiveEmojiSize + 20;
 
     return SizedBox(
       width: totalSize,
@@ -133,68 +150,41 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Emoji spiral items
-          ...effectiveEmojis.asMap().entries.map((entry) {
+          // Inner circle emojis (first half, indices 0 to innerEmojis.length-1)
+          ...innerEmojis.asMap().entries.map((entry) {
             final index = entry.key;
             final emoji = entry.value;
-            // Spiral: angle increases with index for spiral effect
-            final baseAngle =
-                (2 * math.pi * index / effectiveEmojis.length) - math.pi / 2;
-            // Add slight rotation offset based on index for spiral feel
-            final spiralOffset = (index / effectiveEmojis.length) * 0.3;
+            final angle =
+                (2 * math.pi * index / innerEmojis.length) - math.pi / 2;
+            final spiralOffset = (index / innerEmojis.length) * 0.4;
 
-            return AnimatedBuilder(
-              animation: _itemAnimations[index],
-              builder: (context, child) {
-                final progress = _itemAnimations[index].value;
-                final distance = effectiveCircleRadius * progress;
-                // Spiral rotation: starts from inner angle and rotates outward
-                final currentAngle =
-                    baseAngle + (1 - progress) * spiralOffset * math.pi;
-                final x = math.cos(currentAngle) * distance;
-                final y = math.sin(currentAngle) * distance;
-                final scale = progress;
-                final opacity = progress.clamp(0.0, 1.0);
+            return _buildSpiralItem(
+              emoji: emoji,
+              animationIndex: index,
+              angle: angle,
+              spiralOffset: spiralOffset,
+              radius: effectiveInnerRadius,
+              colors: colors,
+            );
+          }),
 
-                return Transform.translate(
-                  offset: Offset(x, y),
-                  child: Transform.scale(
-                    scale: scale,
-                    child: Opacity(
-                      opacity: opacity,
-                      child: child,
-                    ),
-                  ),
-                );
-              },
-              child: GestureDetector(
-                onTap: _isExpanded ? () => _selectEmoji(emoji) : null,
-                child: Container(
-                  width: effectiveEmojiSize + 12,
-                  height: effectiveEmojiSize + 12,
-                  decoration: BoxDecoration(
-                    color: colors.surface,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: colors.border.withValues(alpha: 0.3),
-                      width: 1,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: colors.primary.withValues(alpha: 0.15),
-                        blurRadius: 8,
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Text(
-                      emoji,
-                      style: TextStyle(fontSize: effectiveEmojiSize * 0.65),
-                    ),
-                  ),
-                ),
-              ),
+          // Outer circle emojis (second half, indices continue from inner)
+          ...outerEmojis.asMap().entries.map((entry) {
+            final index = entry.key;
+            final emoji = entry.value;
+            final angle =
+                (2 * math.pi * index / outerEmojis.length) - math.pi / 2;
+            final spiralOffset = (index / outerEmojis.length) * 0.4;
+            // Animation index continues from inner circle
+            final animationIndex = innerEmojis.length + index;
+
+            return _buildSpiralItem(
+              emoji: emoji,
+              animationIndex: animationIndex,
+              angle: angle,
+              spiralOffset: spiralOffset,
+              radius: effectiveOuterRadius,
+              colors: colors,
             );
           }),
 
@@ -235,6 +225,68 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSpiralItem({
+    required String emoji,
+    required int animationIndex,
+    required double angle,
+    required double spiralOffset,
+    required double radius,
+    required dynamic colors,
+  }) {
+    return AnimatedBuilder(
+      animation: _itemAnimations[animationIndex],
+      builder: (context, child) {
+        final progress = _itemAnimations[animationIndex].value;
+        final distance = radius * progress;
+        // Spiral rotation effect
+        final currentAngle = angle + (1 - progress) * spiralOffset * math.pi;
+        final x = math.cos(currentAngle) * distance;
+        final y = math.sin(currentAngle) * distance;
+        final scale = progress;
+        final opacity = progress.clamp(0.0, 1.0);
+
+        return Transform.translate(
+          offset: Offset(x, y),
+          child: Transform.scale(
+            scale: scale,
+            child: Opacity(
+              opacity: opacity,
+              child: child,
+            ),
+          ),
+        );
+      },
+      child: GestureDetector(
+        onTap: _isExpanded ? () => _selectEmoji(emoji) : null,
+        child: Container(
+          width: effectiveEmojiSize + 10,
+          height: effectiveEmojiSize + 10,
+          decoration: BoxDecoration(
+            color: colors.surface,
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: colors.border.withValues(alpha: 0.3),
+              width: 1,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: colors.primary.withValues(alpha: 0.15),
+                blurRadius: 6,
+                spreadRadius: 0,
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              emoji,
+              style: TextStyle(fontSize: effectiveEmojiSize * 0.6),
+            ),
+          ),
+        ),
       ),
     );
   }
