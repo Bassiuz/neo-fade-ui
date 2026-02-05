@@ -7,6 +7,7 @@ import 'showcase_buttons_page.dart';
 import 'showcase_cards_page.dart';
 import 'showcase_display_page.dart';
 import 'showcase_effects_page.dart';
+import 'showcase_feedback_page.dart';
 import 'showcase_inputs_page.dart';
 import 'showcase_layout_page.dart';
 import 'showcase_navigation_page.dart';
@@ -52,6 +53,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
     CategoryItem(name: 'Effects', icon: Icons.auto_awesome),
     CategoryItem(name: 'Display', icon: Icons.view_agenda),
     CategoryItem(name: 'Layout', icon: Icons.view_quilt),
+    CategoryItem(name: 'Feedback', icon: Icons.feedback),
   ];
 
   @override
@@ -172,6 +174,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                       ShowcaseEffectsPage(),
                       ShowcaseDisplayPage(),
                       ShowcaseLayoutPage(),
+                      ShowcaseFeedbackPage(),
                     ],
                   ),
                 ),
