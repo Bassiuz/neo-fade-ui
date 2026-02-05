@@ -66,6 +66,7 @@ export 'src/components/inputs/neo_number_selector_1.dart';
 export 'src/components/inputs/neo_number_selector_2.dart';
 export 'src/components/inputs/neo_number_selector_3.dart';
 export 'src/components/inputs/neo_number_selector_4.dart';
+export 'src/components/inputs/neo_number_step_button.dart';
 
 // Components - Selectors
 export 'src/components/selectors/neo_segmented_control_1.dart';
