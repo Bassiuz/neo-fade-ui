@@ -22,6 +22,18 @@ class NeoTextField2 extends StatefulWidget {
   final FocusNode? focusNode;
   final bool autofocus;
 
+  /// Optional border radius. Defaults to NeoFadeRadii.input.
+  final double? borderRadius;
+
+  /// Optional border width for the gradient focus border. Defaults to NeoFadeSpacing.xxs.
+  final double? borderWidth;
+
+  /// Optional content padding. Defaults to horizontal: inputPaddingHorizontal, vertical: inputPaddingVertical.
+  final EdgeInsetsGeometry? contentPadding;
+
+  /// Optional hint text style. Color defaults to onSurfaceVariant if not specified.
+  final TextStyle? hintStyle;
+
   const NeoTextField2({
     super.key,
     this.controller,
@@ -33,6 +45,10 @@ class NeoTextField2 extends StatefulWidget {
     this.keyboardType,
     this.focusNode,
     this.autofocus = false,
+    this.borderRadius,
+    this.borderWidth,
+    this.contentPadding,
+    this.hintStyle,
   });
 
   @override
@@ -108,7 +124,17 @@ class NeoTextField2State extends State<NeoTextField2>
     final typography = theme.typography;
 
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
-    final borderRadius = BorderRadius.circular(NeoFadeRadii.input);
+    final effectiveBorderRadius = BorderRadius.circular(widget.borderRadius ?? NeoFadeRadii.input);
+    final effectiveBorderWidth = widget.borderWidth ?? NeoFadeSpacing.xxs;
+    final effectiveContentPadding = widget.contentPadding ??
+        EdgeInsets.symmetric(
+          horizontal: NeoFadeSpacing.inputPaddingHorizontal,
+          vertical: NeoFadeSpacing.inputPaddingVertical,
+        );
+    final effectiveHintStyle = widget.hintStyle ??
+        typography.bodyMedium.copyWith(
+          color: colors.onSurfaceVariant,
+        );
 
     final effectiveOpacity =
         widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
@@ -135,22 +161,17 @@ class NeoTextField2State extends State<NeoTextField2>
               return Stack(
                 children: [
                   GlassContainer(
-                    borderRadius: borderRadius,
+                    borderRadius: effectiveBorderRadius,
                     borderColor: colors.border,
                     borderWidth: 1.0,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: NeoFadeSpacing.inputPaddingHorizontal,
-                      vertical: NeoFadeSpacing.inputPaddingVertical,
-                    ),
+                    padding: effectiveContentPadding,
                     child: Stack(
                       children: [
                         if (widget.hintText != null && _controller.text.isEmpty)
                           IgnorePointer(
                             child: Text(
                               widget.hintText!,
-                              style: typography.bodyMedium.copyWith(
-                                color: colors.onSurfaceVariant,
-                              ),
+                              style: effectiveHintStyle,
                             ),
                           ),
                         EditableText(
@@ -177,8 +198,8 @@ class NeoTextField2State extends State<NeoTextField2>
                         child: CustomPaint(
                           painter: GradientBorderPainter(
                             colors: gradientColors,
-                            borderWidth: NeoFadeSpacing.xxs,
-                            borderRadius: borderRadius,
+                            borderWidth: effectiveBorderWidth,
+                            borderRadius: effectiveBorderRadius,
                             bottomOnly: false,
                           ),
                         ),

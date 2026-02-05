@@ -24,12 +24,32 @@ class NeoSlider extends StatefulWidget {
   /// The maximum value. Defaults to 1.0.
   final double max;
 
+  /// Optional track height. Defaults to 3.0.
+  final double? trackHeight;
+
+  /// Optional thumb size (radius when not dragging). Defaults to 8.0.
+  final double? thumbSize;
+
+  /// Optional active track color (start of gradient). Defaults to theme primary color.
+  final Color? activeTrackColor;
+
+  /// Optional secondary track color (end of gradient). Defaults to theme secondary color.
+  final Color? activeTrackColorSecondary;
+
+  /// Optional inactive track color. Defaults to borderColor with 0.3 alpha.
+  final Color? inactiveTrackColor;
+
   const NeoSlider({
     super.key,
     required this.value,
     this.onChanged,
     this.min = 0.0,
     this.max = 1.0,
+    this.trackHeight,
+    this.thumbSize,
+    this.activeTrackColor,
+    this.activeTrackColorSecondary,
+    this.inactiveTrackColor,
   });
 
   @override
@@ -63,7 +83,8 @@ class NeoSliderState extends State<NeoSlider> {
   void updateValue(Offset position) {
     if (widget.onChanged == null) return;
     final RenderBox box = context.findRenderObject() as RenderBox;
-    final double thumbRadius = isDragging ? 10.0 : 8.0;
+    final effectiveThumbSize = widget.thumbSize ?? 8.0;
+    final double thumbRadius = isDragging ? effectiveThumbSize + 2.0 : effectiveThumbSize;
     final double trackWidth = box.size.width - thumbRadius * 2;
     final double newValue =
         ((position.dx - thumbRadius) / trackWidth).clamp(0.0, 1.0);
@@ -75,6 +96,11 @@ class NeoSliderState extends State<NeoSlider> {
   Widget build(BuildContext context) {
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
+
+    final effectiveTrackHeight = widget.trackHeight ?? 3.0;
+    final effectiveThumbSize = widget.thumbSize ?? 8.0;
+    final effectivePrimaryColor = widget.activeTrackColor ?? colors.primary;
+    final effectiveSecondaryColor = widget.activeTrackColorSecondary ?? colors.secondary;
 
     return GestureDetector(
       onHorizontalDragStart: handleDragStart,
@@ -88,10 +114,13 @@ class NeoSliderState extends State<NeoSlider> {
         child: CustomPaint(
           painter: NeoSliderPainter(
             value: normalizedValue,
-            primaryColor: colors.primary,
-            secondaryColor: colors.secondary,
+            primaryColor: effectivePrimaryColor,
+            secondaryColor: effectiveSecondaryColor,
             borderColor: colors.border,
             isDragging: isDragging,
+            trackHeight: effectiveTrackHeight,
+            thumbSize: effectiveThumbSize,
+            inactiveTrackColor: widget.inactiveTrackColor,
           ),
           child: const SizedBox.expand(),
         ),
