@@ -11,6 +11,7 @@ class ShowcaseNavigationPage extends StatefulWidget {
 
 class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
   int bottomNavIndex = 0;
+  bool ctaAnimated = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,17 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
           Text(
             'A bottom navigation bar with a floating center action button.',
             style: theme.typography.bodySmall,
+          ),
+          const SizedBox(height: NeoFadeSpacing.md),
+          Row(
+            children: [
+              Text('Animation', style: theme.typography.labelMedium),
+              const Spacer(),
+              NeoSwitch2(
+                value: ctaAnimated,
+                onChanged: (v) => setState(() => ctaAnimated = v),
+              ),
+            ],
           ),
           const SizedBox(height: NeoFadeSpacing.md),
 
@@ -85,6 +97,7 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
                       );
                     },
                     centerIcon: Icons.add,
+                    animated: ctaAnimated,
                   ),
                 ),
               ],
