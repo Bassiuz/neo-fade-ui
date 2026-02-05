@@ -60,6 +60,9 @@ export 'src/components/navigation/neo_bottom_nav_6.dart';
 export 'src/components/navigation/neo_bottom_nav_cta.dart';
 export 'src/components/navigation/neo_nav_cta_button.dart';
 export 'src/components/navigation/neo_bottom_nav_cta_item.dart';
+export 'src/components/navigation/neo_floating_action_item.dart';
+export 'src/components/navigation/neo_floating_action_button.dart';
+export 'src/components/navigation/neo_floating_actions.dart';
 
 // Components - Number Selectors
 export 'src/components/inputs/neo_number_selector_1.dart';
