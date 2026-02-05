@@ -78,26 +78,32 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  child: NeoBottomNavCTA(
-                    selectedIndex: bottomNavIndex,
-                    onIndexChanged: (i) => setState(() => bottomNavIndex = i),
-                    items: const [
-                      NeoBottomNavItem(icon: Icons.home, label: 'Home'),
-                      NeoBottomNavItem(icon: Icons.search, label: 'Search'),
-                      NeoBottomNavItem(icon: Icons.favorite, label: 'Favorites'),
-                      NeoBottomNavItem(icon: Icons.person, label: 'Profile'),
-                    ],
-                    onCenterPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Center button pressed!'),
-                          backgroundColor: theme.colors.primary,
-                          duration: const Duration(seconds: 1),
-                        ),
-                      );
-                    },
-                    centerIcon: Icons.add,
-                    animated: ctaAnimated,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(minWidth: 360),
+                      child: NeoBottomNavCTA(
+                        selectedIndex: bottomNavIndex,
+                        onIndexChanged: (i) => setState(() => bottomNavIndex = i),
+                        items: const [
+                          NeoBottomNavItem(icon: Icons.home, label: 'Home'),
+                          NeoBottomNavItem(icon: Icons.search, label: 'Search'),
+                          NeoBottomNavItem(icon: Icons.favorite, label: 'Favorites'),
+                          NeoBottomNavItem(icon: Icons.person, label: 'Profile'),
+                        ],
+                        onCenterPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Center button pressed!'),
+                              backgroundColor: theme.colors.primary,
+                              duration: const Duration(seconds: 1),
+                            ),
+                          );
+                        },
+                        centerIcon: Icons.add,
+                        animated: ctaAnimated,
+                      ),
+                    ),
                   ),
                 ),
               ],
