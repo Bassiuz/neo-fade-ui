@@ -12,6 +12,7 @@ import 'showcase_inputs_page.dart';
 import 'showcase_layout_page.dart';
 import 'showcase_navigation_page.dart';
 import 'showcase_selectors_page.dart';
+import 'showcase_typography_page.dart';
 
 /// The home widget for the component browser.
 class ComponentBrowserHome extends StatefulWidget {
@@ -54,6 +55,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
     CategoryItem(name: 'Display', icon: Icons.view_agenda),
     CategoryItem(name: 'Layout', icon: Icons.view_quilt),
     CategoryItem(name: 'Feedback', icon: Icons.feedback),
+    CategoryItem(name: 'Typography', icon: Icons.text_fields),
   ];
 
   @override
@@ -175,6 +177,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                       ShowcaseDisplayPage(),
                       ShowcaseLayoutPage(),
                       ShowcaseFeedbackPage(),
+                      ShowcaseTypographyPage(),
                     ],
                   ),
                 ),
