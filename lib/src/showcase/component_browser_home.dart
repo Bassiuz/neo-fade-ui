@@ -7,6 +7,7 @@ import 'showcase_buttons_page.dart';
 import 'showcase_cards_page.dart';
 import 'showcase_display_page.dart';
 import 'showcase_effects_page.dart';
+import 'showcase_emoji_page.dart';
 import 'showcase_feedback_page.dart';
 import 'showcase_inputs_page.dart';
 import 'showcase_layout_page.dart';
@@ -56,6 +57,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
     CategoryItem(name: 'Layout', icon: Icons.view_quilt),
     CategoryItem(name: 'Feedback', icon: Icons.feedback),
     CategoryItem(name: 'Typography', icon: Icons.text_fields),
+    CategoryItem(name: 'Emoji', icon: Icons.emoji_emotions),
   ];
 
   @override
@@ -178,6 +180,7 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                       ShowcaseLayoutPage(),
                       ShowcaseFeedbackPage(),
                       ShowcaseTypographyPage(),
+                      ShowcaseEmojiPage(),
                     ],
                   ),
                 ),
