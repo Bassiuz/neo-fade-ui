@@ -11,6 +11,7 @@ class NeoEmojiAvatarPicker extends StatefulWidget {
   final double? emojiSize;
   final double? circleRadius;
   final Duration? animationDuration;
+  final bool allowCustomEmoji;
 
   static const defaultEmojis = [
     '😀', '😎', '🥳', '😍', '🤔', '😴', '🤩', '😇',
@@ -27,6 +28,7 @@ class NeoEmojiAvatarPicker extends StatefulWidget {
     this.emojiSize,
     this.circleRadius,
     this.animationDuration,
+    this.allowCustomEmoji = true,
   });
 
   @override
@@ -37,6 +39,8 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   bool _isExpanded = false;
+  final TextEditingController _customEmojiController = TextEditingController();
+  final FocusNode _customEmojiFocusNode = FocusNode();
 
   List<String> get effectiveEmojis =>
       widget.emojis ?? NeoEmojiAvatarPicker.defaultEmojis;
@@ -56,6 +60,8 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
   @override
   void dispose() {
     _controller.dispose();
+    _customEmojiController.dispose();
+    _customEmojiFocusNode.dispose();
     super.dispose();
   }
 
@@ -186,6 +192,56 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
               ),
             ),
           ),
+
+          // Custom emoji text input (shown when expanded)
+          if (widget.allowCustomEmoji)
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                final opacity = _controller.value;
+                if (opacity == 0) return const SizedBox.shrink();
+                return Positioned(
+                  bottom: 0,
+                  child: Opacity(
+                    opacity: opacity,
+                    child: child,
+                  ),
+                );
+              },
+              child: Container(
+                width: 120,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: colors.surface.withValues(alpha: 0.9),
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(color: colors.border.withValues(alpha: 0.3)),
+                ),
+                child: TextField(
+                  controller: _customEmojiController,
+                  focusNode: _customEmojiFocusNode,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 20),
+                  decoration: InputDecoration(
+                    hintText: 'Type emoji',
+                    hintStyle: TextStyle(
+                      fontSize: 12,
+                      color: colors.onSurfaceVariant,
+                    ),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                  ),
+                  onSubmitted: (value) {
+                    if (value.isNotEmpty) {
+                      _selectEmoji(value);
+                      _customEmojiController.clear();
+                    }
+                  },
+                ),
+              ),
+            ),
         ],
       ),
     );
