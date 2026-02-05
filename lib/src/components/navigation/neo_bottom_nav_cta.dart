@@ -69,13 +69,15 @@ class NeoBottomNavCTA extends StatelessWidget {
 
     // CTA button size and positioning with effective defaults
     final effectiveCtaSize = ctaSize ?? 56.0;
-    final effectiveCtaOverlap = ctaOverlap ?? 8.0;
     final effectiveHeight = height ?? 80.0;
     final effectiveCtaBorderRadius = ctaBorderRadius ?? NeoFadeRadii.lg;
     final effectiveNavBorderRadius = navBorderRadius ?? NeoFadeRadii.xl;
 
+    // Position CTA so only ~12% sticks above the nav bar
+    final stickOutAmount = effectiveCtaSize * 0.12;
+
     return SizedBox(
-      height: effectiveHeight + effectiveCtaOverlap,
+      height: effectiveHeight + stickOutAmount,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.bottomCenter,
@@ -138,7 +140,7 @@ class NeoBottomNavCTA extends StatelessWidget {
 
           // Floating CTA button (positioned to overlap the nav bar)
           Positioned(
-            bottom: effectiveHeight - effectiveCtaOverlap - effectiveCtaSize / 2,
+            bottom: effectiveHeight - effectiveCtaSize + stickOutAmount,
             child: NeoNavCTAButton(
               icon: centerIcon,
               onPressed: onCenterPressed,
