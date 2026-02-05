@@ -47,7 +47,7 @@ class NeoBottomNavCTA extends StatelessWidget {
 
     // CTA button size and positioning
     const ctaSize = 56.0;
-    const ctaOverlap = 20.0; // How much the CTA overlaps into the nav bar
+    const ctaOverlap = 8.0; // How much the CTA floats above the nav bar
 
     return SizedBox(
       height: 80 + ctaOverlap,
