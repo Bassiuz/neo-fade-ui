@@ -119,6 +119,7 @@ export 'src/components/inputs/neo_slider_8.dart';
 
 // Components - Inputs - Pickers
 export 'src/components/inputs/neo_emoji_avatar_picker.dart';
+export 'src/components/inputs/neo_emoji_avatar_picker_grid.dart';
 
 // Components - Buttons - Material
 export 'src/components/buttons/neo_fab.dart';
