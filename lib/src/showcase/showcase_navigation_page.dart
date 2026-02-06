@@ -37,7 +37,7 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
             children: [
               Text('Animation', style: theme.typography.labelMedium),
               const Spacer(),
-              NeoSwitch2(
+              NeoSwitch.ios(
                 value: ctaAnimated,
                 onChanged: (v) => setState(() => ctaAnimated = v),
               ),
@@ -113,7 +113,7 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // Features list
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -140,19 +140,33 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
     widget.onEmojiSelected(emoji);
   }
 
+  void _collapse() {
+    if (_isExpanded) {
+      setState(() {
+        _isExpanded = false;
+        _isTypingCustom = false;
+      });
+      _controller.reverse();
+      _customEmojiFocusNode.unfocus();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
     final totalSize = effectiveOuterRadius * 2 + effectiveEmojiSize + 20;
 
-    return SizedBox(
-      width: totalSize,
-      height: totalSize,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Hidden text field for custom emoji input
+    return GestureDetector(
+      onTap: _isExpanded ? _collapse : null,
+      behavior: HitTestBehavior.opaque,
+      child: SizedBox(
+        width: totalSize,
+        height: totalSize,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // Hidden text field for custom emoji input
           if (widget.allowCustomEmoji)
             Opacity(
               opacity: 0,
@@ -246,7 +260,8 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
               ),
             ),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }

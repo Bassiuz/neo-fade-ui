@@ -76,7 +76,7 @@ class ShowcaseEmojiPageState extends State<ShowcaseEmojiPage> {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // Selected emojis summary
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

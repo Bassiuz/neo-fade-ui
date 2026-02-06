@@ -9,20 +9,20 @@ void main() {
     await setUpGoldenTests();
   });
 
-  group('NeoTextField2 Goldens', () {
+  group('NeoTextFieldOutlined Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
         const SizedBox(
           width: 280,
-          child: NeoTextField2(
+          child: NeoTextFieldOutlined(
             hintText: 'Enter text...',
           ),
         ),
         size: GoldenTestSizes.input,
       );
       await expectLater(
-        find.byType(NeoTextField2),
-        matchesGoldenFile('neo_text_field_2_default.png'),
+        find.byType(NeoTextFieldOutlined),
+        matchesGoldenFile('neo_text_field_outlined_default.png'),
       );
     });
 
@@ -30,7 +30,7 @@ void main() {
       await tester.pumpGoldenWidget(
         const SizedBox(
           width: 280,
-          child: NeoTextField2(
+          child: NeoTextFieldOutlined(
             labelText: 'Email',
             hintText: 'Enter email...',
           ),
@@ -38,8 +38,8 @@ void main() {
         size: const Size(300, 100),
       );
       await expectLater(
-        find.byType(NeoTextField2),
-        matchesGoldenFile('neo_text_field_2_with_label.png'),
+        find.byType(NeoTextFieldOutlined),
+        matchesGoldenFile('neo_text_field_outlined_with_label.png'),
       );
     });
 
@@ -47,7 +47,7 @@ void main() {
       await tester.pumpGoldenWidget(
         const SizedBox(
           width: 280,
-          child: NeoTextField2(
+          child: NeoTextFieldOutlined(
             hintText: 'Enter text...',
             enabled: false,
           ),
@@ -55,8 +55,8 @@ void main() {
         size: GoldenTestSizes.input,
       );
       await expectLater(
-        find.byType(NeoTextField2),
-        matchesGoldenFile('neo_text_field_2_disabled.png'),
+        find.byType(NeoTextFieldOutlined),
+        matchesGoldenFile('neo_text_field_outlined_disabled.png'),
       );
     });
 
@@ -64,7 +64,7 @@ void main() {
       await tester.pumpGoldenWidget(
         const SizedBox(
           width: 280,
-          child: NeoTextField2(
+          child: NeoTextFieldOutlined(
             hintText: 'Enter text...',
           ),
         ),
@@ -72,44 +72,44 @@ void main() {
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoTextField2),
-        matchesGoldenFile('neo_text_field_2_dark.png'),
+        find.byType(NeoTextFieldOutlined),
+        matchesGoldenFile('neo_text_field_outlined_dark.png'),
       );
     });
   });
 
-  group('NeoCheckbox4 Goldens', () {
+  group('NeoCheckboxGlowBorder Goldens', () {
     testWidgets('unchecked state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckbox4(
+        NeoCheckboxGlowBorder(
           value: false,
           onChanged: (value) {},
         ),
         size: const Size(60, 60),
       );
       await expectLater(
-        find.byType(NeoCheckbox4),
+        find.byType(NeoCheckboxGlowBorder),
         matchesGoldenFile('neo_checkbox_4_unchecked.png'),
       );
     });
 
     testWidgets('checked state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckbox4(
+        NeoCheckboxGlowBorder(
           value: true,
           onChanged: (value) {},
         ),
         size: const Size(60, 60),
       );
       await expectLater(
-        find.byType(NeoCheckbox4),
+        find.byType(NeoCheckboxGlowBorder),
         matchesGoldenFile('neo_checkbox_4_checked.png'),
       );
     });
 
     testWidgets('with label', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckbox4(
+        NeoCheckboxGlowBorder(
           value: true,
           label: 'Accept terms',
           onChanged: (value) {},
@@ -117,28 +117,28 @@ void main() {
         size: const Size(220, 60),
       );
       await expectLater(
-        find.byType(NeoCheckbox4),
+        find.byType(NeoCheckboxGlowBorder),
         matchesGoldenFile('neo_checkbox_4_with_label.png'),
       );
     });
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoCheckbox4(
+        const NeoCheckboxGlowBorder(
           value: false,
           onChanged: null,
         ),
         size: const Size(60, 60),
       );
       await expectLater(
-        find.byType(NeoCheckbox4),
+        find.byType(NeoCheckboxGlowBorder),
         matchesGoldenFile('neo_checkbox_4_disabled.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckbox4(
+        NeoCheckboxGlowBorder(
           value: true,
           onChanged: (value) {},
         ),
@@ -146,58 +146,58 @@ void main() {
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoCheckbox4),
+        find.byType(NeoCheckboxGlowBorder),
         matchesGoldenFile('neo_checkbox_4_dark.png'),
       );
     });
   });
 
-  group('NeoSwitch2 Goldens', () {
+  group('NeoSwitchIos Goldens', () {
     testWidgets('off state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoSwitch2(
+        NeoSwitchIos(
           value: false,
           onChanged: (value) {},
         ),
         size: const Size(80, 60),
       );
       await expectLater(
-        find.byType(NeoSwitch2),
-        matchesGoldenFile('neo_switch_2_off.png'),
+        find.byType(NeoSwitchIos),
+        matchesGoldenFile('neo_switch_ios_off.png'),
       );
     });
 
     testWidgets('on state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoSwitch2(
+        NeoSwitchIos(
           value: true,
           onChanged: (value) {},
         ),
         size: const Size(80, 60),
       );
       await expectLater(
-        find.byType(NeoSwitch2),
-        matchesGoldenFile('neo_switch_2_on.png'),
+        find.byType(NeoSwitchIos),
+        matchesGoldenFile('neo_switch_ios_on.png'),
       );
     });
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoSwitch2(
+        const NeoSwitchIos(
           value: false,
           enabled: false,
         ),
         size: const Size(80, 60),
       );
       await expectLater(
-        find.byType(NeoSwitch2),
-        matchesGoldenFile('neo_switch_2_disabled.png'),
+        find.byType(NeoSwitchIos),
+        matchesGoldenFile('neo_switch_ios_disabled.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoSwitch2(
+        NeoSwitchIos(
           value: true,
           onChanged: (value) {},
         ),
@@ -205,8 +205,8 @@ void main() {
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoSwitch2),
-        matchesGoldenFile('neo_switch_2_dark.png'),
+        find.byType(NeoSwitchIos),
+        matchesGoldenFile('neo_switch_ios_dark.png'),
       );
     });
   });
@@ -282,24 +282,24 @@ void main() {
     });
   });
 
-  group('NeoNumberSelector1 Goldens', () {
+  group('NeoNumberSelectorHorizontal Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector1(
+        NeoNumberSelector.horizontal(
           value: 5,
           onChanged: (value) {},
         ),
         size: const Size(200, 80),
       );
       await expectLater(
-        find.byType(NeoNumberSelector1),
+        find.byType(NeoNumberSelectorHorizontal),
         matchesGoldenFile('neo_number_selector_1_default.png'),
       );
     });
 
     testWidgets('at min value', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector1(
+        NeoNumberSelector.horizontal(
           value: 0,
           min: 0,
           onChanged: (value) {},
@@ -307,14 +307,14 @@ void main() {
         size: const Size(200, 80),
       );
       await expectLater(
-        find.byType(NeoNumberSelector1),
+        find.byType(NeoNumberSelectorHorizontal),
         matchesGoldenFile('neo_number_selector_1_min.png'),
       );
     });
 
     testWidgets('at max value', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector1(
+        NeoNumberSelector.horizontal(
           value: 100,
           max: 100,
           onChanged: (value) {},
@@ -322,14 +322,14 @@ void main() {
         size: const Size(200, 80),
       );
       await expectLater(
-        find.byType(NeoNumberSelector1),
+        find.byType(NeoNumberSelectorHorizontal),
         matchesGoldenFile('neo_number_selector_1_max.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector1(
+        NeoNumberSelector.horizontal(
           value: 5,
           onChanged: (value) {},
         ),
@@ -337,7 +337,7 @@ void main() {
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoNumberSelector1),
+        find.byType(NeoNumberSelectorHorizontal),
         matchesGoldenFile('neo_number_selector_1_dark.png'),
       );
     });

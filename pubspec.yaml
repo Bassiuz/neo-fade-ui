@@ -1,6 +1,17 @@
 name: neo_fade_ui
-description: "Neo Fade UI - A modern Flutter UI component library"
+description: "Neo Fade UI - A modern Flutter UI component library with glass morphism, gradient effects, and customizable themes."
 version: 0.0.1
+
+# Uncomment when ready to publish:
+# homepage: https://github.com/bassiuz/neo-fade-ui
+# repository: https://github.com/bassiuz/neo-fade-ui
+# issue_tracker: https://github.com/bassiuz/neo-fade-ui/issues
+
+topics:
+  - ui
+  - widgets
+  - glassmorphism
+  - theme
 
 environment:
   sdk: ^3.10.8
@@ -10,7 +21,6 @@ dependencies:
   flutter:
     sdk: flutter
   mesh_gradient: ^1.3.8
-  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +29,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: SourceSans3
+      fonts:
+        - asset: assets/fonts/SourceSans3-VariableFont.ttf

@@ -1,10 +1,6 @@
-import 'dart:ui';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-import '../../foundation/inner_border.dart';
 import '../../theme/neo_fade_theme.dart';
 import '../../utils/animation_utils.dart';
 import 'neo_button_size.dart';
@@ -51,8 +47,6 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
   late Animation<double> _scaleAnimation;
   late Animation<double> _opacityAnimation;
 
-  bool _isHovered = false;
-  bool _isPressed = false;
   bool _isFocused = false;
 
   bool get _isEnabled => widget.enabled && !widget.loading && widget.onPressed != null;
@@ -80,29 +74,17 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
 
   void _handleTapDown(TapDownDetails details) {
     if (!_isEnabled) return;
-    setState(() => _isPressed = true);
     _animationController.forward();
   }
 
   void _handleTapUp(TapUpDetails details) {
     if (!_isEnabled) return;
-    setState(() => _isPressed = false);
     _animationController.reverse();
   }
 
   void _handleTapCancel() {
     if (!_isEnabled) return;
-    setState(() => _isPressed = false);
     _animationController.reverse();
-  }
-
-  void _handleHoverEnter(PointerEnterEvent event) {
-    if (!_isEnabled) return;
-    setState(() => _isHovered = true);
-  }
-
-  void _handleHoverExit(PointerExitEvent event) {
-    setState(() => _isHovered = false);
   }
 
   void _handleFocusChange(bool focused) {
@@ -138,8 +120,6 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
       onFocusChange: _handleFocusChange,
       child: MouseRegion(
         cursor: _isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
-        onEnter: _handleHoverEnter,
-        onExit: _handleHoverExit,
         child: GestureDetector(
           onTapDown: _handleTapDown,
           onTapUp: _handleTapUp,

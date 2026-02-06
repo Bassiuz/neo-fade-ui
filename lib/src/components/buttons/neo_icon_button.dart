@@ -49,7 +49,6 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
   late Animation<double> _scaleAnimation;
 
   bool _isHovered = false;
-  bool _isPressed = false;
   bool _isFocused = false;
 
   bool get _isEnabled => widget.enabled && !widget.loading && widget.onPressed != null;
@@ -96,19 +95,16 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
 
   void _handleTapDown(TapDownDetails details) {
     if (!_isEnabled) return;
-    setState(() => _isPressed = true);
     _animationController.forward();
   }
 
   void _handleTapUp(TapUpDetails details) {
     if (!_isEnabled) return;
-    setState(() => _isPressed = false);
     _animationController.reverse();
   }
 
   void _handleTapCancel() {
     if (!_isEnabled) return;
-    setState(() => _isPressed = false);
     _animationController.reverse();
   }
 

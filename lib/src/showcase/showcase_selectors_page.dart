@@ -26,15 +26,15 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
           Text('Selectors', style: theme.typography.headlineMedium),
           const SizedBox(height: NeoFadeSpacing.lg),
 
-          // NeoSegmentedControl1 Section
-          Text('NeoSegmentedControl1 - Sliding Gradient', style: theme.typography.titleMedium),
+          // NeoSegmentedControl.sliding Section
+          Text('NeoSegmentedControl.sliding - Sliding Gradient', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A segmented control with a sliding gradient selection indicator.',
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoSegmentedControl1<String>(
+          NeoSegmentedControl.sliding<String>(
             selectedValue: segmentedValue,
             onValueChanged: (v) => setState(() => segmentedValue = v),
             segments: const [
@@ -51,15 +51,15 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
-          // Another NeoSegmentedControl1 example
-          Text('NeoSegmentedControl1 - Different Options', style: theme.typography.titleMedium),
+          // Another NeoSegmentedControl.sliding example
+          Text('NeoSegmentedControl.sliding - Different Options', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'The same control with different segment options.',
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoSegmentedControl1<String>(
+          NeoSegmentedControl.sliding<String>(
             selectedValue: periodValue,
             onValueChanged: (v) => setState(() => periodValue = v),
             segments: const [
@@ -108,7 +108,7 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +117,7 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
                 const SizedBox(height: NeoFadeSpacing.md),
                 Text('Time Period', style: theme.typography.labelMedium),
                 const SizedBox(height: NeoFadeSpacing.sm),
-                NeoSegmentedControl1<String>(
+                NeoSegmentedControl.sliding<String>(
                   selectedValue: segmentedValue,
                   onValueChanged: (v) => setState(() => segmentedValue = v),
                   segments: const [

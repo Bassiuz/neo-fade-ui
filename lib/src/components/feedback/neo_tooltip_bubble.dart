@@ -24,56 +24,62 @@ class NeoTooltipBubble extends StatelessWidget {
     final colors = theme.colors;
     final glass = theme.glass;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (position == NeoTooltipPosition.bottom)
-          NeoTooltipPointer(
-            colors: [colors.primary, colors.secondary],
-            isPointingUp: true,
-          ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: glass.blur,
-              sigmaY: glass.blur,
+    return DefaultTextStyle(
+      style: theme.typography.bodySmall.copyWith(
+        decoration: TextDecoration.none,
+        color: colors.onSurface,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (position == NeoTooltipPosition.bottom)
+            NeoTooltipPointer(
+              colors: [colors.primary, colors.secondary],
+              isPointingUp: true,
             ),
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: NeoFadeSpacing.sm,
-                vertical: NeoFadeSpacing.xs,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: glass.blur,
+                sigmaY: glass.blur,
               ),
-              decoration: BoxDecoration(
-                color: colors.surface.withValues(alpha: glass.tintOpacity + 0.2),
-                borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
-                border: Border.all(
-                  color: colors.primary.withValues(alpha: 0.3),
-                  width: 1,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: NeoFadeSpacing.sm,
+                  vertical: NeoFadeSpacing.xs,
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: colors.primary.withValues(alpha: 0.15),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
+                decoration: BoxDecoration(
+                  color: colors.surface.withValues(alpha: glass.tintOpacity + 0.2),
+                  borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
+                  border: Border.all(
+                    color: colors.primary.withValues(alpha: 0.3),
+                    width: 1,
                   ),
-                ],
-              ),
-              child: Text(
-                message,
-                style: theme.typography.bodySmall.copyWith(
-                  color: colors.onSurface,
+                  boxShadow: [
+                    BoxShadow(
+                      color: colors.primary.withValues(alpha: 0.15),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Text(
+                  message,
+                  style: theme.typography.bodySmall.copyWith(
+                    color: colors.onSurface,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        if (position == NeoTooltipPosition.top)
-          NeoTooltipPointer(
-            colors: [colors.primary, colors.secondary],
-            isPointingUp: false,
-          ),
-      ],
+          if (position == NeoTooltipPosition.top)
+            NeoTooltipPointer(
+              colors: [colors.primary, colors.secondary],
+              isPointingUp: false,
+            ),
+        ],
+      ),
     );
   }
 }

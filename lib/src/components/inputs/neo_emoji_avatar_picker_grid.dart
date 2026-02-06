@@ -76,6 +76,13 @@ class NeoEmojiAvatarPickerGridState extends State<NeoEmojiAvatarPickerGrid>
     });
   }
 
+  void _collapse() {
+    if (_isExpanded) {
+      setState(() => _isExpanded = false);
+      _controller.reverse();
+    }
+  }
+
   void _selectEmoji(String emoji) {
     widget.onEmojiSelected(emoji);
     _toggleExpand();
@@ -90,12 +97,15 @@ class NeoEmojiAvatarPickerGridState extends State<NeoEmojiAvatarPickerGrid>
     final gridWidth =
         (effectiveEmojiSize + 16) * effectiveColumns + NeoFadeSpacing.md * 2;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Avatar
-        GestureDetector(
-          onTap: _toggleExpand,
+    return GestureDetector(
+      onTap: _isExpanded ? _collapse : null,
+      behavior: HitTestBehavior.opaque,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Avatar
+          GestureDetector(
+            onTap: _toggleExpand,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             width: effectiveAvatarSize,
@@ -203,7 +213,8 @@ class NeoEmojiAvatarPickerGridState extends State<NeoEmojiAvatarPickerGrid>
             ),
           ),
         ),
-      ],
+        ],
+      ),
     );
   }
 }

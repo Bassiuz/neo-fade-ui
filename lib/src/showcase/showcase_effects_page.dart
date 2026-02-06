@@ -31,7 +31,7 @@ class ShowcaseEffectsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.md),
           Center(
             child: NeoPulsingGlow(
-              child: NeoButton1(
+              child: NeoButton.filled(
                 label: 'Highlighted Action',
                 icon: Icons.star,
                 onPressed: () {},
@@ -45,7 +45,7 @@ class ShowcaseEffectsPage extends StatelessWidget {
           Text('Card with Glow', style: theme.typography.labelMedium),
           const SizedBox(height: NeoFadeSpacing.md),
           NeoPulsingGlow(
-            child: NeoCard1(
+            child: NeoCard.topBorder(
               padding: const EdgeInsets.all(NeoFadeSpacing.lg),
               child: Row(
                 children: [
@@ -76,7 +76,7 @@ class ShowcaseEffectsPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: NeoFeatureCard1(
+                child: NeoFeatureCard.iconTop(
                   icon: Icons.eco,
                   title: 'Normal Card',
                   subtitle: 'Without glow effect',
@@ -85,7 +85,7 @@ class ShowcaseEffectsPage extends StatelessWidget {
               const SizedBox(width: NeoFadeSpacing.md),
               Expanded(
                 child: NeoPulsingGlow(
-                  child: NeoFeatureCard1(
+                  child: NeoFeatureCard.iconTop(
                     icon: Icons.auto_awesome,
                     title: 'Highlighted',
                     subtitle: 'With glow effect',
@@ -122,7 +122,7 @@ class ShowcaseEffectsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // Usage notes
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

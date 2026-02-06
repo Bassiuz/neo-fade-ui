@@ -132,6 +132,13 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
     });
   }
 
+  void _collapse() {
+    if (_isExpanded) {
+      setState(() => _isExpanded = false);
+      _controller.reverse();
+    }
+  }
+
   void _selectEmoji(String emoji) {
     setState(() => _isExpanded = false);
     _controller.reverse();
@@ -144,13 +151,16 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
     final colors = theme.colors;
     final totalSize = effectiveOuterRadius * 2 + effectiveEmojiSize + 20;
 
-    return SizedBox(
-      width: totalSize,
-      height: totalSize,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Inner circle emojis (first half, indices 0 to innerEmojis.length-1)
+    return GestureDetector(
+      onTap: _isExpanded ? _collapse : null,
+      behavior: HitTestBehavior.opaque,
+      child: SizedBox(
+        width: totalSize,
+        height: totalSize,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // Inner circle emojis (first half, indices 0 to innerEmojis.length-1)
           ...innerEmojis.asMap().entries.map((entry) {
             final index = entry.key;
             final emoji = entry.value;
@@ -224,7 +234,8 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
               ),
             ),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }

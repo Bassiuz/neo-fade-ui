@@ -66,8 +66,13 @@ class NeoSnackbar extends StatelessWidget {
       NeoSnackbarType.error => [colors.error, colors.warning],
     };
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(NeoFadeRadii.md),
+    return DefaultTextStyle(
+      style: theme.typography.bodyMedium.copyWith(
+        decoration: TextDecoration.none,
+        color: colors.onSurface,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(NeoFadeRadii.md),
       child: BackdropFilter(
         filter: ImageFilter.blur(
           sigmaX: glass.blur,
@@ -151,6 +156,7 @@ class NeoSnackbar extends StatelessWidget {
               ),
             ],
           ),
+        ),
         ),
       ),
     );

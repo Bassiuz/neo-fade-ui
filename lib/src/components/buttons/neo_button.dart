@@ -7,11 +7,91 @@ import '../../foundation/gradient_border.dart';
 import '../../foundation/inner_border.dart';
 import '../../theme/neo_fade_theme.dart';
 import '../../utils/animation_utils.dart';
+import 'neo_button_filled.dart';
+import 'neo_button_gradient_border.dart';
+import 'neo_button_pill.dart';
 import 'neo_button_size.dart';
+import 'neo_button_soft.dart';
 import 'neo_button_style.dart';
 import 'neo_button_variant.dart';
 
 class NeoButton extends StatefulWidget {
+  // Static factory methods for styled button variants
+
+  /// Creates a gradient-filled button with shadow.
+  static NeoButtonFilled filled({
+    Key? key,
+    required String label,
+    IconData? icon,
+    VoidCallback? onPressed,
+    EdgeInsetsGeometry? padding,
+    double? borderRadius,
+    TextStyle? textStyle,
+    double? iconSize,
+  }) =>
+      NeoButtonFilled(
+        key: key,
+        label: label,
+        icon: icon,
+        onPressed: onPressed,
+        padding: padding,
+        borderRadius: borderRadius,
+        textStyle: textStyle,
+        iconSize: iconSize,
+      );
+
+  /// Creates an outlined button with gradient border.
+  static NeoButtonGradientBorder gradientBorder({
+    Key? key,
+    required String label,
+    IconData? icon,
+    VoidCallback? onPressed,
+    EdgeInsetsGeometry? padding,
+    double? borderRadius,
+    double? borderWidth,
+    TextStyle? textStyle,
+    double? iconSize,
+  }) =>
+      NeoButtonGradientBorder(
+        key: key,
+        label: label,
+        icon: icon,
+        onPressed: onPressed,
+        padding: padding,
+        borderRadius: borderRadius,
+        borderWidth: borderWidth,
+        textStyle: textStyle,
+        iconSize: iconSize,
+      );
+
+  /// Creates a pill-shaped button with gradient on hover.
+  static NeoButtonPill pill({
+    Key? key,
+    required String label,
+    IconData? icon,
+    VoidCallback? onPressed,
+  }) =>
+      NeoButtonPill(
+        key: key,
+        label: label,
+        icon: icon,
+        onPressed: onPressed,
+      );
+
+  /// Creates a soft button with gradient glow shadow.
+  static NeoButtonSoft soft({
+    Key? key,
+    required String label,
+    IconData? icon,
+    VoidCallback? onPressed,
+  }) =>
+      NeoButtonSoft(
+        key: key,
+        label: label,
+        icon: icon,
+        onPressed: onPressed,
+      );
+
   final Widget? child;
   final String? label;
   final IconData? icon;
@@ -57,7 +137,6 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
   late Animation<double> _opacityAnimation;
 
   bool _isHovered = false;
-  bool _isPressed = false;
   bool _isFocused = false;
 
   bool get _isEnabled => widget.enabled && !widget.loading && widget.onPressed != null;
@@ -85,19 +164,16 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
 
   void _handleTapDown(TapDownDetails details) {
     if (!_isEnabled) return;
-    setState(() => _isPressed = true);
     _animationController.forward();
   }
 
   void _handleTapUp(TapUpDetails details) {
     if (!_isEnabled) return;
-    setState(() => _isPressed = false);
     _animationController.reverse();
   }
 
   void _handleTapCancel() {
     if (!_isEnabled) return;
-    setState(() => _isPressed = false);
     _animationController.reverse();
   }
 

@@ -9,29 +9,29 @@ void main() {
     await setUpGoldenTests();
   });
 
-  group('NeoCard1 Goldens', () {
+  group('NeoCardTopBorder Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        const SizedBox(
+        SizedBox(
           width: 300,
-          child: NeoCard1(
-            child: Text('Card Content'),
+          child: NeoCard.topBorder(
+            child: const Text('Card Content'),
           ),
         ),
         size: GoldenTestSizes.card,
       );
       await expectLater(
-        find.byType(NeoCard1),
+        find.byType(NeoCardTopBorder),
         matchesGoldenFile('neo_card_1_default.png'),
       );
     });
 
     testWidgets('with rich content', (tester) async {
       await tester.pumpGoldenWidget(
-        const SizedBox(
+        SizedBox(
           width: 300,
-          child: NeoCard1(
-            child: Column(
+          child: NeoCard.topBorder(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -53,33 +53,33 @@ void main() {
         size: GoldenTestSizes.card,
       );
       await expectLater(
-        find.byType(NeoCard1),
+        find.byType(NeoCardTopBorder),
         matchesGoldenFile('neo_card_1_rich_content.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        const SizedBox(
+        SizedBox(
           width: 300,
-          child: NeoCard1(
-            child: Text('Card Content'),
+          child: NeoCard.topBorder(
+            child: const Text('Card Content'),
           ),
         ),
         size: GoldenTestSizes.card,
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoCard1),
+        find.byType(NeoCardTopBorder),
         matchesGoldenFile('neo_card_1_dark.png'),
       );
     });
   });
 
-  group('NeoFeatureCard1 Goldens', () {
+  group('NeoFeatureCardIconTop Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoFeatureCard1(
+        NeoFeatureCard.iconTop(
           icon: Icons.star,
           title: 'Feature Title',
           subtitle: 'Feature description goes here',
@@ -88,14 +88,14 @@ void main() {
         size: const Size(250, 180),
       );
       await expectLater(
-        find.byType(NeoFeatureCard1),
+        find.byType(NeoFeatureCardIconTop),
         matchesGoldenFile('neo_feature_card_1_default.png'),
       );
     });
 
     testWidgets('without subtitle', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoFeatureCard1(
+        NeoFeatureCard.iconTop(
           icon: Icons.rocket_launch,
           title: 'Quick Action',
           onTap: () {},
@@ -103,14 +103,14 @@ void main() {
         size: const Size(250, 140),
       );
       await expectLater(
-        find.byType(NeoFeatureCard1),
+        find.byType(NeoFeatureCardIconTop),
         matchesGoldenFile('neo_feature_card_1_no_subtitle.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoFeatureCard1(
+        NeoFeatureCard.iconTop(
           icon: Icons.star,
           title: 'Feature Title',
           subtitle: 'Feature description goes here',
@@ -120,7 +120,7 @@ void main() {
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoFeatureCard1),
+        find.byType(NeoFeatureCardIconTop),
         matchesGoldenFile('neo_feature_card_1_dark.png'),
       );
     });

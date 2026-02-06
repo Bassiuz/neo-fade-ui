@@ -37,14 +37,14 @@ class ShowcaseFeedbackPageState extends State<ShowcaseFeedbackPage> {
             spacing: NeoFadeSpacing.sm,
             runSpacing: NeoFadeSpacing.sm,
             children: [
-              NeoButton2(
+              NeoButton.gradientBorder(
                 label: 'Info',
                 onPressed: () => NeoSnackbar.show(
                   context: context,
                   message: 'This is an info message',
                 ),
               ),
-              NeoButton2(
+              NeoButton.gradientBorder(
                 label: 'Success',
                 onPressed: () => NeoSnackbar.show(
                   context: context,
@@ -52,7 +52,7 @@ class ShowcaseFeedbackPageState extends State<ShowcaseFeedbackPage> {
                   type: NeoSnackbarType.success,
                 ),
               ),
-              NeoButton2(
+              NeoButton.gradientBorder(
                 label: 'Warning',
                 onPressed: () => NeoSnackbar.show(
                   context: context,
@@ -60,7 +60,7 @@ class ShowcaseFeedbackPageState extends State<ShowcaseFeedbackPage> {
                   type: NeoSnackbarType.warning,
                 ),
               ),
-              NeoButton2(
+              NeoButton.gradientBorder(
                 label: 'Error',
                 onPressed: () => NeoSnackbar.show(
                   context: context,
@@ -80,7 +80,7 @@ class ShowcaseFeedbackPageState extends State<ShowcaseFeedbackPage> {
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoButton2(
+          NeoButton.gradientBorder(
             label: 'Show Dialog',
             onPressed: () => NeoDialog.show(
               context: context,
@@ -90,11 +90,11 @@ class ShowcaseFeedbackPageState extends State<ShowcaseFeedbackPage> {
                 style: theme.typography.bodyMedium,
               ),
               actions: [
-                NeoButton2(
+                NeoButton.gradientBorder(
                   label: 'Cancel',
                   onPressed: () => Navigator.pop(context),
                 ),
-                NeoButton1(
+                NeoButton.filled(
                   label: 'Confirm',
                   onPressed: () => Navigator.pop(context),
                 ),
