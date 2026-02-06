@@ -110,51 +110,43 @@ class NeoTextButtonState extends State<NeoTextButton>
               horizontal: NeoFadeSpacing.sm,
               vertical: NeoFadeSpacing.xs,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (!widget.iconAfter && iconWidget != null) iconWidget,
-                    Text(
-                      widget.label,
-                      style: theme.typography.labelLarge.copyWith(
-                        color: textColor,
+            child: IntrinsicWidth(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (!widget.iconAfter && iconWidget != null) iconWidget,
+                      Text(
+                        widget.label,
+                        style: theme.typography.labelLarge.copyWith(
+                          color: textColor,
+                        ),
                       ),
+                      if (widget.iconAfter && iconWidget != null) iconWidget,
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  AnimatedContainer(
+                    duration: NeoFadeAnimations.fast,
+                    height: 2,
+                    decoration: BoxDecoration(
+                      gradient: showUnderline
+                          ? LinearGradient(
+                              colors: [
+                                colors.primary,
+                                colors.secondary,
+                                colors.tertiary,
+                              ],
+                            )
+                          : null,
+                      borderRadius: BorderRadius.circular(1),
                     ),
-                    if (widget.iconAfter && iconWidget != null) iconWidget,
-                  ],
-                ),
-                const SizedBox(height: 2),
-                AnimatedContainer(
-                  duration: NeoFadeAnimations.fast,
-                  height: 2,
-                  decoration: BoxDecoration(
-                    gradient: showUnderline
-                        ? LinearGradient(
-                            colors: [
-                              colors.primary,
-                              colors.secondary,
-                              colors.tertiary,
-                            ],
-                          )
-                        : null,
-                    borderRadius: BorderRadius.circular(1),
                   ),
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return AnimatedContainer(
-                        duration: NeoFadeAnimations.fast,
-                        width: showUnderline ? null : 0,
-                        constraints: showUnderline
-                            ? BoxConstraints(minWidth: constraints.maxWidth)
-                            : null,
-                      );
-                    },
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
