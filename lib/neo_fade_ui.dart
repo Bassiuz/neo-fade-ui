@@ -165,6 +165,7 @@ export 'src/components/inputs/neo_search_bar.dart';
 // Components - Feedback
 export 'src/components/feedback/neo_snackbar.dart';
 export 'src/components/feedback/neo_dialog.dart';
+export 'src/components/feedback/neo_dialog_route.dart';
 export 'src/components/feedback/neo_tooltip.dart';
 export 'src/components/feedback/neo_progress_indicator.dart';
 
