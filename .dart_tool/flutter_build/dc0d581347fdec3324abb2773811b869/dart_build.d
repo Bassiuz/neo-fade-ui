@@ -1,1 +1,0 @@
- /Users/bassiuz/neo-fade-ui/.dart_tool/flutter_build/dc0d581347fdec3324abb2773811b869/dart_build_result.json:  /Users/bassiuz/fvm/versions/3.38.9/bin/cache/dart-sdk/version /Users/bassiuz/neo-fade-ui/.dart_tool/package_config.json /Users/bassiuz/neo-fade-ui/pubspec.yaml

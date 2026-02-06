@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:neo_fade_ui/neo_fade_ui.dart';
 
-/// Cards showcase page displaying NeoCard1 and NeoFeatureCard1 variants.
+/// Cards showcase page displaying NeoCard.topBorder() and NeoFeatureCard.iconTop variants.
 class ShowcaseCardsPage extends StatelessWidget {
   const ShowcaseCardsPage({super.key});
 
@@ -17,15 +17,15 @@ class ShowcaseCardsPage extends StatelessWidget {
           Text('Cards', style: theme.typography.headlineMedium),
           const SizedBox(height: NeoFadeSpacing.lg),
 
-          // NeoCard1 Section
-          Text('NeoCard1 - Gradient Top Border', style: theme.typography.titleMedium),
+          // NeoCard.topBorder() Section
+          Text('NeoCard.topBorder() - Gradient Top Border', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A card with a gradient accent along the top edge.',
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Text(
               'This card has a gradient top border accent that adds visual interest.',
@@ -33,7 +33,7 @@ class ShowcaseCardsPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,8 +58,8 @@ class ShowcaseCardsPage extends StatelessWidget {
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
-          // NeoFeatureCard1 Section
-          Text('NeoFeatureCard1 - Gradient Icon Box', style: theme.typography.titleMedium),
+          // NeoFeatureCard.iconTop Section
+          Text('NeoFeatureCard.iconTop - Gradient Icon Box', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'Feature cards with a gradient icon container.',
@@ -69,7 +69,7 @@ class ShowcaseCardsPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: NeoFeatureCard1(
+                child: NeoFeatureCard.iconTop(
                   icon: Icons.flash_on,
                   title: 'Fast Performance',
                   subtitle: 'Optimized for speed',
@@ -77,7 +77,7 @@ class ShowcaseCardsPage extends StatelessWidget {
               ),
               const SizedBox(width: NeoFadeSpacing.md),
               Expanded(
-                child: NeoFeatureCard1(
+                child: NeoFeatureCard.iconTop(
                   icon: Icons.security,
                   title: 'Secure',
                   subtitle: 'Enterprise-grade',
@@ -89,7 +89,7 @@ class ShowcaseCardsPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: NeoFeatureCard1(
+                child: NeoFeatureCard.iconTop(
                   icon: Icons.cloud_done,
                   title: 'Cloud Sync',
                   subtitle: 'Always up to date',
@@ -97,7 +97,7 @@ class ShowcaseCardsPage extends StatelessWidget {
               ),
               const SizedBox(width: NeoFadeSpacing.md),
               Expanded(
-                child: NeoFeatureCard1(
+                child: NeoFeatureCard.iconTop(
                   icon: Icons.palette,
                   title: 'Customizable',
                   subtitle: 'Theming support',
@@ -116,7 +116,7 @@ class ShowcaseCardsPage extends StatelessWidget {
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoCard1(
+          NeoCard.topBorder(
             padding: const EdgeInsets.all(NeoFadeSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +126,7 @@ class ShowcaseCardsPage extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: NeoFeatureCard1(
+                      child: NeoFeatureCard.iconTop(
                         icon: Icons.auto_awesome,
                         title: 'AI Powered',
                         subtitle: 'Smart automation',
@@ -134,7 +134,7 @@ class ShowcaseCardsPage extends StatelessWidget {
                     ),
                     const SizedBox(width: NeoFadeSpacing.md),
                     Expanded(
-                      child: NeoFeatureCard1(
+                      child: NeoFeatureCard.iconTop(
                         icon: Icons.analytics,
                         title: 'Analytics',
                         subtitle: 'Track progress',

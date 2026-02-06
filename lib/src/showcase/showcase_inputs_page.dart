@@ -27,22 +27,22 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           Text('Inputs', style: theme.typography.headlineMedium),
           const SizedBox(height: NeoFadeSpacing.lg),
 
-          // NeoTextField2 Section
-          Text('NeoTextField2 - Gradient Border on Focus', style: theme.typography.titleMedium),
+          // NeoTextField.outlined Section
+          Text('NeoTextField.outlined - Gradient Border on Focus', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A text field that reveals a gradient border when focused.',
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          const NeoTextField2(hintText: 'Enter your name...'),
+          NeoTextField.outlined(hintText: 'Enter your name...'),
           const SizedBox(height: NeoFadeSpacing.md),
-          const NeoTextField2(hintText: 'Enter your email...'),
+          NeoTextField.outlined(hintText: 'Enter your email...'),
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
-          // NeoCheckbox4 Section
-          Text('NeoCheckbox4 - Glow Border', style: theme.typography.titleMedium),
+          // NeoCheckbox.glowBorder() Section
+          Text('NeoCheckbox.glowBorder() - Glow Border', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A checkbox with a glowing border effect when checked.',
@@ -51,7 +51,7 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.md),
           Row(
             children: [
-              NeoCheckbox4(
+              NeoCheckbox.glowBorder(
                 value: checkboxValue,
                 onChanged: (v) => setState(() => checkboxValue = v),
               ),
@@ -65,7 +65,7 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.md),
           Row(
             children: [
-              NeoCheckbox4(
+              NeoCheckbox.glowBorder(
                 value: true,
                 onChanged: (v) {},
               ),
@@ -79,8 +79,8 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
-          // NeoSwitch2 Section
-          Text('NeoSwitch2 - iOS Style', style: theme.typography.titleMedium),
+          // NeoSwitch.ios() Section
+          Text('NeoSwitch.ios() - iOS Style', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'An iOS-style switch with gradient track when active.',
@@ -89,7 +89,7 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.md),
           Row(
             children: [
-              NeoSwitch2(
+              NeoSwitch.ios(
                 value: switchValue,
                 onChanged: (v) => setState(() => switchValue = v),
               ),
@@ -103,7 +103,7 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.md),
           Row(
             children: [
-              NeoSwitch2(
+              NeoSwitch.ios(
                 value: true,
                 onChanged: (v) {},
               ),
@@ -137,15 +137,15 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
-          // NeoNumberSelector1 Section
-          Text('NeoNumberSelector1 - Horizontal +/-', style: theme.typography.titleMedium),
+          // NeoNumberSelector.horizontal() Section
+          Text('NeoNumberSelector.horizontal() - Horizontal +/-', style: theme.typography.titleMedium),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A number selector with increment/decrement buttons.',
             style: theme.typography.bodySmall,
           ),
           const SizedBox(height: NeoFadeSpacing.md),
-          NeoNumberSelector1(
+          NeoNumberSelector.horizontal(
             value: numberValue,
             onChanged: (v) => setState(() => numberValue = v),
             min: 0,

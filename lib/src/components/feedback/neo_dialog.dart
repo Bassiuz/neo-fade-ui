@@ -57,8 +57,13 @@ class NeoDialog extends StatelessWidget {
     final colors = theme.colors;
     final glass = theme.glass;
 
-    return Center(
-      child: ClipRRect(
+    return DefaultTextStyle(
+      style: theme.typography.bodyMedium.copyWith(
+        decoration: TextDecoration.none,
+        color: colors.onSurface,
+      ),
+      child: Center(
+        child: ClipRRect(
         borderRadius: BorderRadius.circular(NeoFadeRadii.dialog),
         child: BackdropFilter(
           filter: ImageFilter.blur(
@@ -139,6 +144,7 @@ class NeoDialog extends StatelessWidget {
               ),
             ),
           ),
+        ),
         ),
       ),
     );

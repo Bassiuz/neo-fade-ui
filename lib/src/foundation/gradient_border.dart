@@ -17,10 +17,13 @@ class GradientBorderPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (borderWidth <= 0 || colors.isEmpty) return;
 
+    // LinearGradient requires at least 2 colors - duplicate if single color
+    final gradientColors = colors.length == 1 ? [colors[0], colors[0]] : colors;
+
     final gradient = LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
-      colors: colors,
+      colors: gradientColors,
     );
 
     final paint = Paint()

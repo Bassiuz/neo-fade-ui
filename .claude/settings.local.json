@@ -38,7 +38,8 @@
       "Bash(git -C /Users/bassiuz/neo-fade-ui commit -m \"$\\(cat <<''EOF''\nfeat\\(inputs\\): add NeoEmojiAvatarPickerSpiral variant\n\nAdd a playful spiral animation variant where emojis spiral outward with\nstaggered timing. Each emoji has a slight delay creating a satisfying\nspiral/ripple effect that is more attention-grabbing than the standard\ncircle animation.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git -C /Users/bassiuz/neo-fade-ui diff lib/src/components/inputs/neo_emoji_avatar_picker.dart)",
       "Bash(git -C /Users/bassiuz/neo-fade-ui add lib/src/components/inputs/neo_emoji_avatar_picker.dart)",
-      "Bash(git -C /Users/bassiuz/neo-fade-ui commit -m \"$\\(cat <<''EOF''\nfeat\\(inputs\\): add custom emoji text input to picker\n\nAdd allowCustomEmoji parameter \\(default true\\) that shows a small\npill-shaped text input at the bottom of the expanded picker view,\nallowing users to type or paste custom emojis.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git -C /Users/bassiuz/neo-fade-ui commit -m \"$\\(cat <<''EOF''\nfeat\\(inputs\\): add custom emoji text input to picker\n\nAdd allowCustomEmoji parameter \\(default true\\) that shows a small\npill-shaped text input at the bottom of the expanded picker view,\nallowing users to type or paste custom emojis.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git rm:*)"
     ]
   }
 }

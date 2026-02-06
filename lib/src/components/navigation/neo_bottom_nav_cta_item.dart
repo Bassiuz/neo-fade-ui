@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../../theme/neo_fade_colors.dart';
 import '../../theme/neo_fade_spacing.dart';
 import '../../utils/animation_utils.dart';
-import 'neo_bottom_nav_1.dart';
+import 'neo_bottom_nav_item.dart';
 
 /// Navigation item widget for NeoBottomNavCTA.
 class NeoBottomNavCTAItem extends StatelessWidget {

@@ -6,7 +6,7 @@ import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
 import '../../theme/neo_fade_theme.dart';
 import '../../utils/animation_utils.dart';
-import 'neo_segmented_control_1.dart';
+import 'neo_segment.dart';
 
 /// Glass segmented control with icons displayed above labels and a sliding gradient indicator.
 class NeoSegmentedControlIcons<T> extends StatelessWidget {

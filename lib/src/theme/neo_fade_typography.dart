@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NeoFadeTypography {
   final TextStyle displayLarge;
@@ -41,7 +40,7 @@ class NeoFadeTypography {
   });
 
   factory NeoFadeTypography.fromColor(Color textColor) {
-    final baseStyle = GoogleFonts.sourceSans3(color: textColor);
+    final baseStyle = TextStyle(fontFamily: 'SourceSans3', color: textColor);
 
     return NeoFadeTypography(
       displayLarge: baseStyle.copyWith(

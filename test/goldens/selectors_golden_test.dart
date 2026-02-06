@@ -9,12 +9,12 @@ void main() {
     await setUpGoldenTests();
   });
 
-  group('NeoSegmentedControl1 Goldens', () {
+  group('NeoSegmentedControlSliding Goldens', () {
     testWidgets('first selected', (tester) async {
       await tester.pumpGoldenWidget(
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 320, maxHeight: 60),
-          child: NeoSegmentedControl1<int>(
+          child: NeoSegmentedControl.sliding<int>(
             selectedValue: 0,
             onValueChanged: (value) {},
             segments: const [
@@ -27,8 +27,8 @@ void main() {
         size: GoldenTestSizes.selector,
       );
       await expectLater(
-        find.byType(NeoSegmentedControl1<int>),
-        matchesGoldenFile('neo_segmented_control_1_first.png'),
+        find.byType(NeoSegmentedControlSliding<int>),
+        matchesGoldenFile('neo_segmented_control_sliding_first.png'),
       );
     });
 
@@ -36,7 +36,7 @@ void main() {
       await tester.pumpGoldenWidget(
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 320, maxHeight: 60),
-          child: NeoSegmentedControl1<int>(
+          child: NeoSegmentedControl.sliding<int>(
             selectedValue: 1,
             onValueChanged: (value) {},
             segments: const [
@@ -49,8 +49,8 @@ void main() {
         size: GoldenTestSizes.selector,
       );
       await expectLater(
-        find.byType(NeoSegmentedControl1<int>),
-        matchesGoldenFile('neo_segmented_control_1_middle.png'),
+        find.byType(NeoSegmentedControlSliding<int>),
+        matchesGoldenFile('neo_segmented_control_sliding_middle.png'),
       );
     });
 
@@ -58,7 +58,7 @@ void main() {
       await tester.pumpGoldenWidget(
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 320, maxHeight: 60),
-          child: NeoSegmentedControl1<int>(
+          child: NeoSegmentedControl.sliding<int>(
             selectedValue: 2,
             onValueChanged: (value) {},
             segments: const [
@@ -71,8 +71,8 @@ void main() {
         size: GoldenTestSizes.selector,
       );
       await expectLater(
-        find.byType(NeoSegmentedControl1<int>),
-        matchesGoldenFile('neo_segmented_control_1_last.png'),
+        find.byType(NeoSegmentedControlSliding<int>),
+        matchesGoldenFile('neo_segmented_control_sliding_last.png'),
       );
     });
 
@@ -80,7 +80,7 @@ void main() {
       await tester.pumpGoldenWidget(
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 320, maxHeight: 60),
-          child: NeoSegmentedControl1<int>(
+          child: NeoSegmentedControl.sliding<int>(
             selectedValue: 1,
             onValueChanged: (value) {},
             segments: const [
@@ -94,8 +94,8 @@ void main() {
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoSegmentedControl1<int>),
-        matchesGoldenFile('neo_segmented_control_1_dark.png'),
+        find.byType(NeoSegmentedControlSliding<int>),
+        matchesGoldenFile('neo_segmented_control_sliding_dark.png'),
       );
     });
   });

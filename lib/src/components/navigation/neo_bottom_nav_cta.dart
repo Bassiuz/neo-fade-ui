@@ -5,8 +5,8 @@ import 'package:flutter/widgets.dart';
 import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
 import '../../theme/neo_fade_theme.dart';
-import 'neo_bottom_nav_1.dart';
 import 'neo_bottom_nav_cta_item.dart';
+import 'neo_bottom_nav_item.dart';
 import 'neo_nav_cta_button.dart';
 
 /// Bottom navigation bar with animated floating CTA button.
