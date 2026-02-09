@@ -9,21 +9,21 @@ void main() {
     await setUpGoldenTests();
   });
 
-  group('NeoButton1 Goldens', () {
+  group('NeoButtonFilled Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton1(label: 'Button', onPressed: () {}),
+        NeoButtonFilled(label: 'Button', onPressed: () {}),
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('neo_button_1_default.png'),
       );
     });
 
     testWidgets('with icon', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton1(
+        NeoButtonFilled(
           label: 'Button',
           icon: Icons.star,
           onPressed: () {},
@@ -31,50 +31,50 @@ void main() {
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('neo_button_1_with_icon.png'),
       );
     });
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoButton1(label: 'Button', onPressed: null),
+        const NeoButtonFilled(label: 'Button', onPressed: null),
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('neo_button_1_disabled.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton1(label: 'Button', onPressed: () {}),
+        NeoButtonFilled(label: 'Button', onPressed: () {}),
         size: GoldenTestSizes.button,
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('neo_button_1_dark.png'),
       );
     });
   });
 
-  group('NeoButton2 Goldens', () {
+  group('NeoButtonGradientBorder Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton2(label: 'Button', onPressed: () {}),
+        NeoButtonGradientBorder(label: 'Button', onPressed: () {}),
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton2),
+        find.byType(NeoButtonGradientBorder),
         matchesGoldenFile('neo_button_2_default.png'),
       );
     });
 
     testWidgets('with icon', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton2(
+        NeoButtonGradientBorder(
           label: 'Button',
           icon: Icons.star,
           onPressed: () {},
@@ -82,30 +82,30 @@ void main() {
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton2),
+        find.byType(NeoButtonGradientBorder),
         matchesGoldenFile('neo_button_2_with_icon.png'),
       );
     });
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoButton2(label: 'Button', onPressed: null),
+        const NeoButtonGradientBorder(label: 'Button', onPressed: null),
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton2),
+        find.byType(NeoButtonGradientBorder),
         matchesGoldenFile('neo_button_2_disabled.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton2(label: 'Button', onPressed: () {}),
+        NeoButtonGradientBorder(label: 'Button', onPressed: () {}),
         size: GoldenTestSizes.button,
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoButton2),
+        find.byType(NeoButtonGradientBorder),
         matchesGoldenFile('neo_button_2_dark.png'),
       );
     });

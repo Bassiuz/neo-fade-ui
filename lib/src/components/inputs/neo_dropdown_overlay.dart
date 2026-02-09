@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../foundation/gradient_border.dart';
 import '../../theme/neo_fade_radii.dart';
@@ -146,12 +146,13 @@ class NeoDropdownItemWidgetState<T> extends State<NeoDropdownItemWidget<T>> {
                         widget.isSelected ? colors.primary : colors.onSurface,
                     fontWeight:
                         widget.isSelected ? FontWeight.w600 : FontWeight.w400,
+                    decoration: TextDecoration.none,
                   ),
                 ),
               ),
               if (widget.isSelected)
                 Icon(
-                  const IconData(0xe5ca, fontFamily: 'MaterialIcons'), // check
+                  Icons.check,
                   size: 18,
                   color: colors.primary,
                 ),

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:neo_fade_ui/neo_fade_ui.dart';
 
@@ -9,37 +8,37 @@ void main() {
     await setUpGoldenTests();
   });
 
-  group('NeoButton1 Goldens', () {
+  group('NeoButtonFilled Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton1(label: 'Button', onPressed: () {}),
+        NeoButtonFilled(label: 'Button', onPressed: () {}),
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('goldens/neo_button_1_default.png'),
       );
     });
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoButton1(label: 'Button', onPressed: null),
+        const NeoButtonFilled(label: 'Button', onPressed: null),
         size: GoldenTestSizes.button,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('goldens/neo_button_1_disabled.png'),
       );
     });
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButton1(label: 'Button', onPressed: () {}),
+        NeoButtonFilled(label: 'Button', onPressed: () {}),
         size: GoldenTestSizes.button,
         isDark: true,
       );
       await expectLater(
-        find.byType(NeoButton1),
+        find.byType(NeoButtonFilled),
         matchesGoldenFile('goldens/neo_button_1_dark.png'),
       );
     });
