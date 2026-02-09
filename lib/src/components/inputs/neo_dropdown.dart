@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../foundation/gradient_border.dart';
 import '../../theme/neo_fade_radii.dart';
@@ -206,6 +206,7 @@ class NeoDropdownState<T> extends State<NeoDropdown<T>>
                                     ? colors.onSurfaceVariant
                                     : colors.onSurface)
                                 : colors.disabledText,
+                            decoration: TextDecoration.none,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -214,8 +215,7 @@ class NeoDropdownState<T> extends State<NeoDropdown<T>>
                         duration: NeoFadeAnimations.fast,
                         turns: _isOpen ? 0.5 : 0,
                         child: Icon(
-                          const IconData(0xe5cf,
-                              fontFamily: 'MaterialIcons'), // expand_more
+                          Icons.keyboard_arrow_down,
                           size: 20,
                           color: widget.enabled
                               ? colors.onSurfaceVariant

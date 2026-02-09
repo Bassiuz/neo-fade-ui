@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:neo_fade_ui/neo_fade_ui.dart';
 
 /// Default colors for golden tests.
@@ -13,8 +12,6 @@ class GoldenTestColors {
 /// Call this in setUpAll() for each test file.
 Future<void> setUpGoldenTests() async {
   TestWidgetsFlutterBinding.ensureInitialized();
-  // Disable Google Fonts network requests in tests
-  GoogleFonts.config.allowRuntimeFetching = false;
 }
 
 /// Creates a test typography that uses system fonts instead of Google Fonts.
