@@ -7,3 +7,8 @@
 
 # Build output
 build/
+
+# Claude Code
+.claude/
+CLAUDE.md
+doc/plans/
