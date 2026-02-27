@@ -18,7 +18,7 @@ Future<void> setUpGoldenTests() async {
 /// This avoids network requests during tests.
 NeoFadeTypography createTestTypography(Color textColor) {
   const baseStyle = TextStyle(
-    fontFamily: 'Roboto',
+    fontFamily: 'SourceSans3',
     package: null,
   );
 
