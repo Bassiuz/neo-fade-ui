@@ -1,0 +1,32 @@
+# Platform-specific directories
+android/
+ios/
+linux/
+macos/
+web/
+windows/
+
+# Build artifacts
+build/
+
+# Test files
+test/
+
+# Scripts
+scripts/
+
+# Documentation plans
+doc/plans/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Flutter/Dart
+.fvm/
+.dart_tool/
+
+# CI
+.github/
+.claude/
