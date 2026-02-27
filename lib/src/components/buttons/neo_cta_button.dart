@@ -6,6 +6,7 @@ import '../../utils/animation_utils.dart';
 import 'neo_button_size.dart';
 import 'neo_button_style.dart';
 
+/// A call-to-action button with an animated mesh gradient background.
 class NeoCTAButton extends StatefulWidget {
   final Widget? child;
   final String? label;
@@ -42,6 +43,7 @@ class NeoCTAButton extends StatefulWidget {
   State<NeoCTAButton> createState() => NeoCTAButtonState();
 }
 
+/// State for [NeoCTAButton], managing press animations and gradient background.
 class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
@@ -269,6 +271,7 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
   }
 }
 
+/// A circular progress indicator used for [NeoCTAButton] loading states.
 class CTAProgressIndicator extends StatefulWidget {
   final double strokeWidth;
   final Color color;
@@ -283,6 +286,7 @@ class CTAProgressIndicator extends StatefulWidget {
   State<CTAProgressIndicator> createState() => CTAProgressIndicatorState();
 }
 
+/// State for [CTAProgressIndicator], driving the spinning animation.
 class CTAProgressIndicatorState extends State<CTAProgressIndicator>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
@@ -319,6 +323,7 @@ class CTAProgressIndicatorState extends State<CTAProgressIndicator>
   }
 }
 
+/// Custom painter that draws a circular arc for the CTA progress indicator.
 class CTAProgressPainter extends CustomPainter {
   final Color color;
   final double strokeWidth;

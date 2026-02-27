@@ -6,6 +6,7 @@ import '../../theme/neo_fade_spacing.dart';
 import 'neo_button_size.dart';
 import 'neo_button_variant.dart';
 
+/// Defines the visual styling properties for a [NeoButton], including colors, borders, and blur.
 class NeoButtonStyle {
   final Color? backgroundColor;
   final Color? foregroundColor;

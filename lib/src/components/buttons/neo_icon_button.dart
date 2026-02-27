@@ -10,6 +10,7 @@ import '../../utils/animation_utils.dart';
 import 'neo_button_size.dart';
 import 'neo_button_variant.dart';
 
+/// A circular icon-only button with glass effect and press animations.
 class NeoIconButton extends StatefulWidget {
   final IconData icon;
   final VoidCallback? onPressed;
@@ -44,6 +45,7 @@ class NeoIconButton extends StatefulWidget {
   State<NeoIconButton> createState() => NeoIconButtonState();
 }
 
+/// State for [NeoIconButton], managing press animations and hover/focus interactions.
 class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
@@ -326,6 +328,7 @@ class _ArcPainter extends CustomPainter {
   bool shouldRepaint(_ArcPainter oldDelegate) => color != oldDelegate.color;
 }
 
+/// A simple tooltip widget that wraps a child with a semantic label.
 class Tooltip extends StatelessWidget {
   final String message;
   final Widget child;
