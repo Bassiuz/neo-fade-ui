@@ -156,6 +156,7 @@ Widget goldenTestWrapper(
 }) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
+    theme: ThemeData(fontFamily: 'SourceSans3'),
     home: NeoFadeTheme(
       data: createTestThemeData(isDark: isDark),
       child: Scaffold(
