@@ -4,6 +4,7 @@ import 'package:mesh_gradient/mesh_gradient.dart';
 
 import '../theme/neo_fade_theme.dart';
 
+/// A full-bleed animated mesh gradient background with automatic fallback for web.
 class MeshBackground extends StatelessWidget {
   final Widget child;
   final List<Color>? colors;

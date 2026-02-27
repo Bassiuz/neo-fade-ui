@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// A [CustomPainter] that draws a gradient-colored border around or along the bottom of a widget.
 class GradientBorderPainter extends CustomPainter {
   final List<Color> colors;
   final double borderWidth;
@@ -83,6 +84,7 @@ class GradientBorderPainter extends CustomPainter {
   }
 }
 
+/// A widget that paints a gradient border around its child using [GradientBorderPainter].
 class GradientBorder extends StatelessWidget {
   final List<Color> colors;
   final double borderWidth;
