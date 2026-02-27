@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import '../utils/color_utils.dart';
 
+/// Defines the color palette for the NeoFade theme, with support for light and dark variants generated from seed colors.
 class NeoFadeColors {
   final Color primary;
   final Color secondary;

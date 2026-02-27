@@ -1,3 +1,4 @@
+/// Defines spacing constants used for padding and margins throughout the NeoFade design system.
 class NeoFadeSpacing {
   const NeoFadeSpacing._();
 

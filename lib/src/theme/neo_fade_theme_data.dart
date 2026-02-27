@@ -4,6 +4,7 @@ import 'neo_fade_colors.dart';
 import 'neo_fade_typography.dart';
 import 'neo_fade_glass_properties.dart';
 
+/// Bundles together colors, typography, and glass properties into a single theme configuration.
 class NeoFadeThemeData {
   final NeoFadeColors colors;
   final NeoFadeTypography typography;

@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'neo_fade_theme_data.dart';
 
+/// An [InheritedWidget] that provides [NeoFadeThemeData] to descendant widgets.
 class NeoFadeTheme extends InheritedWidget {
   final NeoFadeThemeData data;
 
