@@ -1,4 +1,19 @@
-/// Neo Fade UI - A modern Flutter UI component library
+/// Neo Fade UI - A modern Flutter UI component library with glass morphism,
+/// gradient effects, and customizable themes.
+///
+/// To get started, wrap your app with [NeoFadeTheme] and provide a
+/// [NeoFadeThemeData] created with [NeoFadeThemeData.fromColors].
+///
+/// ```dart
+/// NeoFadeTheme(
+///   data: NeoFadeThemeData.fromColors(
+///     primary: Color(0xFF6366F1),
+///     secondary: Color(0xFFF472B6),
+///     brightness: Brightness.dark,
+///   ),
+///   child: MyApp(),
+/// )
+/// ```
 library;
 
 // Theme

@@ -18,7 +18,7 @@ Future<void> setUpGoldenTests() async {
 /// This avoids network requests during tests.
 NeoFadeTypography createTestTypography(Color textColor) {
   const baseStyle = TextStyle(
-    fontFamily: 'Roboto',
+    fontFamily: 'SourceSans3',
     package: null,
   );
 
@@ -156,6 +156,7 @@ Widget goldenTestWrapper(
 }) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
+    theme: ThemeData(fontFamily: 'SourceSans3'),
     home: NeoFadeTheme(
       data: createTestThemeData(isDark: isDark),
       child: Scaffold(

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// Standard animation durations, curves, and interaction constants used across NeoFade widgets.
 class NeoFadeAnimations {
   const NeoFadeAnimations._();
 

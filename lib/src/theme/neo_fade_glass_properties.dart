@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+/// Configures glassmorphism visual properties such as blur, tint opacity, and border opacity.
 class NeoFadeGlassProperties {
   final double blur;
   final double tintOpacity;

@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import '../theme/neo_fade_theme.dart';
 import 'inner_border.dart';
 
+/// A frosted-glass-effect container with backdrop blur, tint, and an optional inner border.
 class GlassContainer extends StatelessWidget {
   final Widget? child;
   final double? blur;

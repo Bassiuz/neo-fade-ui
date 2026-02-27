@@ -1,5 +1,6 @@
 import 'package:flutter/painting.dart';
 
+/// Utility methods for color manipulation including lightening, darkening, blending, and harmony generation.
 class ColorUtils {
   const ColorUtils._();
 

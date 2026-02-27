@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// Provides a consistent set of border radius constants and [BorderRadius] getters for the NeoFade design system.
 class NeoFadeRadii {
   const NeoFadeRadii._();
 

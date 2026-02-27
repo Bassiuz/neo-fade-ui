@@ -15,6 +15,7 @@ import 'neo_button_soft.dart';
 import 'neo_button_style.dart';
 import 'neo_button_variant.dart';
 
+/// A versatile button widget supporting filled, outlined, ghost, pill, and soft variants.
 class NeoButton extends StatefulWidget {
   // Static factory methods for styled button variants
 
@@ -131,6 +132,7 @@ class NeoButton extends StatefulWidget {
   State<NeoButton> createState() => NeoButtonState();
 }
 
+/// State for [NeoButton], managing press animations and hover/focus interactions.
 class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
@@ -379,6 +381,7 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
   }
 }
 
+/// A circular progress indicator widget used for button loading states.
 class CircularProgressIndicator extends StatefulWidget {
   final double strokeWidth;
   final Animation<Color?> valueColor;
@@ -393,6 +396,7 @@ class CircularProgressIndicator extends StatefulWidget {
   State<CircularProgressIndicator> createState() => CircularProgressIndicatorState();
 }
 
+/// State for [CircularProgressIndicator], driving the spinning animation.
 class CircularProgressIndicatorState extends State<CircularProgressIndicator>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
@@ -429,6 +433,7 @@ class CircularProgressIndicatorState extends State<CircularProgressIndicator>
   }
 }
 
+/// Custom painter that draws a circular arc for the progress indicator.
 class CircularProgressPainter extends CustomPainter {
   final Color color;
   final double strokeWidth;

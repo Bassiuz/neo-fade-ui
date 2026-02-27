@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// Provides predefined box shadow presets at various elevation levels, including glow effects.
 class NeoFadeShadows {
   const NeoFadeShadows._();
 

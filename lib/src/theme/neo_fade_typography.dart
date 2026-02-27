@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// Defines the complete set of text styles (display, headline, title, body, label) for the NeoFade theme.
 class NeoFadeTypography {
   final TextStyle displayLarge;
   final TextStyle displayMedium;

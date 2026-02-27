@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// A [CustomPainter] that strokes a rounded-rectangle border inset from the widget edges.
 class InnerBorderPainter extends CustomPainter {
   final Color color;
   final double width;
@@ -53,6 +54,7 @@ class InnerBorderPainter extends CustomPainter {
   }
 }
 
+/// A widget that draws an inner border overlay on top of its child using [InnerBorderPainter].
 class InnerBorder extends StatelessWidget {
   final Color color;
   final double width;
