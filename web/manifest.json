@@ -1,11 +1,11 @@
 {
-    "name": "neo_fade_ui",
-    "short_name": "neo_fade_ui",
+    "name": "Neo Fade UI",
+    "short_name": "Neo Fade UI",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0D0D1A",
+    "theme_color": "#0D0D1A",
+    "description": "A modern Flutter UI component library with glass morphism, gradient effects, and customizable themes.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
