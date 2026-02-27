@@ -1,8 +1,45 @@
 # Neo Fade UI
 
+[![pub package](https://img.shields.io/pub/v/neo_fade_ui.svg)](https://pub.dev/packages/neo_fade_ui)
+
 A modern Flutter UI component library featuring glass morphism, gradient effects, and customizable themes.
 
 [**Live Demo**](https://bassiuz.github.io/neo-fade-ui/)
+
+## Installation
+
+Add to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  neo_fade_ui: ^0.0.1
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
+
+## Usage
+
+```dart
+import 'package:neo_fade_ui/neo_fade_ui.dart';
+
+NeoFadeTheme(
+  data: NeoFadeThemeData.fromColors(
+    primary: Color(0xFF6366F1),
+    secondary: Color(0xFFF472B6),
+    brightness: Brightness.dark,
+  ),
+  child: Scaffold(
+    body: NeoButtonFilled(
+      label: 'Hello Neo Fade',
+      onPressed: () {},
+    ),
+  ),
+)
+```
 
 ## Component Showcase
 
