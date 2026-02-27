@@ -33,7 +33,8 @@ jobs:
       - run: flutter build web --release --base-href=/neo-fade-ui/
 
       - name: Disable service worker
-        run: sed -i 's/serviceWorkerSettings: {[^}]*}/serviceWorkerSettings: null/' build/web/flutter_bootstrap.js
+        run: >
+          sed -i 's/serviceWorkerSettings: \{[^}]*\}/serviceWorkerSettings: null/' build/web/flutter_bootstrap.js
 
       - uses: actions/upload-pages-artifact@v3
         with:
