@@ -49,7 +49,7 @@ class NeoCardGlowOutlineState extends State<NeoCardGlowOutline> with SingleTicke
       animationController = AnimationController(
         vsync: this,
         duration: widget.animationDuration ?? const Duration(seconds: 3),
-      )..repeat();
+      )..repeat(reverse: true);
     }
   }
 
