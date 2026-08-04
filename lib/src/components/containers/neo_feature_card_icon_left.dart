@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
@@ -105,7 +105,7 @@ class NeoFeatureCardIconLeft extends StatelessWidget {
                             ),
                           ),
                           Icon(
-                            const IconData(0xe5df, fontFamily: 'MaterialIcons'),
+                            Icons.chevron_right,
                             size: 20,
                             color: colors.onSurfaceVariant,
                           ),

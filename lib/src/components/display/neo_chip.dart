@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../foundation/gradient_border.dart';
 import '../../theme/neo_fade_radii.dart';
@@ -166,8 +166,7 @@ class NeoChipState extends State<NeoChip> with SingleTickerProviderStateMixin {
                         GestureDetector(
                           onTap: widget.enabled ? widget.onDelete : null,
                           child: Icon(
-                            const IconData(0xe5cd,
-                                fontFamily: 'MaterialIcons'), // close
+                            Icons.close,
                             size: 16,
                             color: widget.enabled
                                 ? colors.onSurfaceVariant

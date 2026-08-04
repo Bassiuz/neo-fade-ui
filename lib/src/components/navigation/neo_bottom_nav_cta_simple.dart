@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
@@ -31,7 +31,7 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
     required this.items,
     required this.onCenterPressed,
     this.centerIcon =
-        const IconData(0xe145, fontFamily: 'MaterialIcons'), // add icon
+        Icons.add,
     this.floating = false,
   });
 

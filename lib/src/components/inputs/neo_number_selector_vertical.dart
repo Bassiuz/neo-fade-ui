@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
@@ -52,8 +52,7 @@ class NeoNumberSelectorVertical extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               NeoNumberSelectorArrowButton(
-                icon: const IconData(0xe5ce,
-                    fontFamily: 'MaterialIcons'), // arrow up
+                icon: Icons.keyboard_arrow_up,
                 enabled: canIncrement,
                 onPressed: () => onChanged(value + step),
                 colors: colors,
@@ -90,8 +89,7 @@ class NeoNumberSelectorVertical extends StatelessWidget {
                 ),
               ),
               NeoNumberSelectorArrowButton(
-                icon: const IconData(0xe5cf,
-                    fontFamily: 'MaterialIcons'), // arrow down
+                icon: Icons.keyboard_arrow_down,
                 enabled: canDecrement,
                 onPressed: () => onChanged(value - step),
                 colors: colors,

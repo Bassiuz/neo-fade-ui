@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../theme/neo_fade_theme.dart';
 
@@ -165,7 +165,7 @@ class NeoAvatar extends StatelessWidget {
           colors: [colors.primary, colors.secondary],
         ).createShader(bounds),
         child: Icon(
-          const IconData(0xe7fd, fontFamily: 'MaterialIcons'), // person
+          Icons.person,
           size: innerSize * 0.5,
           color: colors.onPrimary,
         ),

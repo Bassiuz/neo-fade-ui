@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import 'neo_bottom_nav_cta_simple.dart';
 import 'neo_bottom_nav_dot.dart';
@@ -85,7 +85,7 @@ abstract class NeoBottomNav extends StatelessWidget {
     required List<NeoBottomNavItem> items,
     required VoidCallback onCenterPressed,
     IconData centerIcon =
-        const IconData(0xe145, fontFamily: 'MaterialIcons'), // add icon
+        Icons.add,
     bool floating = false,
   }) {
     return NeoBottomNavCtaSimple(

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../foundation/gradient_border.dart';
 import '../../theme/neo_fade_radii.dart';
@@ -126,7 +126,7 @@ class NeoSearchBarState extends State<NeoSearchBar> {
                     left: NeoFadeSpacing.md,
                   ),
                   child: Icon(
-                    const IconData(0xe8b6, fontFamily: 'MaterialIcons'), // search
+                    Icons.search,
                     size: 20,
                     color: _isFocused ? colors.primary : colors.onSurfaceVariant,
                   ),
@@ -157,8 +157,7 @@ class NeoSearchBarState extends State<NeoSearchBar> {
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: Icon(
-                          const IconData(0xe5cd,
-                              fontFamily: 'MaterialIcons'), // close
+                          Icons.close,
                           size: 18,
                           color: colors.onSurfaceVariant,
                         ),

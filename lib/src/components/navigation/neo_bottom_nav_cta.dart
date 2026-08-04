@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
@@ -49,7 +49,7 @@ class NeoBottomNavCTA extends StatelessWidget {
     required this.items,
     required this.onCenterPressed,
     this.centerIcon =
-        const IconData(0xe3b0, fontFamily: 'MaterialIcons'), // camera icon
+        Icons.camera_alt,
     this.animated = true,
     this.height,
     this.ctaSize,

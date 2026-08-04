@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../theme/neo_fade_radii.dart';
 import '../../theme/neo_fade_spacing.dart';
@@ -69,7 +69,7 @@ class NeoNumberSelectorProminent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   NeoNumberSelectorLargeStepButton(
-                    icon: const IconData(0xe15b, fontFamily: 'MaterialIcons'),
+                    icon: Icons.remove,
                     enabled: canDecrement,
                     onPressed: () => onChanged(value - step),
                     colors: colors,
@@ -131,7 +131,7 @@ class NeoNumberSelectorProminent extends StatelessWidget {
                   ),
                   const SizedBox(width: NeoFadeSpacing.lg),
                   NeoNumberSelectorLargeStepButton(
-                    icon: const IconData(0xe145, fontFamily: 'MaterialIcons'),
+                    icon: Icons.add,
                     enabled: canIncrement,
                     onPressed: () => onChanged(value + step),
                     colors: colors,
