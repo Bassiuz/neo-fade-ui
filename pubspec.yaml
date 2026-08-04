@@ -1,6 +1,6 @@
 name: neo_fade_ui
 description: "Neo Fade UI - A modern Flutter UI component library with glass morphism, gradient effects, and customizable themes."
-version: 0.0.1
+version: 0.1.0
 
 homepage: https://github.com/bassiuz/neo-fade-ui
 repository: https://github.com/bassiuz/neo-fade-ui
