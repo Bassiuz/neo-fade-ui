@@ -17,9 +17,27 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 
   await _loadFont('SourceSans3', 'assets/fonts/SourceSans3-VariableFont.ttf');
 
-  final flutterSdk = File('.fvm/flutter_sdk').resolveSymbolicLinksSync();
-  await _loadFont('MaterialIcons',
-      '$flutterSdk/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf');
+  await _loadFont('MaterialIcons', _materialIconsPath());
 
   await testMain();
+}
+
+/// Locates the real MaterialIcons font inside whichever SDK is running the
+/// tests, so icons render as glyphs in the goldens rather than as boxes.
+///
+/// Derived from the test runner's own binary — `<sdk>/bin/cache/dart-sdk/bin/dart`
+/// — rather than a `.fvm/flutter_sdk` symlink, which current fvm versions do
+/// not create and which broke the whole suite when it went away.
+String _materialIconsPath() {
+  var dir = File(Platform.resolvedExecutable).parent;
+  while (dir.path != dir.parent.path) {
+    final font = File(
+      '${dir.path}/artifacts/material_fonts/MaterialIcons-Regular.otf',
+    );
+    if (font.existsSync()) return font.path;
+    dir = dir.parent;
+  }
+  throw StateError(
+    'MaterialIcons-Regular.otf not found above ${Platform.resolvedExecutable}',
+  );
 }

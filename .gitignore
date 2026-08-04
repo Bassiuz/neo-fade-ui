@@ -12,3 +12,5 @@ build/
 .claude/
 CLAUDE.md
 doc/plans/
+# Golden diff artefacts, written on every failing run
+test/goldens/failures/
