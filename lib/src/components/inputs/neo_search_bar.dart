@@ -68,12 +68,14 @@ class NeoSearchBarState extends State<NeoSearchBar> {
     setState(() => _isFocused = _focusNode.hasFocus);
   }
 
+  /// Tracks only whether the clear button should show. `onChanged` comes from
+  /// the field itself, so setting `controller.text` programmatically no longer
+  /// reports back as if the user had typed it.
   void _handleTextChange() {
     final hasText = _controller.text.isNotEmpty;
     if (hasText != _hasText) {
       setState(() => _hasText = hasText);
     }
-    widget.onChanged?.call(_controller.text);
   }
 
   void _clearText() {
@@ -132,19 +134,36 @@ class NeoSearchBarState extends State<NeoSearchBar> {
                   ),
                 ),
                 Expanded(
-                  child: EditableText(
+                  // A TextField, not a bare EditableText: EditableText is the
+                  // raw editing primitive with no decoration, which is why
+                  // `hint` used to be accepted and then ignored.
+                  child: TextField(
                     controller: _controller,
                     focusNode: _focusNode,
                     autofocus: widget.autofocus,
+                    enabled: widget.enabled,
                     style: theme.typography.bodyMedium.copyWith(
                       color: widget.enabled
                           ? colors.onSurface
                           : colors.disabledText,
                     ),
                     cursorColor: colors.primary,
-                    backgroundCursorColor: colors.surface,
+                    onChanged: widget.onChanged,
                     onSubmitted: widget.onSubmitted,
-                    readOnly: !widget.enabled,
+                    textInputAction: TextInputAction.search,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      hintText: widget.hint,
+                      hintStyle: theme.typography.bodyMedium.copyWith(
+                        color: colors.onSurfaceVariant,
+                      ),
+                      // The height the field was missing entirely.
+                      contentPadding: const EdgeInsets.symmetric(vertical: 14),
+                    ),
                   ),
                 ),
                 if (_hasText)
