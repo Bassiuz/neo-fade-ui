@@ -30,9 +30,9 @@ class NeoProgressIndicator extends StatelessWidget {
     super.key,
     this.value,
     this.showGlow = true,
-  })  : type = NeoProgressIndicatorType.linear,
-        size = null,
-        strokeWidth = null;
+  }) : type = NeoProgressIndicatorType.linear,
+       size = null,
+       strokeWidth = null;
 
   const NeoProgressIndicator.circular({
     super.key,
@@ -46,21 +46,18 @@ class NeoProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return switch (type) {
       NeoProgressIndicatorType.linear => NeoLinearProgressIndicator(
-          value: value,
-          showGlow: showGlow,
-        ),
+        value: value,
+        showGlow: showGlow,
+      ),
       NeoProgressIndicatorType.circular => NeoCircularProgressIndicator(
-          value: value,
-          size: size ?? 40,
-          strokeWidth: strokeWidth ?? 4,
-          showGlow: showGlow,
-        ),
+        value: value,
+        size: size ?? 40,
+        strokeWidth: strokeWidth ?? 4,
+        showGlow: showGlow,
+      ),
     };
   }
 }
 
 /// Type of progress indicator.
-enum NeoProgressIndicatorType {
-  linear,
-  circular,
-}
+enum NeoProgressIndicatorType { linear, circular }

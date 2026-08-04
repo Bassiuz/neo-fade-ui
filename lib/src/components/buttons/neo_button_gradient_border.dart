@@ -33,7 +33,8 @@ class NeoButtonGradientBorder extends StatefulWidget {
   });
 
   @override
-  State<NeoButtonGradientBorder> createState() => NeoButtonGradientBorderState();
+  State<NeoButtonGradientBorder> createState() =>
+      NeoButtonGradientBorderState();
 }
 
 class NeoButtonGradientBorderState extends State<NeoButtonGradientBorder>
@@ -61,7 +62,8 @@ class NeoButtonGradientBorderState extends State<NeoButtonGradientBorder>
     final colors = theme.colors;
     final glass = theme.glass;
 
-    final effectivePadding = widget.padding ??
+    final effectivePadding =
+        widget.padding ??
         const EdgeInsets.symmetric(
           horizontal: NeoFadeSpacing.lg,
           vertical: NeoFadeSpacing.sm,
@@ -69,7 +71,8 @@ class NeoButtonGradientBorderState extends State<NeoButtonGradientBorder>
     final effectiveBorderRadius = widget.borderRadius ?? NeoFadeRadii.md;
     final effectiveBorderWidth = widget.borderWidth ?? 2.0;
     final effectiveIconSize = widget.iconSize ?? 18.0;
-    final effectiveTextStyle = widget.textStyle ??
+    final effectiveTextStyle =
+        widget.textStyle ??
         TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
@@ -102,8 +105,9 @@ class NeoButtonGradientBorderState extends State<NeoButtonGradientBorder>
             borderRadius: BorderRadius.circular(effectiveBorderRadius),
           ),
           child: ClipRRect(
-            borderRadius:
-                BorderRadius.circular(effectiveBorderRadius - effectiveBorderWidth),
+            borderRadius: BorderRadius.circular(
+              effectiveBorderRadius - effectiveBorderWidth,
+            ),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
               child: Container(
@@ -111,19 +115,28 @@ class NeoButtonGradientBorderState extends State<NeoButtonGradientBorder>
                 decoration: BoxDecoration(
                   color: colors.surface.withValues(alpha: glass.tintOpacity),
                   borderRadius: BorderRadius.circular(
-                      effectiveBorderRadius - effectiveBorderWidth),
+                    effectiveBorderRadius - effectiveBorderWidth,
+                  ),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (widget.icon != null) ...[
-                      Icon(widget.icon, size: effectiveIconSize, color: colors.primary),
+                      Icon(
+                        widget.icon,
+                        size: effectiveIconSize,
+                        color: colors.primary,
+                      ),
                       const SizedBox(width: NeoFadeSpacing.xs),
                     ],
-                    Text(
-                      widget.label,
-                      style: effectiveTextStyle.copyWith(
-                        color: effectiveTextStyle.color ?? colors.onSurface,
+                    Flexible(
+                      child: Text(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        widget.label,
+                        style: effectiveTextStyle.copyWith(
+                          color: effectiveTextStyle.color ?? colors.onSurface,
+                        ),
                       ),
                     ),
                   ],

@@ -65,11 +65,7 @@ class NeoFeatureCardIconCentered extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Icon(
-                    icon,
-                    size: 40,
-                    color: colors.primary,
-                  ),
+                  child: Icon(icon, size: 40, color: colors.primary),
                 ),
                 const SizedBox(height: NeoFadeSpacing.lg),
                 Text(

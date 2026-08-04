@@ -18,7 +18,10 @@ class ShowcaseButtonsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // NeoButton.filled() Section
-          Text('NeoButton.filled() - Gradient Filled', style: theme.typography.titleMedium),
+          Text(
+            'NeoButton.filled() - Gradient Filled',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A button with gradient background fill for primary actions.',
@@ -50,7 +53,10 @@ class ShowcaseButtonsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoButton.gradientBorder() Section
-          Text('NeoButton.gradientBorder() - Gradient Border', style: theme.typography.titleMedium),
+          Text(
+            'NeoButton.gradientBorder() - Gradient Border',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A button with gradient border outline for secondary actions.',
@@ -104,10 +110,7 @@ class ShowcaseButtonsPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    NeoButton.gradientBorder(
-                      label: 'Cancel',
-                      onPressed: () {},
-                    ),
+                    NeoButton.gradientBorder(label: 'Cancel', onPressed: () {}),
                     const SizedBox(width: NeoFadeSpacing.md),
                     NeoButton.filled(
                       label: 'Confirm',

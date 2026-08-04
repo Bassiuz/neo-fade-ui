@@ -124,20 +124,23 @@ class NeoTextFieldOutlinedState extends State<NeoTextFieldOutlined>
     final typography = theme.typography;
 
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
-    final effectiveBorderRadius = BorderRadius.circular(widget.borderRadius ?? NeoFadeRadii.input);
+    final effectiveBorderRadius = BorderRadius.circular(
+      widget.borderRadius ?? NeoFadeRadii.input,
+    );
     final effectiveBorderWidth = widget.borderWidth ?? NeoFadeSpacing.xxs;
-    final effectiveContentPadding = widget.contentPadding ??
+    final effectiveContentPadding =
+        widget.contentPadding ??
         EdgeInsets.symmetric(
           horizontal: NeoFadeSpacing.inputPaddingHorizontal,
           vertical: NeoFadeSpacing.inputPaddingVertical,
         );
-    final effectiveHintStyle = widget.hintStyle ??
-        typography.bodyMedium.copyWith(
-          color: colors.onSurfaceVariant,
-        );
+    final effectiveHintStyle =
+        widget.hintStyle ??
+        typography.bodyMedium.copyWith(color: colors.onSurfaceVariant);
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,

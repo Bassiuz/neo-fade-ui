@@ -114,8 +114,9 @@ class NeoTextFieldShimmerState extends State<NeoTextFieldShimmer>
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
     final borderRadius = BorderRadius.circular(NeoFadeRadii.input);
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,
@@ -193,7 +194,8 @@ class NeoTextFieldShimmerState extends State<NeoTextFieldShimmer>
                           child: CustomPaint(
                             painter: GradientShimmerPainter(
                               gradientColors: gradientColors,
-                              shimmerProgress: _shimmerAnimationController.value,
+                              shimmerProgress:
+                                  _shimmerAnimationController.value,
                             ),
                           ),
                         ),

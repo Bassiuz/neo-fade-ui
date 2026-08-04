@@ -90,11 +90,7 @@ class NeoBottomNavCtaFloatingButtonState
               width: 2,
             ),
           ),
-          child: Icon(
-            widget.icon,
-            size: 32,
-            color: widget.colors.onPrimary,
-          ),
+          child: Icon(widget.icon, size: 32, color: widget.colors.onPrimary),
         ),
       ),
     );

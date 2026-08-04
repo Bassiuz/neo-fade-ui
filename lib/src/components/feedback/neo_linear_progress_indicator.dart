@@ -98,11 +98,15 @@ class NeoLinearProgressIndicatorState extends State<NeoLinearProgressIndicator>
                                 colors.tertiary,
                               ],
                             ),
-                            borderRadius: BorderRadius.circular(NeoFadeRadii.full),
+                            borderRadius: BorderRadius.circular(
+                              NeoFadeRadii.full,
+                            ),
                             boxShadow: widget.showGlow
                                 ? [
                                     BoxShadow(
-                                      color: colors.primary.withValues(alpha: 0.4),
+                                      color: colors.primary.withValues(
+                                        alpha: 0.4,
+                                      ),
                                       blurRadius: 8,
                                       spreadRadius: 1,
                                     ),
@@ -114,7 +118,8 @@ class NeoLinearProgressIndicatorState extends State<NeoLinearProgressIndicator>
                     ],
                   );
                 } else {
-                  final progressWidth = width * (widget.value ?? 0).clamp(0.0, 1.0);
+                  final progressWidth =
+                      width * (widget.value ?? 0).clamp(0.0, 1.0);
 
                   return Stack(
                     children: [
@@ -130,11 +135,15 @@ class NeoLinearProgressIndicatorState extends State<NeoLinearProgressIndicator>
                               colors.tertiary,
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(NeoFadeRadii.full),
+                          borderRadius: BorderRadius.circular(
+                            NeoFadeRadii.full,
+                          ),
                           boxShadow: widget.showGlow
                               ? [
                                   BoxShadow(
-                                    color: colors.primary.withValues(alpha: 0.4),
+                                    color: colors.primary.withValues(
+                                      alpha: 0.4,
+                                    ),
                                     blurRadius: 8,
                                     spreadRadius: 1,
                                   ),

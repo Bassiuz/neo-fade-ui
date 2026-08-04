@@ -104,8 +104,9 @@ class NeoTextFieldUnderlineState extends State<NeoTextFieldUnderline>
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
     final borderRadius = BorderRadius.circular(NeoFadeRadii.input);
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,
@@ -128,9 +129,8 @@ class NeoTextFieldUnderlineState extends State<NeoTextFieldUnderline>
             builder: (context, child) {
               return GradientBorder(
                 colors: gradientColors,
-                borderWidth: _underlineWidthAnimation.value *
-                    NeoFadeSpacing.xxs *
-                    1.5,
+                borderWidth:
+                    _underlineWidthAnimation.value * NeoFadeSpacing.xxs * 1.5,
                 borderRadius: borderRadius,
                 bottomOnly: true,
                 child: child,

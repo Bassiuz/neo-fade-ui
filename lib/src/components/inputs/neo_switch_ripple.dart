@@ -102,7 +102,8 @@ class NeoSwitchRippleState extends State<NeoSwitchRipple>
             child: AnimatedBuilder(
               animation: _controller,
               builder: (context, child) {
-                final thumbLeft = thumbPadding +
+                final thumbLeft =
+                    thumbPadding +
                     (_positionAnimation.value *
                         (trackWidth - thumbSize - thumbPadding * 2));
                 final thumbCenter = thumbLeft + thumbSize / 2;
@@ -120,8 +121,9 @@ class NeoSwitchRippleState extends State<NeoSwitchRipple>
                         thumbCenterX: thumbCenter,
                         trackWidth: trackWidth,
                         trackHeight: trackHeight,
-                        offColor: colors.surfaceVariant
-                            .withValues(alpha: glass.tintOpacity),
+                        offColor: colors.surfaceVariant.withValues(
+                          alpha: glass.tintOpacity,
+                        ),
                         gradientColors: [
                           colors.primary,
                           colors.secondary,
@@ -223,23 +225,23 @@ class NeoSwitchRippleTrackPainter extends CustomPainter {
       final gradientCenter = Offset(thumbCenterX, size.height / 2);
 
       final gradientPaint = Paint()
-        ..shader = RadialGradient(
-          center: Alignment(
-            (thumbCenterX - size.width / 2) / (size.width / 2),
-            0,
-          ),
-          radius: 1.5,
-          colors: [
-            gradientColors[0],
-            gradientColors[1],
-            gradientColors[2],
-            gradientColors[2].withValues(alpha: 0),
-          ],
-          stops: const [0.0, 0.4, 0.7, 1.0],
-        ).createShader(Rect.fromCircle(
-          center: gradientCenter,
-          radius: expandRadius,
-        ));
+        ..shader =
+            RadialGradient(
+              center: Alignment(
+                (thumbCenterX - size.width / 2) / (size.width / 2),
+                0,
+              ),
+              radius: 1.5,
+              colors: [
+                gradientColors[0],
+                gradientColors[1],
+                gradientColors[2],
+                gradientColors[2].withValues(alpha: 0),
+              ],
+              stops: const [0.0, 0.4, 0.7, 1.0],
+            ).createShader(
+              Rect.fromCircle(center: gradientCenter, radius: expandRadius),
+            );
 
       canvas.drawCircle(gradientCenter, expandRadius, gradientPaint);
       canvas.restore();

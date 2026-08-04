@@ -58,25 +58,27 @@ class NeoSliderMinimalPainter extends CustomPainter {
 
       // Main gradient fill
       final gradientPaint = Paint()
-        ..shader = LinearGradient(
-          colors: [
-            primaryColor,
-            secondaryColor,
-            tertiaryColor,
-          ],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight))
+        ..shader =
+            LinearGradient(
+              colors: [primaryColor, secondaryColor, tertiaryColor],
+            ).createShader(
+              Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight),
+            )
         ..style = PaintingStyle.fill;
       canvas.drawRRect(activeRect, gradientPaint);
 
       // Subtle glow under active portion
       final glowPaint = Paint()
-        ..shader = LinearGradient(
-          colors: [
-            primaryColor.withValues(alpha: 0.3),
-            secondaryColor.withValues(alpha: 0.2),
-            tertiaryColor.withValues(alpha: 0.1),
-          ],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight))
+        ..shader =
+            LinearGradient(
+              colors: [
+                primaryColor.withValues(alpha: 0.3),
+                secondaryColor.withValues(alpha: 0.2),
+                tertiaryColor.withValues(alpha: 0.1),
+              ],
+            ).createShader(
+              Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight),
+            )
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4);
       canvas.drawRRect(activeRect, glowPaint);
 
@@ -86,14 +88,17 @@ class NeoSliderMinimalPainter extends CustomPainter {
         Radius.circular(trackHeight / 2),
       );
       final shinePaint = Paint()
-        ..shader = LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            const Color(0xFFFFFFFF).withValues(alpha: 0.4),
-            const Color(0xFFFFFFFF).withValues(alpha: 0.0),
-          ],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, activeWidth, trackHeight / 2))
+        ..shader =
+            LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                const Color(0xFFFFFFFF).withValues(alpha: 0.4),
+                const Color(0xFFFFFFFF).withValues(alpha: 0.0),
+              ],
+            ).createShader(
+              Rect.fromLTWH(trackLeft, trackY, activeWidth, trackHeight / 2),
+            )
         ..style = PaintingStyle.fill;
       canvas.drawRRect(shineRect, shinePaint);
 
@@ -103,18 +108,27 @@ class NeoSliderMinimalPainter extends CustomPainter {
         final endIndicatorPaint = Paint()
           ..color = const Color(0xFFFFFFFF)
           ..style = PaintingStyle.fill;
-        canvas.drawCircle(Offset(endX, size.height / 2), trackHeight / 2 + 2, endIndicatorPaint);
+        canvas.drawCircle(
+          Offset(endX, size.height / 2),
+          trackHeight / 2 + 2,
+          endIndicatorPaint,
+        );
 
         // Gradient overlay on end cap
         final endGradientPaint = Paint()
-          ..shader = RadialGradient(
-            colors: [
-              primaryColor,
-              secondaryColor,
-            ],
-          ).createShader(Rect.fromCircle(center: Offset(endX, size.height / 2), radius: trackHeight / 2 + 2))
+          ..shader = RadialGradient(colors: [primaryColor, secondaryColor])
+              .createShader(
+                Rect.fromCircle(
+                  center: Offset(endX, size.height / 2),
+                  radius: trackHeight / 2 + 2,
+                ),
+              )
           ..style = PaintingStyle.fill;
-        canvas.drawCircle(Offset(endX, size.height / 2), trackHeight / 2 + 1, endGradientPaint);
+        canvas.drawCircle(
+          Offset(endX, size.height / 2),
+          trackHeight / 2 + 1,
+          endGradientPaint,
+        );
       }
     }
   }

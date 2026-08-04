@@ -84,8 +84,7 @@ abstract class NeoBottomNav extends StatelessWidget {
     required ValueChanged<int> onIndexChanged,
     required List<NeoBottomNavItem> items,
     required VoidCallback onCenterPressed,
-    IconData centerIcon =
-        Icons.add,
+    IconData centerIcon = Icons.add,
     bool floating = false,
   }) {
     return NeoBottomNavCtaSimple(

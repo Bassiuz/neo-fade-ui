@@ -71,7 +71,8 @@ class NeoChipState extends State<NeoChip> with SingleTickerProviderStateMixin {
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
     final glass = theme.glass;
-    final isEnabled = widget.enabled && (widget.onTap != null || widget.onDelete != null);
+    final isEnabled =
+        widget.enabled && (widget.onTap != null || widget.onDelete != null);
 
     return GestureDetector(
       onTapDown: isEnabled ? _handleTapDown : null,
@@ -92,15 +93,16 @@ class NeoChipState extends State<NeoChip> with SingleTickerProviderStateMixin {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(NeoFadeRadii.full),
             child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: glass.blur,
-                sigmaY: glass.blur,
-              ),
+              filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
               child: CustomPaint(
                 painter: GradientBorderPainter(
                   colors: widget.selected
                       ? [colors.primary, colors.secondary, colors.tertiary]
-                      : [colors.border.withValues(alpha: _isHovered ? 0.6 : 0.3)],
+                      : [
+                          colors.border.withValues(
+                            alpha: _isHovered ? 0.6 : 0.3,
+                          ),
+                        ],
                   borderWidth: widget.selected ? 2 : 1,
                   borderRadius: BorderRadius.circular(NeoFadeRadii.full),
                   bottomOnly: false,
@@ -145,8 +147,8 @@ class NeoChipState extends State<NeoChip> with SingleTickerProviderStateMixin {
                           size: 16,
                           color: widget.enabled
                               ? (widget.selected
-                                  ? colors.primary
-                                  : colors.onSurfaceVariant)
+                                    ? colors.primary
+                                    : colors.onSurfaceVariant)
                               : colors.disabledText,
                         ),
                         const SizedBox(width: NeoFadeSpacing.xs),
@@ -156,8 +158,8 @@ class NeoChipState extends State<NeoChip> with SingleTickerProviderStateMixin {
                         style: theme.typography.labelMedium.copyWith(
                           color: widget.enabled
                               ? (widget.selected
-                                  ? colors.primary
-                                  : colors.onSurface)
+                                    ? colors.primary
+                                    : colors.onSurface)
                               : colors.disabledText,
                         ),
                       ),

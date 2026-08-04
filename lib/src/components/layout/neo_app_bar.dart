@@ -38,8 +38,8 @@ class NeoAppBar extends StatelessWidget {
     final colors = theme.colors;
     final glass = theme.glass;
 
-    final effectivePadding = padding ??
-        const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.lg);
+    final effectivePadding =
+        padding ?? const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.lg);
 
     Widget? titleContent;
     if (titleWidget != null) {
@@ -47,18 +47,13 @@ class NeoAppBar extends StatelessWidget {
     } else if (title != null) {
       titleContent = Text(
         title!,
-        style: theme.typography.titleLarge.copyWith(
-          color: colors.onSurface,
-        ),
+        style: theme.typography.titleLarge.copyWith(color: colors.onSurface),
       );
     }
 
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
+        filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
         child: Container(
           height: height + gradientBorderHeight,
           decoration: BoxDecoration(
@@ -104,11 +99,7 @@ class NeoAppBar extends StatelessWidget {
                 height: gradientBorderHeight,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      colors.primary,
-                      colors.secondary,
-                      colors.tertiary,
-                    ],
+                    colors: [colors.primary, colors.secondary, colors.tertiary],
                   ),
                 ),
               ),

@@ -130,7 +130,9 @@ class NeoCheckboxRingState extends State<NeoCheckboxRing>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

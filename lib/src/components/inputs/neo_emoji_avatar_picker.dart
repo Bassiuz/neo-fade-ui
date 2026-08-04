@@ -19,9 +19,31 @@ class NeoEmojiAvatarPicker extends StatefulWidget {
   final bool allowCustomEmoji;
 
   static const defaultEmojis = [
-    '😀', '😎', '🥳', '😍', '🤔', '😴', '🤩', '😇',
-    '🐱', '🐶', '🦊', '🐼', '🦄', '🐸', '🦋', '🐝',
-    '🌟', '🔥', '🌈', '🎉', '💎', '🚀', '🎯', '🍕', '🎵',
+    '😀',
+    '😎',
+    '🥳',
+    '😍',
+    '🤔',
+    '😴',
+    '🤩',
+    '😇',
+    '🐱',
+    '🐶',
+    '🦊',
+    '🐼',
+    '🦄',
+    '🐸',
+    '🦋',
+    '🐝',
+    '🌟',
+    '🔥',
+    '🌈',
+    '🎉',
+    '💎',
+    '🚀',
+    '🎯',
+    '🍕',
+    '🎵',
   ];
 
   const NeoEmojiAvatarPicker({
@@ -167,99 +189,99 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
           alignment: Alignment.center,
           children: [
             // Hidden text field for custom emoji input
-          if (widget.allowCustomEmoji)
-            Opacity(
-              opacity: 0,
-              child: SizedBox(
-                width: 1,
-                height: 1,
-                child: TextField(
-                  controller: _customEmojiController,
-                  focusNode: _customEmojiFocusNode,
-                  autofocus: false,
-                  showCursor: false,
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
+            if (widget.allowCustomEmoji)
+              Opacity(
+                opacity: 0,
+                child: SizedBox(
+                  width: 1,
+                  height: 1,
+                  child: TextField(
+                    controller: _customEmojiController,
+                    focusNode: _customEmojiFocusNode,
+                    autofocus: false,
+                    showCursor: false,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                    ),
                   ),
                 ),
               ),
-            ),
 
-          // Outer circle emojis
-          ...outerEmojis.asMap().entries.map((entry) {
-            final index = entry.key;
-            final emoji = entry.value;
-            final angle =
-                (2 * math.pi * index / outerEmojis.length) - math.pi / 2;
+            // Outer circle emojis
+            ...outerEmojis.asMap().entries.map((entry) {
+              final index = entry.key;
+              final emoji = entry.value;
+              final angle =
+                  (2 * math.pi * index / outerEmojis.length) - math.pi / 2;
 
-            return _buildEmojiItem(
-              emoji: emoji,
-              angle: angle,
-              radius: effectiveOuterRadius,
-              colors: colors,
-            );
-          }),
+              return _buildEmojiItem(
+                emoji: emoji,
+                angle: angle,
+                radius: effectiveOuterRadius,
+                colors: colors,
+              );
+            }),
 
-          // Inner circle emojis
-          ...innerEmojis.asMap().entries.map((entry) {
-            final index = entry.key;
-            final emoji = entry.value;
-            final angle =
-                (2 * math.pi * index / innerEmojis.length) - math.pi / 2;
+            // Inner circle emojis
+            ...innerEmojis.asMap().entries.map((entry) {
+              final index = entry.key;
+              final emoji = entry.value;
+              final angle =
+                  (2 * math.pi * index / innerEmojis.length) - math.pi / 2;
 
-            return _buildEmojiItem(
-              emoji: emoji,
-              angle: angle,
-              radius: effectiveInnerRadius,
-              colors: colors,
-            );
-          }),
+              return _buildEmojiItem(
+                emoji: emoji,
+                angle: angle,
+                radius: effectiveInnerRadius,
+                colors: colors,
+              );
+            }),
 
-          // Center avatar (tap to expand, tap again to type custom)
-          GestureDetector(
-            onTap: _toggleExpand,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: effectiveAvatarSize,
-              height: effectiveAvatarSize,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [colors.primary, colors.secondary],
+            // Center avatar (tap to expand, tap again to type custom)
+            GestureDetector(
+              onTap: _toggleExpand,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: effectiveAvatarSize,
+                height: effectiveAvatarSize,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [colors.primary, colors.secondary],
+                  ),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: colors.onPrimary.withValues(alpha: 0.3),
+                    width: 3,
+                  ),
+                  boxShadow: _isExpanded
+                      ? [
+                          BoxShadow(
+                            color: colors.primary.withValues(alpha: 0.4),
+                            blurRadius: 16,
+                            spreadRadius: 2,
+                          ),
+                        ]
+                      : [],
                 ),
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: colors.onPrimary.withValues(alpha: 0.3),
-                  width: 3,
-                ),
-                boxShadow: _isExpanded
-                    ? [
-                        BoxShadow(
-                          color: colors.primary.withValues(alpha: 0.4),
-                          blurRadius: 16,
-                          spreadRadius: 2,
+                child: Center(
+                  child: _isTypingCustom
+                      ? Icon(
+                          Icons.keyboard,
+                          size: effectiveAvatarSize * 0.4,
+                          color: colors.onPrimary,
+                        )
+                      : Text(
+                          widget.selectedEmoji ?? '😀',
+                          style: TextStyle(fontSize: effectiveAvatarSize * 0.5),
                         ),
-                      ]
-                    : [],
-              ),
-              child: Center(
-                child: _isTypingCustom
-                    ? Icon(
-                        Icons.keyboard,
-                        size: effectiveAvatarSize * 0.4,
-                        color: colors.onPrimary,
-                      )
-                    : Text(
-                        widget.selectedEmoji ?? '😀',
-                        style: TextStyle(fontSize: effectiveAvatarSize * 0.5),
-                      ),
+                ),
               ),
             ),
-          ),
           ],
         ),
       ),
@@ -288,10 +310,7 @@ class NeoEmojiAvatarPickerState extends State<NeoEmojiAvatarPicker>
           offset: Offset(x, y),
           child: Transform.scale(
             scale: scale,
-            child: Opacity(
-              opacity: opacity,
-              child: child,
-            ),
+            child: Opacity(opacity: opacity, child: child),
           ),
         );
       },

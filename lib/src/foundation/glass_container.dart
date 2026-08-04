@@ -48,7 +48,8 @@ class GlassContainer extends StatelessWidget {
     final effectiveTint = tint ?? colors.surface;
     final effectiveTintOpacity = tintOpacity ?? glass.tintOpacity;
     final effectiveBorderRadius = borderRadius ?? BorderRadius.circular(12);
-    final effectiveBorderColor = borderColor ??
+    final effectiveBorderColor =
+        borderColor ??
         (colors.isLight
             ? const Color(0xFFFFFFFF).withValues(alpha: glass.borderOpacity)
             : const Color(0xFFFFFFFF).withValues(alpha: glass.borderOpacity));
@@ -80,10 +81,7 @@ class GlassContainer extends StatelessWidget {
     return ClipRRect(
       borderRadius: effectiveBorderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: effectiveBlur,
-          sigmaY: effectiveBlur,
-        ),
+        filter: ImageFilter.blur(sigmaX: effectiveBlur, sigmaY: effectiveBlur),
         child: content,
       ),
     );

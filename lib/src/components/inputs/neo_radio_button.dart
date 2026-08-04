@@ -47,13 +47,17 @@ class NeoRadioButtonState<T> extends State<NeoRadioButton<T>>
 
     _scaleAnimation = TweenSequence<double>([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.0, end: 1.1)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 1.0,
+          end: 1.1,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 50,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.1, end: 1.0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: 1.1,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 50,
       ),
     ]).animate(_controller);
@@ -120,7 +124,9 @@ class NeoRadioButtonState<T> extends State<NeoRadioButton<T>>
                     height: widget.size,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: colors.surface.withValues(alpha: glass.tintOpacity),
+                      color: colors.surface.withValues(
+                        alpha: glass.tintOpacity,
+                      ),
                       border: Border.all(
                         color: _isSelected
                             ? colors.primary.withValues(alpha: 0.8)
@@ -139,16 +145,15 @@ class NeoRadioButtonState<T> extends State<NeoRadioButton<T>>
                               ? LinearGradient(
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
-                                  colors: [
-                                    colors.primary,
-                                    colors.secondary,
-                                  ],
+                                  colors: [colors.primary, colors.secondary],
                                 )
                               : null,
                           boxShadow: _fillAnimation.value > 0
                               ? [
                                   BoxShadow(
-                                    color: colors.primary.withValues(alpha: 0.4),
+                                    color: colors.primary.withValues(
+                                      alpha: 0.4,
+                                    ),
                                     blurRadius: 4,
                                     spreadRadius: 1,
                                   ),
@@ -170,7 +175,9 @@ class NeoRadioButtonState<T> extends State<NeoRadioButton<T>>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

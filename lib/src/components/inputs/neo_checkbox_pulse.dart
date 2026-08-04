@@ -55,13 +55,17 @@ class NeoCheckboxPulseState extends State<NeoCheckboxPulse>
 
     _pulseAnimation = TweenSequence<double>([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.0, end: 1.0)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 0.0,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 50,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.0, end: 0.6)
-            .chain(CurveTween(curve: Curves.easeInOut)),
+        tween: Tween<double>(
+          begin: 1.0,
+          end: 0.6,
+        ).chain(CurveTween(curve: Curves.easeInOut)),
         weight: 50,
       ),
     ]).animate(_pulseController);
@@ -122,18 +126,24 @@ class NeoCheckboxPulseState extends State<NeoCheckboxPulse>
                 boxShadow: pulseValue > 0
                     ? [
                         BoxShadow(
-                          color: colors.primary.withValues(alpha: 0.4 * pulseValue),
+                          color: colors.primary.withValues(
+                            alpha: 0.4 * pulseValue,
+                          ),
                           blurRadius: 16 * pulseValue,
                           spreadRadius: 2 * pulseValue,
                         ),
                         BoxShadow(
-                          color: colors.secondary.withValues(alpha: 0.3 * pulseValue),
+                          color: colors.secondary.withValues(
+                            alpha: 0.3 * pulseValue,
+                          ),
                           blurRadius: 12 * pulseValue,
                           spreadRadius: 1 * pulseValue,
                           offset: Offset(4 * pulseValue, 4 * pulseValue),
                         ),
                         BoxShadow(
-                          color: colors.tertiary.withValues(alpha: 0.2 * pulseValue),
+                          color: colors.tertiary.withValues(
+                            alpha: 0.2 * pulseValue,
+                          ),
                           blurRadius: 8 * pulseValue,
                           spreadRadius: 0,
                           offset: Offset(-3 * pulseValue, 3 * pulseValue),
@@ -199,7 +209,9 @@ class NeoCheckboxPulseState extends State<NeoCheckboxPulse>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -100,7 +100,11 @@ class NeoSliderRadialFillPainter extends CustomPainter {
     final shadowPaint = Paint()
       ..color = primaryColor.withValues(alpha: 0.4)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
-    canvas.drawCircle(Offset(thumbX, size.height / 2), thumbRadius * 0.9, shadowPaint);
+    canvas.drawCircle(
+      Offset(thumbX, size.height / 2),
+      thumbRadius * 0.9,
+      shadowPaint,
+    );
 
     // Thumb glass background
     final thumbPaint = Paint()
@@ -110,36 +114,60 @@ class NeoSliderRadialFillPainter extends CustomPainter {
 
     // Thumb gradient overlay
     final thumbGradientPaint = Paint()
-      ..shader = LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          primaryColor.withValues(alpha: 0.5),
-          secondaryColor.withValues(alpha: 0.3),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, size.height / 2), radius: thumbRadius))
+      ..shader =
+          LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              primaryColor.withValues(alpha: 0.5),
+              secondaryColor.withValues(alpha: 0.3),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, size.height / 2),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(thumbX, size.height / 2), thumbRadius, thumbGradientPaint);
+    canvas.drawCircle(
+      Offset(thumbX, size.height / 2),
+      thumbRadius,
+      thumbGradientPaint,
+    );
 
     // Thumb border
     final thumbBorderPaint = Paint()
       ..color = const Color(0xFFFFFFFF).withValues(alpha: borderOpacity)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
-    canvas.drawCircle(Offset(thumbX, size.height / 2), thumbRadius, thumbBorderPaint);
+    canvas.drawCircle(
+      Offset(thumbX, size.height / 2),
+      thumbRadius,
+      thumbBorderPaint,
+    );
 
     // Thumb highlight
     final highlightPaint = Paint()
-      ..shader = RadialGradient(
-        center: const Alignment(-0.4, -0.4),
-        radius: 0.8,
-        colors: [
-          const Color(0xFFFFFFFF).withValues(alpha: 0.5),
-          const Color(0xFFFFFFFF).withValues(alpha: 0.0),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, size.height / 2), radius: thumbRadius))
+      ..shader =
+          RadialGradient(
+            center: const Alignment(-0.4, -0.4),
+            radius: 0.8,
+            colors: [
+              const Color(0xFFFFFFFF).withValues(alpha: 0.5),
+              const Color(0xFFFFFFFF).withValues(alpha: 0.0),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, size.height / 2),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(thumbX, size.height / 2), thumbRadius * 0.7, highlightPaint);
+    canvas.drawCircle(
+      Offset(thumbX, size.height / 2),
+      thumbRadius * 0.7,
+      highlightPaint,
+    );
   }
 
   @override

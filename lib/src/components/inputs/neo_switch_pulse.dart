@@ -51,18 +51,14 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
       duration: NeoFadeAnimations.slow,
       vsync: this,
     );
-    _pulseAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _pulseController,
-        curve: Curves.easeOut,
-      ),
-    );
-    _pulseOpacityAnimation = Tween<double>(begin: 0.6, end: 0.0).animate(
-      CurvedAnimation(
-        parent: _pulseController,
-        curve: Curves.easeOut,
-      ),
-    );
+    _pulseAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _pulseController, curve: Curves.easeOut));
+    _pulseOpacityAnimation = Tween<double>(
+      begin: 0.6,
+      end: 0.0,
+    ).animate(CurvedAnimation(parent: _pulseController, curve: Curves.easeOut));
   }
 
   @override
@@ -123,10 +119,13 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
                 width: trackWidth,
                 height: trackHeight,
                 child: AnimatedBuilder(
-                  animation: Listenable.merge(
-                      [_positionController, _pulseController]),
+                  animation: Listenable.merge([
+                    _positionController,
+                    _pulseController,
+                  ]),
                   builder: (context, child) {
-                    final thumbLeft = thumbPadding +
+                    final thumbLeft =
+                        thumbPadding +
                         (_positionAnimation.value *
                             (trackWidth - thumbSize - thumbPadding * 2));
                     final thumbCenterX = thumbLeft + thumbSize / 2;
@@ -139,14 +138,20 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
                         if (_pulseController.isAnimating ||
                             _pulseController.value > 0)
                           Positioned(
-                            left: thumbCenterX - thumbSize / 2 -
+                            left:
+                                thumbCenterX -
+                                thumbSize / 2 -
                                 (maxPulseSize * _pulseAnimation.value / 2),
-                            top: thumbCenterY - thumbSize / 2 -
+                            top:
+                                thumbCenterY -
+                                thumbSize / 2 -
                                 (maxPulseSize * _pulseAnimation.value / 2),
                             child: CustomPaint(
                               size: Size(
-                                thumbSize + maxPulseSize * _pulseAnimation.value,
-                                thumbSize + maxPulseSize * _pulseAnimation.value,
+                                thumbSize +
+                                    maxPulseSize * _pulseAnimation.value,
+                                thumbSize +
+                                    maxPulseSize * _pulseAnimation.value,
                               ),
                               painter: NeoSwitchPulsePainter(
                                 progress: _pulseAnimation.value,
@@ -161,8 +166,9 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
                           ),
                         // Track
                         ClipRRect(
-                          borderRadius:
-                              BorderRadius.circular(NeoFadeRadii.full),
+                          borderRadius: BorderRadius.circular(
+                            NeoFadeRadii.full,
+                          ),
                           child: BackdropFilter(
                             filter: ImageFilter.blur(
                               sigmaX: glass.blur,
@@ -171,13 +177,15 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Color.lerp(
-                                  colors.surfaceVariant
-                                      .withValues(alpha: glass.tintOpacity),
+                                  colors.surfaceVariant.withValues(
+                                    alpha: glass.tintOpacity,
+                                  ),
                                   colors.primary.withValues(alpha: 0.25),
                                   _positionAnimation.value,
                                 ),
-                                borderRadius:
-                                    BorderRadius.circular(NeoFadeRadii.full),
+                                borderRadius: BorderRadius.circular(
+                                  NeoFadeRadii.full,
+                                ),
                                 border: Border.all(
                                   color: colors.border.withValues(alpha: 0.3),
                                   width: 1,
@@ -197,11 +205,14 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
                                         gradient: LinearGradient(
                                           colors: [
                                             colors.primary.withValues(
-                                                alpha: _positionAnimation.value),
+                                              alpha: _positionAnimation.value,
+                                            ),
                                             colors.secondary.withValues(
-                                                alpha: _positionAnimation.value),
+                                              alpha: _positionAnimation.value,
+                                            ),
                                             colors.tertiary.withValues(
-                                                alpha: _positionAnimation.value),
+                                              alpha: _positionAnimation.value,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -234,17 +245,21 @@ class NeoSwitchPulseState extends State<NeoSwitchPulse>
                                         ),
                                         border: Border.all(
                                           color: Color.lerp(
-                                            colors.border.withValues(alpha: 0.3),
-                                            colors.primary
-                                                .withValues(alpha: 0.6),
+                                            colors.border.withValues(
+                                              alpha: 0.3,
+                                            ),
+                                            colors.primary.withValues(
+                                              alpha: 0.6,
+                                            ),
                                             _positionAnimation.value,
                                           )!,
                                           width: 1.5,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: colors.onSurface
-                                                .withValues(alpha: 0.15),
+                                            color: colors.onSurface.withValues(
+                                              alpha: 0.15,
+                                            ),
                                             blurRadius: 4,
                                             offset: const Offset(0, 2),
                                           ),

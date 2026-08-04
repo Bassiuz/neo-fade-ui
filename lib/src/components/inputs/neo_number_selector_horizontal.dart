@@ -59,8 +59,9 @@ class NeoNumberSelectorHorizontal extends StatelessWidget {
               ),
               Container(
                 constraints: const BoxConstraints(minWidth: 60),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.md),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: NeoFadeSpacing.md,
+                ),
                 child: Text(
                   value.toString(),
                   style: typography.titleLarge.copyWith(

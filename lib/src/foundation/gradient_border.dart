@@ -35,12 +35,7 @@ class GradientBorderPainter extends CustomPainter {
 
     if (bottomOnly) {
       final bottomRect = RRect.fromRectAndCorners(
-        Rect.fromLTWH(
-          0,
-          size.height - borderWidth,
-          size.width,
-          borderWidth,
-        ),
+        Rect.fromLTWH(0, size.height - borderWidth, size.width, borderWidth),
         bottomLeft: borderRadius.bottomLeft,
         bottomRight: borderRadius.bottomRight,
       );
@@ -60,10 +55,18 @@ class GradientBorderPainter extends CustomPainter {
           size.width - borderWidth * 2,
           size.height - borderWidth * 2,
         ),
-        topLeft: Radius.circular((borderRadius.topLeft.x - borderWidth).clamp(0, double.infinity)),
-        topRight: Radius.circular((borderRadius.topRight.x - borderWidth).clamp(0, double.infinity)),
-        bottomLeft: Radius.circular((borderRadius.bottomLeft.x - borderWidth).clamp(0, double.infinity)),
-        bottomRight: Radius.circular((borderRadius.bottomRight.x - borderWidth).clamp(0, double.infinity)),
+        topLeft: Radius.circular(
+          (borderRadius.topLeft.x - borderWidth).clamp(0, double.infinity),
+        ),
+        topRight: Radius.circular(
+          (borderRadius.topRight.x - borderWidth).clamp(0, double.infinity),
+        ),
+        bottomLeft: Radius.circular(
+          (borderRadius.bottomLeft.x - borderWidth).clamp(0, double.infinity),
+        ),
+        bottomRight: Radius.circular(
+          (borderRadius.bottomRight.x - borderWidth).clamp(0, double.infinity),
+        ),
       );
 
       final path = Path()

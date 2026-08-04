@@ -52,7 +52,8 @@ class NeoSegmentedControlSliding<T> extends StatelessWidget {
     final effectiveBorderRadius = borderRadius ?? NeoFadeRadii.md;
     final effectivePadding = padding ?? NeoFadeSpacing.xxs;
     final effectiveIndicatorPadding = indicatorPadding ?? NeoFadeSpacing.xxs;
-    final effectiveIndicatorBorderRadius = indicatorBorderRadius ?? NeoFadeRadii.sm;
+    final effectiveIndicatorBorderRadius =
+        indicatorBorderRadius ?? NeoFadeRadii.sm;
     final baseTextStyle = textStyle ?? const TextStyle(fontSize: 14);
 
     return ClipRRect(
@@ -92,7 +93,9 @@ class NeoSegmentedControlSliding<T> extends StatelessWidget {
                             colors.secondary.withValues(alpha: 0.6),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(effectiveIndicatorBorderRadius),
+                        borderRadius: BorderRadius.circular(
+                          effectiveIndicatorBorderRadius,
+                        ),
                         boxShadow: [
                           BoxShadow(
                             color: colors.primary.withValues(alpha: 0.3),
@@ -119,8 +122,12 @@ class NeoSegmentedControlSliding<T> extends StatelessWidget {
                               child: Text(
                                 segment.label,
                                 style: baseTextStyle.copyWith(
-                                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                                  color: isSelected ? colors.onPrimary : colors.onSurface,
+                                  fontWeight: isSelected
+                                      ? FontWeight.w600
+                                      : FontWeight.normal,
+                                  color: isSelected
+                                      ? colors.onPrimary
+                                      : colors.onSurface,
                                 ),
                               ),
                             ),

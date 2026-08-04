@@ -58,8 +58,9 @@ class NeoNumberSelectorCompact extends StatelessWidget {
               ),
               Container(
                 constraints: const BoxConstraints(minWidth: 50),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.sm),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: NeoFadeSpacing.sm,
+                ),
                 child: Text(
                   value.toString(),
                   style: typography.titleMedium.copyWith(

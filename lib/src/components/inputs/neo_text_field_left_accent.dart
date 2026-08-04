@@ -60,12 +60,16 @@ class NeoTextFieldLeftAccentState extends State<NeoTextFieldLeftAccent>
       vsync: this,
     );
 
-    _accentWidthAnimation = Tween<double>(begin: NeoFadeSpacing.xxs, end: NeoFadeSpacing.xs).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: NeoFadeAnimations.defaultCurve,
-      ),
-    );
+    _accentWidthAnimation =
+        Tween<double>(
+          begin: NeoFadeSpacing.xxs,
+          end: NeoFadeSpacing.xs,
+        ).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: NeoFadeAnimations.defaultCurve,
+          ),
+        );
 
     _accentOpacityAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
       CurvedAnimation(
@@ -111,8 +115,9 @@ class NeoTextFieldLeftAccentState extends State<NeoTextFieldLeftAccent>
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
     final borderRadius = BorderRadius.circular(NeoFadeRadii.input);
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,
@@ -138,67 +143,72 @@ class NeoTextFieldLeftAccentState extends State<NeoTextFieldLeftAccent>
                 child: IntrinsicHeight(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    AnimatedContainer(
-                      duration: NeoFadeAnimations.fast,
-                      width: _accentWidthAnimation.value,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: gradientColors.map((c) =>
-                            c.withValues(alpha: _accentOpacityAnimation.value)
-                          ).toList(),
-                        ),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(NeoFadeRadii.input),
-                          bottomLeft: Radius.circular(NeoFadeRadii.input),
+                    children: [
+                      AnimatedContainer(
+                        duration: NeoFadeAnimations.fast,
+                        width: _accentWidthAnimation.value,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: gradientColors
+                                .map(
+                                  (c) => c.withValues(
+                                    alpha: _accentOpacityAnimation.value,
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(NeoFadeRadii.input),
+                            bottomLeft: Radius.circular(NeoFadeRadii.input),
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: GlassContainer(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(NeoFadeRadii.input),
-                          bottomRight: Radius.circular(NeoFadeRadii.input),
-                        ),
-                        tintOpacity: 0.8,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: NeoFadeSpacing.inputPaddingHorizontal,
-                          vertical: NeoFadeSpacing.inputPaddingVertical,
-                        ),
-                        child: Stack(
-                          children: [
-                            if (widget.hintText != null && _controller.text.isEmpty)
-                              IgnorePointer(
-                                child: Text(
-                                  widget.hintText!,
-                                  style: typography.bodyMedium.copyWith(
-                                    color: colors.onSurfaceVariant,
+                      Expanded(
+                        child: GlassContainer(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(NeoFadeRadii.input),
+                            bottomRight: Radius.circular(NeoFadeRadii.input),
+                          ),
+                          tintOpacity: 0.8,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: NeoFadeSpacing.inputPaddingHorizontal,
+                            vertical: NeoFadeSpacing.inputPaddingVertical,
+                          ),
+                          child: Stack(
+                            children: [
+                              if (widget.hintText != null &&
+                                  _controller.text.isEmpty)
+                                IgnorePointer(
+                                  child: Text(
+                                    widget.hintText!,
+                                    style: typography.bodyMedium.copyWith(
+                                      color: colors.onSurfaceVariant,
+                                    ),
                                   ),
                                 ),
+                              EditableText(
+                                controller: _controller,
+                                focusNode: _focusNode,
+                                style: typography.bodyMedium.copyWith(
+                                  color: colors.onSurface,
+                                ),
+                                cursorColor: colors.primary,
+                                backgroundCursorColor: colors.surfaceVariant,
+                                onChanged: _handleChanged,
+                                obscureText: widget.obscureText,
+                                keyboardType: widget.keyboardType,
+                                autofocus: widget.autofocus,
+                                readOnly: !widget.enabled,
                               ),
-                            EditableText(
-                              controller: _controller,
-                              focusNode: _focusNode,
-                              style: typography.bodyMedium.copyWith(
-                                color: colors.onSurface,
-                              ),
-                              cursorColor: colors.primary,
-                              backgroundCursorColor: colors.surfaceVariant,
-                              onChanged: _handleChanged,
-                              obscureText: widget.obscureText,
-                              keyboardType: widget.keyboardType,
-                              autofocus: widget.autofocus,
-                              readOnly: !widget.enabled,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
               );
             },
           ),

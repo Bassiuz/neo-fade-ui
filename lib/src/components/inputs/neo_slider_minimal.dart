@@ -29,7 +29,8 @@ class NeoSliderMinimal extends StatefulWidget {
 class NeoSliderMinimalState extends State<NeoSliderMinimal> {
   bool isDragging = false;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   void handleDragStart(DragStartDetails details) {
     setState(() => isDragging = true);
@@ -53,8 +54,12 @@ class NeoSliderMinimalState extends State<NeoSliderMinimal> {
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double padding = 8.0;
     final double trackWidth = box.size.width - padding * 2;
-    final double newValue = ((position.dx - padding) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - padding) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 

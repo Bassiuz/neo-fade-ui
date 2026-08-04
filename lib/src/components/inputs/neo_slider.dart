@@ -262,11 +262,16 @@ class NeoSliderState extends State<NeoSlider> {
     if (widget.onChanged == null) return;
     final RenderBox box = context.findRenderObject() as RenderBox;
     final effectiveThumbSize = widget.thumbSize ?? 8.0;
-    final double thumbRadius = isDragging ? effectiveThumbSize + 2.0 : effectiveThumbSize;
+    final double thumbRadius = isDragging
+        ? effectiveThumbSize + 2.0
+        : effectiveThumbSize;
     final double trackWidth = box.size.width - thumbRadius * 2;
-    final double newValue =
-        ((position.dx - thumbRadius) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 
@@ -278,7 +283,8 @@ class NeoSliderState extends State<NeoSlider> {
     final effectiveTrackHeight = widget.trackHeight ?? 3.0;
     final effectiveThumbSize = widget.thumbSize ?? 8.0;
     final effectivePrimaryColor = widget.activeTrackColor ?? colors.primary;
-    final effectiveSecondaryColor = widget.activeTrackColorSecondary ?? colors.secondary;
+    final effectiveSecondaryColor =
+        widget.activeTrackColorSecondary ?? colors.secondary;
 
     return GestureDetector(
       onHorizontalDragStart: handleDragStart,

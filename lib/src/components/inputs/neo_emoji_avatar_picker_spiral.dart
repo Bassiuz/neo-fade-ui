@@ -72,22 +72,21 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
     final baseDuration =
         (widget.animationDuration ?? const Duration(milliseconds: 350))
             .inMilliseconds;
-    final totalDuration =
-        Duration(milliseconds: baseDuration + totalStaggerTime);
-
-    _controller = AnimationController(
-      duration: totalDuration,
-      vsync: this,
+    final totalDuration = Duration(
+      milliseconds: baseDuration + totalStaggerTime,
     );
+
+    _controller = AnimationController(duration: totalDuration, vsync: this);
 
     // Create staggered animations for each emoji
     _itemAnimations.clear();
     for (int i = 0; i < totalEmojis; i++) {
-      final startTime = (effectiveStaggerDelay.inMilliseconds * i) /
+      final startTime =
+          (effectiveStaggerDelay.inMilliseconds * i) /
           totalDuration.inMilliseconds;
       final endTime =
           (effectiveStaggerDelay.inMilliseconds * i + baseDuration) /
-              totalDuration.inMilliseconds;
+          totalDuration.inMilliseconds;
 
       _itemAnimations.add(
         Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -161,79 +160,79 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
           alignment: Alignment.center,
           children: [
             // Inner circle emojis (first half, indices 0 to innerEmojis.length-1)
-          ...innerEmojis.asMap().entries.map((entry) {
-            final index = entry.key;
-            final emoji = entry.value;
-            final angle =
-                (2 * math.pi * index / innerEmojis.length) - math.pi / 2;
-            final spiralOffset = (index / innerEmojis.length) * 0.4;
+            ...innerEmojis.asMap().entries.map((entry) {
+              final index = entry.key;
+              final emoji = entry.value;
+              final angle =
+                  (2 * math.pi * index / innerEmojis.length) - math.pi / 2;
+              final spiralOffset = (index / innerEmojis.length) * 0.4;
 
-            return _buildSpiralItem(
-              emoji: emoji,
-              animationIndex: index,
-              angle: angle,
-              spiralOffset: spiralOffset,
-              radius: effectiveInnerRadius,
-              colors: colors,
-            );
-          }),
+              return _buildSpiralItem(
+                emoji: emoji,
+                animationIndex: index,
+                angle: angle,
+                spiralOffset: spiralOffset,
+                radius: effectiveInnerRadius,
+                colors: colors,
+              );
+            }),
 
-          // Outer circle emojis (second half, indices continue from inner)
-          ...outerEmojis.asMap().entries.map((entry) {
-            final index = entry.key;
-            final emoji = entry.value;
-            final angle =
-                (2 * math.pi * index / outerEmojis.length) - math.pi / 2;
-            final spiralOffset = (index / outerEmojis.length) * 0.4;
-            // Animation index continues from inner circle
-            final animationIndex = innerEmojis.length + index;
+            // Outer circle emojis (second half, indices continue from inner)
+            ...outerEmojis.asMap().entries.map((entry) {
+              final index = entry.key;
+              final emoji = entry.value;
+              final angle =
+                  (2 * math.pi * index / outerEmojis.length) - math.pi / 2;
+              final spiralOffset = (index / outerEmojis.length) * 0.4;
+              // Animation index continues from inner circle
+              final animationIndex = innerEmojis.length + index;
 
-            return _buildSpiralItem(
-              emoji: emoji,
-              animationIndex: animationIndex,
-              angle: angle,
-              spiralOffset: spiralOffset,
-              radius: effectiveOuterRadius,
-              colors: colors,
-            );
-          }),
+              return _buildSpiralItem(
+                emoji: emoji,
+                animationIndex: animationIndex,
+                angle: angle,
+                spiralOffset: spiralOffset,
+                radius: effectiveOuterRadius,
+                colors: colors,
+              );
+            }),
 
-          // Center avatar
-          GestureDetector(
-            onTap: _toggleExpand,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: effectiveAvatarSize,
-              height: effectiveAvatarSize,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [colors.primary, colors.secondary],
+            // Center avatar
+            GestureDetector(
+              onTap: _toggleExpand,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: effectiveAvatarSize,
+                height: effectiveAvatarSize,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [colors.primary, colors.secondary],
+                  ),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: colors.onPrimary.withValues(alpha: 0.3),
+                    width: 3,
+                  ),
+                  boxShadow: _isExpanded
+                      ? [
+                          BoxShadow(
+                            color: colors.primary.withValues(alpha: 0.4),
+                            blurRadius: 16,
+                            spreadRadius: 2,
+                          ),
+                        ]
+                      : [],
                 ),
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: colors.onPrimary.withValues(alpha: 0.3),
-                  width: 3,
-                ),
-                boxShadow: _isExpanded
-                    ? [
-                        BoxShadow(
-                          color: colors.primary.withValues(alpha: 0.4),
-                          blurRadius: 16,
-                          spreadRadius: 2,
-                        ),
-                      ]
-                    : [],
-              ),
-              child: Center(
-                child: Text(
-                  widget.selectedEmoji ?? '😀',
-                  style: TextStyle(fontSize: effectiveAvatarSize * 0.5),
+                child: Center(
+                  child: Text(
+                    widget.selectedEmoji ?? '😀',
+                    style: TextStyle(fontSize: effectiveAvatarSize * 0.5),
+                  ),
                 ),
               ),
             ),
-          ),
           ],
         ),
       ),
@@ -264,10 +263,7 @@ class NeoEmojiAvatarPickerSpiralState extends State<NeoEmojiAvatarPickerSpiral>
           offset: Offset(x, y),
           child: Transform.scale(
             scale: scale,
-            child: Opacity(
-              opacity: opacity,
-              child: child,
-            ),
+            child: Opacity(opacity: opacity, child: child),
           ),
         );
       },

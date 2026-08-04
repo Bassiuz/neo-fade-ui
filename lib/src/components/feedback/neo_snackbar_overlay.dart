@@ -46,13 +46,13 @@ class NeoSnackbarOverlayState extends State<NeoSnackbarOverlay>
       curve: NeoFadeAnimations.defaultCurve,
     );
 
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 1),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: NeoFadeAnimations.defaultCurve,
-    ));
+    _slideAnimation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: NeoFadeAnimations.defaultCurve,
+          ),
+        );
 
     _controller.forward();
 

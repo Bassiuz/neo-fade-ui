@@ -28,8 +28,8 @@ class NeoDivider extends StatelessWidget {
     this.thickness,
     this.indent,
     this.endIndent,
-  })  : label = null,
-        vertical = true;
+  }) : label = null,
+       vertical = true;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +49,7 @@ class NeoDivider extends StatelessWidget {
     if (vertical) {
       return Container(
         width: effectiveThickness,
-        margin: EdgeInsets.only(
-          top: indent ?? 0,
-          bottom: endIndent ?? 0,
-        ),
+        margin: EdgeInsets.only(top: indent ?? 0, bottom: endIndent ?? 0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -119,14 +116,9 @@ class NeoDivider extends StatelessWidget {
 
     return Container(
       height: effectiveThickness,
-      margin: EdgeInsets.only(
-        left: indent ?? 0,
-        right: endIndent ?? 0,
-      ),
+      margin: EdgeInsets.only(left: indent ?? 0, right: endIndent ?? 0),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: gradientColors,
-        ),
+        gradient: LinearGradient(colors: gradientColors),
       ),
     );
   }

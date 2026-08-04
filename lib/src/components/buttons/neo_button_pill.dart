@@ -69,7 +69,10 @@ class NeoButtonPillState extends State<NeoButtonPill>
             return ClipRRect(
               borderRadius: BorderRadius.circular(NeoFadeRadii.full),
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
+                filter: ImageFilter.blur(
+                  sigmaX: glass.blur,
+                  sigmaY: glass.blur,
+                ),
                 child: AnimatedContainer(
                   duration: NeoFadeAnimations.fast,
                   padding: const EdgeInsets.symmetric(
@@ -103,16 +106,24 @@ class NeoButtonPillState extends State<NeoButtonPill>
                         Icon(
                           widget.icon,
                           size: 18,
-                          color: _isHovered ? colors.onPrimary : colors.onSurface,
+                          color: _isHovered
+                              ? colors.onPrimary
+                              : colors.onSurface,
                         ),
                         const SizedBox(width: NeoFadeSpacing.xs),
                       ],
-                      Text(
-                        widget.label,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: _isHovered ? colors.onPrimary : colors.onSurface,
+                      Flexible(
+                        child: Text(
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          widget.label,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: _isHovered
+                                ? colors.onPrimary
+                                : colors.onSurface,
+                          ),
                         ),
                       ),
                     ],

@@ -6,11 +6,7 @@ import 'neo_fade_theme_data.dart';
 class NeoFadeTheme extends InheritedWidget {
   final NeoFadeThemeData data;
 
-  const NeoFadeTheme({
-    super.key,
-    required this.data,
-    required super.child,
-  });
+  const NeoFadeTheme({super.key, required this.data, required super.child});
 
   static NeoFadeThemeData of(BuildContext context) {
     final theme = context.dependOnInheritedWidgetOfExactType<NeoFadeTheme>();

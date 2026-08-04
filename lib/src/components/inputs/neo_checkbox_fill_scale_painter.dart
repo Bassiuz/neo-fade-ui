@@ -21,7 +21,10 @@ class NeoCheckboxFillScalePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromLTWH(0, 0, size.width, size.height);
-    final rrect = RRect.fromRectAndRadius(rect, Radius.circular(borderRadius - 1.5));
+    final rrect = RRect.fromRectAndRadius(
+      rect,
+      Radius.circular(borderRadius - 1.5),
+    );
 
     // Draw background
     final bgPaint = Paint()..color = backgroundColor;

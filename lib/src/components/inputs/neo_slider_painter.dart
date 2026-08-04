@@ -38,7 +38,8 @@ class NeoSliderPainter extends CustomPainter {
       Radius.circular(effectiveTrackHeight / 2),
     );
 
-    final effectiveInactiveColor = inactiveTrackColor ?? borderColor.withValues(alpha: 0.3);
+    final effectiveInactiveColor =
+        inactiveTrackColor ?? borderColor.withValues(alpha: 0.3);
     final trackPaint = Paint()
       ..color = effectiveInactiveColor
       ..style = PaintingStyle.fill;
@@ -53,9 +54,15 @@ class NeoSliderPainter extends CustomPainter {
       );
 
       final gradientPaint = Paint()
-        ..shader = LinearGradient(
-          colors: [primaryColor, secondaryColor],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, effectiveTrackHeight))
+        ..shader = LinearGradient(colors: [primaryColor, secondaryColor])
+            .createShader(
+              Rect.fromLTWH(
+                trackLeft,
+                trackY,
+                trackWidth,
+                effectiveTrackHeight,
+              ),
+            )
         ..style = PaintingStyle.fill;
       canvas.drawRRect(fillRect, gradientPaint);
     }

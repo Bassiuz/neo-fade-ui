@@ -45,23 +45,23 @@ class NeoSliderPulseGlowPainter extends CustomPainter {
 
     // Radial glow from thumb position
     final glowPaint = Paint()
-      ..shader = RadialGradient(
-        center: Alignment.center,
-        radius: 1.0,
-        colors: [
-          primaryColor.withValues(alpha: 0.5 * pulseIntensity),
-          secondaryColor.withValues(alpha: 0.3 * pulseIntensity),
-          tertiaryColor.withValues(alpha: 0.1 * pulseIntensity),
-          surfaceColor.withValues(alpha: 0.0),
-        ],
-        stops: const [0.0, 0.3, 0.6, 1.0],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, thumbY), radius: glowRadius))
+      ..shader =
+          RadialGradient(
+            center: Alignment.center,
+            radius: 1.0,
+            colors: [
+              primaryColor.withValues(alpha: 0.5 * pulseIntensity),
+              secondaryColor.withValues(alpha: 0.3 * pulseIntensity),
+              tertiaryColor.withValues(alpha: 0.1 * pulseIntensity),
+              surfaceColor.withValues(alpha: 0.0),
+            ],
+            stops: const [0.0, 0.3, 0.6, 1.0],
+          ).createShader(
+            Rect.fromCircle(center: Offset(thumbX, thumbY), radius: glowRadius),
+          )
       ..style = PaintingStyle.fill;
 
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      glowPaint,
-    );
+    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), glowPaint);
 
     // Track background
     final trackRect = RRect.fromRectAndRadius(
@@ -108,12 +108,15 @@ class NeoSliderPulseGlowPainter extends CustomPainter {
       );
 
       final fillPaint = Paint()
-        ..shader = LinearGradient(
-          colors: [
-            primaryColor.withValues(alpha: 0.8),
-            secondaryColor.withValues(alpha: 0.6),
-          ],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight))
+        ..shader =
+            LinearGradient(
+              colors: [
+                primaryColor.withValues(alpha: 0.8),
+                secondaryColor.withValues(alpha: 0.6),
+              ],
+            ).createShader(
+              Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight),
+            )
         ..style = PaintingStyle.fill;
       canvas.drawRRect(fillRect, fillPaint);
     }
@@ -130,37 +133,59 @@ class NeoSliderPulseGlowPainter extends CustomPainter {
 
     // Thumb glow
     final thumbGlowPaint = Paint()
-      ..shader = RadialGradient(
-        colors: [
-          primaryColor.withValues(alpha: 0.8),
-          secondaryColor.withValues(alpha: 0.4),
-          tertiaryColor.withValues(alpha: 0.0),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, thumbY), radius: thumbRadius * 2))
+      ..shader =
+          RadialGradient(
+            colors: [
+              primaryColor.withValues(alpha: 0.8),
+              secondaryColor.withValues(alpha: 0.4),
+              tertiaryColor.withValues(alpha: 0.0),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, thumbY),
+              radius: thumbRadius * 2,
+            ),
+          )
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
-    canvas.drawCircle(Offset(thumbX, thumbY), thumbRadius * 1.5, thumbGlowPaint);
+    canvas.drawCircle(
+      Offset(thumbX, thumbY),
+      thumbRadius * 1.5,
+      thumbGlowPaint,
+    );
 
     // Thumb base
     final thumbBasePaint = Paint()
-      ..shader = RadialGradient(
-        colors: [
-          surfaceColor.withValues(alpha: tintOpacity),
-          surfaceColor.withValues(alpha: tintOpacity * 0.8),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, thumbY), radius: thumbRadius))
+      ..shader =
+          RadialGradient(
+            colors: [
+              surfaceColor.withValues(alpha: tintOpacity),
+              surfaceColor.withValues(alpha: tintOpacity * 0.8),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, thumbY),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
     canvas.drawCircle(Offset(thumbX, thumbY), thumbRadius, thumbBasePaint);
 
     // Thumb gradient
     final thumbGradientPaint = Paint()
-      ..shader = RadialGradient(
-        center: const Alignment(-0.2, -0.2),
-        colors: [
-          primaryColor.withValues(alpha: 0.7),
-          secondaryColor.withValues(alpha: 0.5),
-          tertiaryColor.withValues(alpha: 0.3),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, thumbY), radius: thumbRadius))
+      ..shader =
+          RadialGradient(
+            center: const Alignment(-0.2, -0.2),
+            colors: [
+              primaryColor.withValues(alpha: 0.7),
+              secondaryColor.withValues(alpha: 0.5),
+              tertiaryColor.withValues(alpha: 0.3),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, thumbY),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
     canvas.drawCircle(Offset(thumbX, thumbY), thumbRadius, thumbGradientPaint);
 
@@ -173,16 +198,26 @@ class NeoSliderPulseGlowPainter extends CustomPainter {
 
     // Inner highlight
     final highlightPaint = Paint()
-      ..shader = RadialGradient(
-        center: const Alignment(-0.4, -0.4),
-        radius: 0.6,
-        colors: [
-          const Color(0xFFFFFFFF).withValues(alpha: 0.7),
-          const Color(0xFFFFFFFF).withValues(alpha: 0.0),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, thumbY), radius: thumbRadius))
+      ..shader =
+          RadialGradient(
+            center: const Alignment(-0.4, -0.4),
+            radius: 0.6,
+            colors: [
+              const Color(0xFFFFFFFF).withValues(alpha: 0.7),
+              const Color(0xFFFFFFFF).withValues(alpha: 0.0),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, thumbY),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(thumbX, thumbY), thumbRadius * 0.5, highlightPaint);
+    canvas.drawCircle(
+      Offset(thumbX, thumbY),
+      thumbRadius * 0.5,
+      highlightPaint,
+    );
   }
 
   @override

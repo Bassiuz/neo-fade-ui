@@ -63,7 +63,9 @@ class NeoBottomNavDot extends StatelessWidget {
                       Icon(
                         items[index].icon,
                         size: 24,
-                        color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                        color: isSelected
+                            ? colors.primary
+                            : colors.onSurfaceVariant,
                       ),
                       const SizedBox(height: NeoFadeSpacing.xxs),
                       AnimatedContainer(

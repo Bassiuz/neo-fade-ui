@@ -106,7 +106,9 @@ class NeoCheckboxMinimalState extends State<NeoCheckboxMinimal>
                   width: widget.size,
                   height: widget.size,
                   decoration: BoxDecoration(
-                    color: colors.surface.withValues(alpha: glass.tintOpacity * 0.3),
+                    color: colors.surface.withValues(
+                      alpha: glass.tintOpacity * 0.3,
+                    ),
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
                       color: colors.borderSubtle.withValues(alpha: 0.3),
@@ -136,7 +138,9 @@ class NeoCheckboxMinimalState extends State<NeoCheckboxMinimal>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

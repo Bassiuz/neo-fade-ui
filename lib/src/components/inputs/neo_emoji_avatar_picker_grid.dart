@@ -51,12 +51,14 @@ class NeoEmojiAvatarPickerGridState extends State<NeoEmojiAvatarPickerGrid>
       duration: widget.animationDuration ?? const Duration(milliseconds: 250),
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.8,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
   }
 
   @override
@@ -106,113 +108,122 @@ class NeoEmojiAvatarPickerGridState extends State<NeoEmojiAvatarPickerGrid>
           // Avatar
           GestureDetector(
             onTap: _toggleExpand,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            width: effectiveAvatarSize,
-            height: effectiveAvatarSize,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [colors.primary, colors.secondary],
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              width: effectiveAvatarSize,
+              height: effectiveAvatarSize,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [colors.primary, colors.secondary],
+                ),
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: colors.onPrimary.withValues(alpha: 0.3),
+                  width: 3,
+                ),
+                boxShadow: _isExpanded
+                    ? [
+                        BoxShadow(
+                          color: colors.primary.withValues(alpha: 0.4),
+                          blurRadius: 16,
+                          spreadRadius: 2,
+                        ),
+                      ]
+                    : [],
               ),
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: colors.onPrimary.withValues(alpha: 0.3),
-                width: 3,
-              ),
-              boxShadow: _isExpanded
-                  ? [
-                      BoxShadow(
-                        color: colors.primary.withValues(alpha: 0.4),
-                        blurRadius: 16,
-                        spreadRadius: 2,
-                      ),
-                    ]
-                  : [],
-            ),
-            child: Center(
-              child: Text(
-                widget.selectedEmoji ?? '😀',
-                style: TextStyle(fontSize: effectiveAvatarSize * 0.5),
+              child: Center(
+                child: Text(
+                  widget.selectedEmoji ?? '😀',
+                  style: TextStyle(fontSize: effectiveAvatarSize * 0.5),
+                ),
               ),
             ),
           ),
-        ),
 
-        const SizedBox(height: NeoFadeSpacing.sm),
+          const SizedBox(height: NeoFadeSpacing.sm),
 
-        // Grid popup
-        AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) {
-            if (_controller.value == 0) return const SizedBox.shrink();
+          // Grid popup
+          AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              if (_controller.value == 0) return const SizedBox.shrink();
 
-            return FadeTransition(
-              opacity: _fadeAnimation,
-              child: ScaleTransition(
-                scale: _scaleAnimation,
-                alignment: Alignment.topCenter,
-                child: child,
-              ),
-            );
-          },
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(NeoFadeRadii.lg),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
-              child: Container(
-                width: gridWidth,
-                padding: const EdgeInsets.all(NeoFadeSpacing.md),
-                decoration: BoxDecoration(
-                  color: colors.surface.withValues(alpha: glass.tintOpacity + 0.1),
-                  borderRadius: BorderRadius.circular(NeoFadeRadii.lg),
-                  border: Border.all(
-                    color: colors.border.withValues(alpha: 0.3),
-                    width: 1,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: colors.primary.withValues(alpha: 0.1),
-                      blurRadius: 20,
-                      spreadRadius: 0,
-                    ),
-                  ],
+              return FadeTransition(
+                opacity: _fadeAnimation,
+                child: ScaleTransition(
+                  scale: _scaleAnimation,
+                  alignment: Alignment.topCenter,
+                  child: child,
                 ),
-                child: Wrap(
-                  spacing: NeoFadeSpacing.xs,
-                  runSpacing: NeoFadeSpacing.xs,
-                  children: effectiveEmojis.map((emoji) {
-                    final isSelected = emoji == widget.selectedEmoji;
-                    return GestureDetector(
-                      onTap: () => _selectEmoji(emoji),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        width: effectiveEmojiSize + 12,
-                        height: effectiveEmojiSize + 12,
-                        decoration: BoxDecoration(
-                          color: isSelected
-                              ? colors.primary.withValues(alpha: 0.2)
-                              : colors.surface.withValues(alpha: 0.3),
-                          borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
-                          border: isSelected
-                              ? Border.all(color: colors.primary, width: 2)
-                              : null,
-                        ),
-                        child: Center(
-                          child: Text(
-                            emoji,
-                            style: TextStyle(fontSize: effectiveEmojiSize * 0.7),
+              );
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(NeoFadeRadii.lg),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: glass.blur,
+                  sigmaY: glass.blur,
+                ),
+                child: Container(
+                  width: gridWidth,
+                  padding: const EdgeInsets.all(NeoFadeSpacing.md),
+                  decoration: BoxDecoration(
+                    color: colors.surface.withValues(
+                      alpha: glass.tintOpacity + 0.1,
+                    ),
+                    borderRadius: BorderRadius.circular(NeoFadeRadii.lg),
+                    border: Border.all(
+                      color: colors.border.withValues(alpha: 0.3),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: colors.primary.withValues(alpha: 0.1),
+                        blurRadius: 20,
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Wrap(
+                    spacing: NeoFadeSpacing.xs,
+                    runSpacing: NeoFadeSpacing.xs,
+                    children: effectiveEmojis.map((emoji) {
+                      final isSelected = emoji == widget.selectedEmoji;
+                      return GestureDetector(
+                        onTap: () => _selectEmoji(emoji),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 150),
+                          width: effectiveEmojiSize + 12,
+                          height: effectiveEmojiSize + 12,
+                          decoration: BoxDecoration(
+                            color: isSelected
+                                ? colors.primary.withValues(alpha: 0.2)
+                                : colors.surface.withValues(alpha: 0.3),
+                            borderRadius: BorderRadius.circular(
+                              NeoFadeRadii.sm,
+                            ),
+                            border: isSelected
+                                ? Border.all(color: colors.primary, width: 2)
+                                : null,
+                          ),
+                          child: Center(
+                            child: Text(
+                              emoji,
+                              style: TextStyle(
+                                fontSize: effectiveEmojiSize * 0.7,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
         ],
       ),
     );

@@ -42,9 +42,12 @@ class ComponentBrowserAppState extends State<ComponentBrowserApp> {
           primaryColor: primaryColor,
           secondaryColor: secondaryColor,
           tertiaryColor: tertiaryColor,
-          onPrimaryColorChanged: (color) => setState(() => primaryColor = color),
-          onSecondaryColorChanged: (color) => setState(() => secondaryColor = color),
-          onTertiaryColorChanged: (color) => setState(() => tertiaryColor = color),
+          onPrimaryColorChanged: (color) =>
+              setState(() => primaryColor = color),
+          onSecondaryColorChanged: (color) =>
+              setState(() => secondaryColor = color),
+          onTertiaryColorChanged: (color) =>
+              setState(() => tertiaryColor = color),
         ),
       ),
     );

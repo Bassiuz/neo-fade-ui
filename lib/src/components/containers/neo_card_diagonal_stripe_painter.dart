@@ -39,6 +39,7 @@ class NeoCardDiagonalStripePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(NeoCardDiagonalStripePainter oldDelegate) {
-    return colors != oldDelegate.colors || stripeWidth != oldDelegate.stripeWidth;
+    return colors != oldDelegate.colors ||
+        stripeWidth != oldDelegate.stripeWidth;
   }
 }

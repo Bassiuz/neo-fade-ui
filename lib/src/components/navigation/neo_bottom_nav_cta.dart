@@ -48,8 +48,7 @@ class NeoBottomNavCTA extends StatelessWidget {
     required this.onIndexChanged,
     required this.items,
     required this.onCenterPressed,
-    this.centerIcon =
-        Icons.camera_alt,
+    this.centerIcon = Icons.camera_alt,
     this.animated = true,
     this.height,
     this.ctaSize,

@@ -25,12 +25,14 @@ class NeoSliderPulseGlow extends StatefulWidget {
   State<NeoSliderPulseGlow> createState() => NeoSliderPulseGlowState();
 }
 
-class NeoSliderPulseGlowState extends State<NeoSliderPulseGlow> with SingleTickerProviderStateMixin {
+class NeoSliderPulseGlowState extends State<NeoSliderPulseGlow>
+    with SingleTickerProviderStateMixin {
   bool isDragging = false;
   late AnimationController pulseController;
   late Animation<double> pulseAnimation;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   @override
   void initState() {
@@ -72,8 +74,12 @@ class NeoSliderPulseGlowState extends State<NeoSliderPulseGlow> with SingleTicke
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double thumbRadius = 14.0;
     final double trackWidth = box.size.width - thumbRadius * 2;
-    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 
@@ -105,10 +111,7 @@ class NeoSliderPulseGlowState extends State<NeoSliderPulseGlow> with SingleTicke
               pulseIntensity: pulseAnimation.value,
               isLight: colors.isLight,
             ),
-            child: const SizedBox(
-              height: 56,
-              width: double.infinity,
-            ),
+            child: const SizedBox(height: 56, width: double.infinity),
           );
         },
       ),

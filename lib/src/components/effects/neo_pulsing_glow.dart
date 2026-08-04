@@ -45,7 +45,9 @@ class NeoPulsingGlow extends StatefulWidget {
     this.pulseDuration = const Duration(seconds: 2),
     this.maxGlowRadius = NeoFadeSpacing.lg,
     this.glowOpacity = 0.4,
-    this.borderRadius = const BorderRadius.all(Radius.circular(NeoFadeRadii.md)),
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(NeoFadeRadii.md),
+    ),
     this.enabled = true,
   });
 
@@ -66,12 +68,10 @@ class NeoPulsingGlowState extends State<NeoPulsingGlow>
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     if (widget.enabled) {
       _controller.repeat(reverse: true);

@@ -36,7 +36,8 @@ class NeoTextFieldCornerBadges extends StatefulWidget {
   });
 
   @override
-  State<NeoTextFieldCornerBadges> createState() => NeoTextFieldCornerBadgesState();
+  State<NeoTextFieldCornerBadges> createState() =>
+      NeoTextFieldCornerBadgesState();
 }
 
 class NeoTextFieldCornerBadgesState extends State<NeoTextFieldCornerBadges>
@@ -104,8 +105,9 @@ class NeoTextFieldCornerBadgesState extends State<NeoTextFieldCornerBadges>
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
     final borderRadius = BorderRadius.circular(NeoFadeRadii.input);
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,

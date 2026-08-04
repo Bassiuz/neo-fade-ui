@@ -18,7 +18,10 @@ class ShowcaseCardsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // NeoCard.topBorder() Section
-          Text('NeoCard.topBorder() - Gradient Top Border', style: theme.typography.titleMedium),
+          Text(
+            'NeoCard.topBorder() - Gradient Top Border',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A card with a gradient accent along the top edge.',
@@ -49,7 +52,10 @@ class ShowcaseCardsPage extends StatelessWidget {
                   children: [
                     Icon(Icons.star, color: theme.colors.primary, size: 20),
                     const SizedBox(width: NeoFadeSpacing.xs),
-                    Text('Featured content', style: theme.typography.labelMedium),
+                    Text(
+                      'Featured content',
+                      style: theme.typography.labelMedium,
+                    ),
                   ],
                 ),
               ],
@@ -59,7 +65,10 @@ class ShowcaseCardsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoFeatureCard.iconTop Section
-          Text('NeoFeatureCard.iconTop - Gradient Icon Box', style: theme.typography.titleMedium),
+          Text(
+            'NeoFeatureCard.iconTop - Gradient Icon Box',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'Feature cards with a gradient icon container.',

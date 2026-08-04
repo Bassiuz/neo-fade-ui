@@ -30,10 +30,7 @@ class NeoDropdownOverlay<T> extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(NeoFadeRadii.input),
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
+        filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
         child: CustomPaint(
           painter: GradientBorderPainter(
             colors: [colors.primary, colors.secondary, colors.tertiary],
@@ -142,20 +139,18 @@ class NeoDropdownItemWidgetState<T> extends State<NeoDropdownItemWidget<T>> {
                 child: Text(
                   widget.item.label,
                   style: theme.typography.bodyMedium.copyWith(
-                    color:
-                        widget.isSelected ? colors.primary : colors.onSurface,
-                    fontWeight:
-                        widget.isSelected ? FontWeight.w600 : FontWeight.w400,
+                    color: widget.isSelected
+                        ? colors.primary
+                        : colors.onSurface,
+                    fontWeight: widget.isSelected
+                        ? FontWeight.w600
+                        : FontWeight.w400,
                     decoration: TextDecoration.none,
                   ),
                 ),
               ),
               if (widget.isSelected)
-                Icon(
-                  Icons.check,
-                  size: 18,
-                  color: colors.primary,
-                ),
+                Icon(Icons.check, size: 18, color: colors.primary),
             ],
           ),
         ),

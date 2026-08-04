@@ -29,7 +29,8 @@ class NeoSliderLabeled extends StatefulWidget {
 class NeoSliderLabeledState extends State<NeoSliderLabeled> {
   bool isDragging = false;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   void handleDragStart(DragStartDetails details) {
     setState(() => isDragging = true);
@@ -53,8 +54,12 @@ class NeoSliderLabeledState extends State<NeoSliderLabeled> {
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double thumbWidth = 44.0;
     final double trackWidth = box.size.width - thumbWidth;
-    final double newValue = ((position.dx - thumbWidth / 2) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - thumbWidth / 2) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 

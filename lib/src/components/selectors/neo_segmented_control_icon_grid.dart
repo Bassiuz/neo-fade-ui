@@ -75,7 +75,9 @@ class NeoSegmentedControlIconGrid<T> extends StatelessWidget {
                       ? Icon(
                           segment.icon,
                           size: 20,
-                          color: isSelected ? colors.onPrimary : colors.onSurfaceVariant,
+                          color: isSelected
+                              ? colors.onPrimary
+                              : colors.onSurfaceVariant,
                         )
                       : const SizedBox(width: 20, height: 20),
                 ),

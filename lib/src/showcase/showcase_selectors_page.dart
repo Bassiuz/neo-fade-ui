@@ -27,7 +27,10 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // NeoSegmentedControl.sliding Section
-          Text('NeoSegmentedControl.sliding - Sliding Gradient', style: theme.typography.titleMedium),
+          Text(
+            'NeoSegmentedControl.sliding - Sliding Gradient',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A segmented control with a sliding gradient selection indicator.',
@@ -52,7 +55,10 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // Another NeoSegmentedControl.sliding example
-          Text('NeoSegmentedControl.sliding - Different Options', style: theme.typography.titleMedium),
+          Text(
+            'NeoSegmentedControl.sliding - Different Options',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'The same control with different segment options.',
@@ -76,7 +82,10 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoSegmentedControlIcons Section
-          Text('NeoSegmentedControlIcons - Icons Above Labels', style: theme.typography.titleMedium),
+          Text(
+            'NeoSegmentedControlIcons - Icons Above Labels',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A segmented control with icons displayed above the labels.',
@@ -131,11 +140,20 @@ class ShowcaseSelectorsPageState extends State<ShowcaseSelectorsPage> {
                 const SizedBox(height: NeoFadeSpacing.sm),
                 NeoSegmentedControlIcons<String>(
                   selectedValue: segmentedIconsValue,
-                  onValueChanged: (v) => setState(() => segmentedIconsValue = v),
+                  onValueChanged: (v) =>
+                      setState(() => segmentedIconsValue = v),
                   segments: const [
                     NeoSegment(value: 'list', label: 'List', icon: Icons.list),
-                    NeoSegment(value: 'grid', label: 'Grid', icon: Icons.grid_view),
-                    NeoSegment(value: 'card', label: 'Card', icon: Icons.view_agenda),
+                    NeoSegment(
+                      value: 'grid',
+                      label: 'Grid',
+                      icon: Icons.grid_view,
+                    ),
+                    NeoSegment(
+                      value: 'card',
+                      label: 'Card',
+                      icon: Icons.view_agenda,
+                    ),
                   ],
                 ),
               ],

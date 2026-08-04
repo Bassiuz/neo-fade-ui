@@ -65,17 +65,10 @@ class NeoFeatureCardIconTop extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Icon(
-                    icon,
-                    size: 28,
-                    color: colors.onPrimary,
-                  ),
+                  child: Icon(icon, size: 28, color: colors.onPrimary),
                 ),
                 const SizedBox(height: NeoFadeSpacing.md),
-                Text(
-                  title,
-                  style: typography.titleMedium,
-                ),
+                Text(title, style: typography.titleMedium),
                 if (subtitle != null) ...[
                   const SizedBox(height: NeoFadeSpacing.xs),
                   Text(

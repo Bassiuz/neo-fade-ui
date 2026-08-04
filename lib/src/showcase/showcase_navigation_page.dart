@@ -26,7 +26,10 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // NeoBottomNavCTA Section
-          Text('NeoBottomNavCTA - Floating CTA Button', style: theme.typography.titleMedium),
+          Text(
+            'NeoBottomNavCTA - Floating CTA Button',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A bottom navigation bar with a floating center action button.',
@@ -84,12 +87,19 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
                       constraints: const BoxConstraints(minWidth: 360),
                       child: NeoBottomNavCTA(
                         selectedIndex: bottomNavIndex,
-                        onIndexChanged: (i) => setState(() => bottomNavIndex = i),
+                        onIndexChanged: (i) =>
+                            setState(() => bottomNavIndex = i),
                         items: const [
                           NeoBottomNavItem(icon: Icons.home, label: 'Home'),
                           NeoBottomNavItem(icon: Icons.search, label: 'Search'),
-                          NeoBottomNavItem(icon: Icons.favorite, label: 'Favorites'),
-                          NeoBottomNavItem(icon: Icons.person, label: 'Profile'),
+                          NeoBottomNavItem(
+                            icon: Icons.favorite,
+                            label: 'Favorites',
+                          ),
+                          NeoBottomNavItem(
+                            icon: Icons.person,
+                            label: 'Profile',
+                          ),
                         ],
                         onCenterPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -154,7 +164,10 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
           const SizedBox(height: NeoFadeSpacing.xl),
 
           // NeoFloatingActions Section
-          Text('NeoFloatingActions - Floating Action Bar', style: theme.typography.titleMedium),
+          Text(
+            'NeoFloatingActions - Floating Action Bar',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A minimal liquid glass bar with quick action buttons.',
@@ -173,7 +186,10 @@ class ShowcaseNavigationPageState extends State<ShowcaseNavigationPage> {
             child: Stack(
               children: [
                 Center(
-                  child: Text('Content Area', style: theme.typography.bodySmall),
+                  child: Text(
+                    'Content Area',
+                    style: theme.typography.bodySmall,
+                  ),
                 ),
                 Positioned(
                   left: 0,

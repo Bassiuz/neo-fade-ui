@@ -55,7 +55,7 @@ class NeoFeatureCardIconLeft extends StatelessWidget {
                         colors: [
                           colors.primary,
                           colors.secondary,
-                          colors.tertiary
+                          colors.tertiary,
                         ],
                       ),
                       borderRadius: const BorderRadius.only(
@@ -73,14 +73,11 @@ class NeoFeatureCardIconLeft extends StatelessWidget {
                             padding: const EdgeInsets.all(NeoFadeSpacing.sm),
                             decoration: BoxDecoration(
                               color: colors.primary.withValues(alpha: 0.15),
-                              borderRadius:
-                                  BorderRadius.circular(NeoFadeRadii.md),
+                              borderRadius: BorderRadius.circular(
+                                NeoFadeRadii.md,
+                              ),
                             ),
-                            child: Icon(
-                              icon,
-                              size: 24,
-                              color: colors.primary,
-                            ),
+                            child: Icon(icon, size: 24, color: colors.primary),
                           ),
                           const SizedBox(width: NeoFadeSpacing.md),
                           Expanded(
@@ -88,10 +85,7 @@ class NeoFeatureCardIconLeft extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  title,
-                                  style: typography.titleSmall,
-                                ),
+                                Text(title, style: typography.titleSmall),
                                 if (subtitle != null) ...[
                                   const SizedBox(height: NeoFadeSpacing.xxs),
                                   Text(

@@ -21,10 +21,7 @@ class GradientUnderlinePainter extends CustomPainter {
       ..color = baseColor
       ..style = PaintingStyle.fill;
 
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      basePaint,
-    );
+    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), basePaint);
 
     if (progress > 0) {
       final gradientPaint = Paint()

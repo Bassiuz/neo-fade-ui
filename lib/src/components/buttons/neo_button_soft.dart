@@ -73,7 +73,9 @@ class NeoButtonSoftState extends State<NeoButtonSoft>
                   spreadRadius: 0,
                 ),
                 BoxShadow(
-                  color: colors.secondary.withValues(alpha: 0.2 * glowIntensity),
+                  color: colors.secondary.withValues(
+                    alpha: 0.2 * glowIntensity,
+                  ),
                   blurRadius: NeoFadeSpacing.xl * glowIntensity,
                   offset: const Offset(0, 4),
                 ),
@@ -92,7 +94,9 @@ class NeoButtonSoftState extends State<NeoButtonSoft>
                 vertical: NeoFadeSpacing.sm,
               ),
               decoration: BoxDecoration(
-                color: colors.surface.withValues(alpha: glass.tintOpacity + 0.1),
+                color: colors.surface.withValues(
+                  alpha: glass.tintOpacity + 0.1,
+                ),
                 borderRadius: BorderRadius.circular(NeoFadeRadii.md),
                 border: Border.all(
                   color: colors.primary.withValues(alpha: 0.3),
@@ -106,12 +110,16 @@ class NeoButtonSoftState extends State<NeoButtonSoft>
                     Icon(widget.icon, size: 18, color: colors.primary),
                     const SizedBox(width: NeoFadeSpacing.xs),
                   ],
-                  Text(
-                    widget.label,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: colors.primary,
+                  Flexible(
+                    child: Text(
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      widget.label,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: colors.primary,
+                      ),
                     ),
                   ),
                 ],

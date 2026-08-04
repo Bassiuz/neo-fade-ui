@@ -174,9 +174,4 @@ class NeoTooltipState extends State<NeoTooltip>
 }
 
 /// Position of the tooltip relative to its target.
-enum NeoTooltipPosition {
-  top,
-  bottom,
-  left,
-  right,
-}
+enum NeoTooltipPosition { top, bottom, left, right }

@@ -29,17 +29,16 @@ class NeoButton extends StatefulWidget {
     double? borderRadius,
     TextStyle? textStyle,
     double? iconSize,
-  }) =>
-      NeoButtonFilled(
-        key: key,
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-        padding: padding,
-        borderRadius: borderRadius,
-        textStyle: textStyle,
-        iconSize: iconSize,
-      );
+  }) => NeoButtonFilled(
+    key: key,
+    label: label,
+    icon: icon,
+    onPressed: onPressed,
+    padding: padding,
+    borderRadius: borderRadius,
+    textStyle: textStyle,
+    iconSize: iconSize,
+  );
 
   /// Creates an outlined button with gradient border.
   static NeoButtonGradientBorder gradientBorder({
@@ -52,18 +51,17 @@ class NeoButton extends StatefulWidget {
     double? borderWidth,
     TextStyle? textStyle,
     double? iconSize,
-  }) =>
-      NeoButtonGradientBorder(
-        key: key,
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-        padding: padding,
-        borderRadius: borderRadius,
-        borderWidth: borderWidth,
-        textStyle: textStyle,
-        iconSize: iconSize,
-      );
+  }) => NeoButtonGradientBorder(
+    key: key,
+    label: label,
+    icon: icon,
+    onPressed: onPressed,
+    padding: padding,
+    borderRadius: borderRadius,
+    borderWidth: borderWidth,
+    textStyle: textStyle,
+    iconSize: iconSize,
+  );
 
   /// Creates a pill-shaped button with gradient on hover.
   static NeoButtonPill pill({
@@ -71,13 +69,7 @@ class NeoButton extends StatefulWidget {
     required String label,
     IconData? icon,
     VoidCallback? onPressed,
-  }) =>
-      NeoButtonPill(
-        key: key,
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-      );
+  }) => NeoButtonPill(key: key, label: label, icon: icon, onPressed: onPressed);
 
   /// Creates a soft button with gradient glow shadow.
   static NeoButtonSoft soft({
@@ -85,13 +77,7 @@ class NeoButton extends StatefulWidget {
     required String label,
     IconData? icon,
     VoidCallback? onPressed,
-  }) =>
-      NeoButtonSoft(
-        key: key,
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-      );
+  }) => NeoButtonSoft(key: key, label: label, icon: icon, onPressed: onPressed);
 
   final Widget? child;
   final String? label;
@@ -133,7 +119,8 @@ class NeoButton extends StatefulWidget {
 }
 
 /// State for [NeoButton], managing press animations and hover/focus interactions.
-class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixin {
+class NeoButtonState extends State<NeoButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
   late Animation<double> _opacityAnimation;
@@ -141,7 +128,8 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
   bool _isHovered = false;
   bool _isFocused = false;
 
-  bool get _isEnabled => widget.enabled && !widget.loading && widget.onPressed != null;
+  bool get _isEnabled =>
+      widget.enabled && !widget.loading && widget.onPressed != null;
 
   @override
   void initState() {
@@ -150,11 +138,18 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
       duration: NeoFadeAnimations.fast,
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: NeoFadeAnimations.pressedScale).animate(
-      CurvedAnimation(parent: _animationController, curve: NeoFadeAnimations.defaultCurve),
-    );
+    _scaleAnimation =
+        Tween<double>(begin: 1.0, end: NeoFadeAnimations.pressedScale).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: NeoFadeAnimations.defaultCurve,
+          ),
+        );
     _opacityAnimation = Tween<double>(begin: 1.0, end: 0.8).animate(
-      CurvedAnimation(parent: _animationController, curve: NeoFadeAnimations.defaultCurve),
+      CurvedAnimation(
+        parent: _animationController,
+        curve: NeoFadeAnimations.defaultCurve,
+      ),
     );
   }
 
@@ -203,20 +198,29 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
       style: widget.style,
     );
 
-    final effectiveOpacity = _isEnabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
-    final hoverOpacityBoost = _isHovered ? NeoFadeAnimations.hoverOpacityIncrease : 0.0;
+    final effectiveOpacity = _isEnabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
+    final hoverOpacityBoost = _isHovered
+        ? NeoFadeAnimations.hoverOpacityIncrease
+        : 0.0;
 
     final backgroundColor = resolvedStyle.backgroundColor!;
     final foregroundColor = resolvedStyle.foregroundColor!;
     final borderRadius = resolvedStyle.borderRadius!;
 
     final innerBorderColor = colors.isLight
-        ? const Color(0xFFFFFFFF).withValues(alpha: resolvedStyle.innerBorderOpacity!)
-        : const Color(0xFFFFFFFF).withValues(alpha: resolvedStyle.innerBorderOpacity!);
+        ? const Color(
+            0xFFFFFFFF,
+          ).withValues(alpha: resolvedStyle.innerBorderOpacity!)
+        : const Color(
+            0xFFFFFFFF,
+          ).withValues(alpha: resolvedStyle.innerBorderOpacity!);
 
     final focusBorderColor = _isFocused ? colors.borderFocus : null;
 
-    final gradientColors = widget.gradientBorderColors ??
+    final gradientColors =
+        widget.gradientBorderColors ??
         [colors.primary, colors.secondary, colors.tertiary];
 
     return Focus(
@@ -224,7 +228,9 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
       autofocus: widget.autofocus,
       onFocusChange: _handleFocusChange,
       child: MouseRegion(
-        cursor: _isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+        cursor: _isEnabled
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
         onEnter: _handleHoverEnter,
         onExit: _handleHoverExit,
         child: GestureDetector(
@@ -253,11 +259,11 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
                 border: focusBorderColor != null
                     ? Border.all(color: focusBorderColor, width: 2)
                     : resolvedStyle.borderWidth! > 0
-                        ? Border.all(
-                            color: resolvedStyle.borderColor!,
-                            width: resolvedStyle.borderWidth!,
-                          )
-                        : null,
+                    ? Border.all(
+                        color: resolvedStyle.borderColor!,
+                        width: resolvedStyle.borderWidth!,
+                      )
+                    : null,
               ),
               child: ClipRRect(
                 borderRadius: borderRadius,
@@ -277,7 +283,10 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
                             padding: resolvedStyle.padding,
                             decoration: BoxDecoration(
                               color: backgroundColor.withValues(
-                                alpha: (resolvedStyle.tintOpacity! + hoverOpacityBoost).clamp(0.0, 1.0),
+                                alpha:
+                                    (resolvedStyle.tintOpacity! +
+                                            hoverOpacityBoost)
+                                        .clamp(0.0, 1.0),
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -294,7 +303,10 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
                             padding: resolvedStyle.padding,
                             decoration: BoxDecoration(
                               color: backgroundColor.withValues(
-                                alpha: (resolvedStyle.tintOpacity! + hoverOpacityBoost).clamp(0.0, 1.0),
+                                alpha:
+                                    (resolvedStyle.tintOpacity! +
+                                            hoverOpacityBoost)
+                                        .clamp(0.0, 1.0),
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -352,7 +364,9 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
     final children = <Widget>[];
 
     if (hasIcon) {
-      children.add(Icon(widget.icon, color: foregroundColor, size: fontSize + 4));
+      children.add(
+        Icon(widget.icon, color: foregroundColor, size: fontSize + 4),
+      );
       if (hasLabel) {
         children.add(const SizedBox(width: 8));
       }
@@ -366,7 +380,9 @@ class NeoButtonState extends State<NeoButton> with SingleTickerProviderStateMixi
       if (hasLabel || hasIcon) {
         children.add(const SizedBox(width: 8));
       }
-      children.add(Icon(widget.trailingIcon, color: foregroundColor, size: fontSize + 4));
+      children.add(
+        Icon(widget.trailingIcon, color: foregroundColor, size: fontSize + 4),
+      );
     }
 
     if (children.length == 1) {
@@ -393,7 +409,8 @@ class CircularProgressIndicator extends StatefulWidget {
   });
 
   @override
-  State<CircularProgressIndicator> createState() => CircularProgressIndicatorState();
+  State<CircularProgressIndicator> createState() =>
+      CircularProgressIndicatorState();
 }
 
 /// State for [CircularProgressIndicator], driving the spinning animation.

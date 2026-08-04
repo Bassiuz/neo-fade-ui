@@ -154,9 +154,9 @@ class NeoDropdownState<T> extends State<NeoDropdown<T>>
     final glass = theme.glass;
 
     final selectedItem = widget.items.cast<NeoDropdownItem<T>?>().firstWhere(
-          (item) => item?.value == widget.value,
-          orElse: () => null,
-        );
+      (item) => item?.value == widget.value,
+      orElse: () => null,
+    );
 
     final displayText = selectedItem?.label ?? widget.hint ?? '';
     final isHint = selectedItem == null;
@@ -172,10 +172,7 @@ class NeoDropdownState<T> extends State<NeoDropdown<T>>
           child: ClipRRect(
             borderRadius: BorderRadius.circular(NeoFadeRadii.input),
             child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: glass.blur,
-                sigmaY: glass.blur,
-              ),
+              filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
               child: CustomPaint(
                 painter: GradientBorderPainter(
                   colors: _isOpen
@@ -203,8 +200,8 @@ class NeoDropdownState<T> extends State<NeoDropdown<T>>
                           style: theme.typography.bodyMedium.copyWith(
                             color: widget.enabled
                                 ? (isHint
-                                    ? colors.onSurfaceVariant
-                                    : colors.onSurface)
+                                      ? colors.onSurfaceVariant
+                                      : colors.onSurface)
                                 : colors.disabledText,
                             decoration: TextDecoration.none,
                           ),

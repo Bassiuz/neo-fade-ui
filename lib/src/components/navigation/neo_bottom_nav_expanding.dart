@@ -55,7 +55,9 @@ class NeoBottomNavExpanding extends StatelessWidget {
                   duration: NeoFadeAnimations.normal,
                   curve: NeoFadeAnimations.defaultCurve,
                   padding: EdgeInsets.symmetric(
-                    horizontal: isSelected ? NeoFadeSpacing.md : NeoFadeSpacing.sm,
+                    horizontal: isSelected
+                        ? NeoFadeSpacing.md
+                        : NeoFadeSpacing.sm,
                     vertical: NeoFadeSpacing.xs,
                   ),
                   decoration: BoxDecoration(
@@ -76,7 +78,9 @@ class NeoBottomNavExpanding extends StatelessWidget {
                       Icon(
                         items[index].icon,
                         size: 22,
-                        color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                        color: isSelected
+                            ? colors.primary
+                            : colors.onSurfaceVariant,
                       ),
                       if (isSelected && items[index].label != null) ...[
                         const SizedBox(width: NeoFadeSpacing.xs),

@@ -81,11 +81,7 @@ class NeoTextButtonState extends State<NeoTextButton>
               left: widget.iconAfter ? NeoFadeSpacing.xs : 0,
               right: widget.iconAfter ? 0 : NeoFadeSpacing.xs,
             ),
-            child: Icon(
-              widget.icon,
-              size: 16,
-              color: textColor,
-            ),
+            child: Icon(widget.icon, size: 16, color: textColor),
           )
         : null;
 
@@ -119,10 +115,14 @@ class NeoTextButtonState extends State<NeoTextButton>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (!widget.iconAfter && iconWidget != null) iconWidget,
-                      Text(
-                        widget.label,
-                        style: theme.typography.labelLarge.copyWith(
-                          color: textColor,
+                      Flexible(
+                        child: Text(
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          widget.label,
+                          style: theme.typography.labelLarge.copyWith(
+                            color: textColor,
+                          ),
                         ),
                       ),
                       if (widget.iconAfter && iconWidget != null) iconWidget,

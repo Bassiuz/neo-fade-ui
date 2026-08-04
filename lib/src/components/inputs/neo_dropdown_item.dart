@@ -6,9 +6,5 @@ class NeoDropdownItem<T> {
   final String label;
   final IconData? icon;
 
-  const NeoDropdownItem({
-    required this.value,
-    required this.label,
-    this.icon,
-  });
+  const NeoDropdownItem({required this.value, required this.label, this.icon});
 }

@@ -44,8 +44,12 @@ class NeoSegmentedControlUnderline<T> extends StatelessWidget {
                       duration: NeoFadeAnimations.fast,
                       style: TextStyle(
                         fontSize: 14,
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                        color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                        fontWeight: isSelected
+                            ? FontWeight.w600
+                            : FontWeight.normal,
+                        color: isSelected
+                            ? colors.primary
+                            : colors.onSurfaceVariant,
                       ),
                       child: Text(segment.label),
                     ),
@@ -74,7 +78,11 @@ class NeoSegmentedControlUnderline<T> extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [colors.primary, colors.secondary, colors.tertiary],
+                        colors: [
+                          colors.primary,
+                          colors.secondary,
+                          colors.tertiary,
+                        ],
                       ),
                       borderRadius: BorderRadius.circular(1),
                       boxShadow: [

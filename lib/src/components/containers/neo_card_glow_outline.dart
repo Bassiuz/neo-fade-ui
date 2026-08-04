@@ -39,7 +39,8 @@ class NeoCardGlowOutline extends StatefulWidget {
   State<NeoCardGlowOutline> createState() => NeoCardGlowOutlineState();
 }
 
-class NeoCardGlowOutlineState extends State<NeoCardGlowOutline> with SingleTickerProviderStateMixin {
+class NeoCardGlowOutlineState extends State<NeoCardGlowOutline>
+    with SingleTickerProviderStateMixin {
   AnimationController? animationController;
 
   @override
@@ -65,8 +66,10 @@ class NeoCardGlowOutlineState extends State<NeoCardGlowOutline> with SingleTicke
     final colors = theme.colors;
     final glass = theme.glass;
 
-    final effectivePadding = widget.padding ?? const EdgeInsets.all(NeoFadeSpacing.cardPadding);
-    final effectiveBorderRadius = widget.borderRadius ?? BorderRadius.circular(NeoFadeRadii.card);
+    final effectivePadding =
+        widget.padding ?? const EdgeInsets.all(NeoFadeSpacing.cardPadding);
+    final effectiveBorderRadius =
+        widget.borderRadius ?? BorderRadius.circular(NeoFadeRadii.card);
     final effectiveBorderWidth = widget.borderWidth ?? NeoFadeSpacing.xxs;
 
     final gradientColors = [
@@ -77,19 +80,36 @@ class NeoCardGlowOutlineState extends State<NeoCardGlowOutline> with SingleTicke
     ];
 
     final innerBorderRadius = BorderRadius.only(
-      topLeft: Radius.circular((effectiveBorderRadius.topLeft.x - effectiveBorderWidth).clamp(0, double.infinity)),
-      topRight: Radius.circular((effectiveBorderRadius.topRight.x - effectiveBorderWidth).clamp(0, double.infinity)),
-      bottomLeft: Radius.circular((effectiveBorderRadius.bottomLeft.x - effectiveBorderWidth).clamp(0, double.infinity)),
-      bottomRight: Radius.circular((effectiveBorderRadius.bottomRight.x - effectiveBorderWidth).clamp(0, double.infinity)),
+      topLeft: Radius.circular(
+        (effectiveBorderRadius.topLeft.x - effectiveBorderWidth).clamp(
+          0,
+          double.infinity,
+        ),
+      ),
+      topRight: Radius.circular(
+        (effectiveBorderRadius.topRight.x - effectiveBorderWidth).clamp(
+          0,
+          double.infinity,
+        ),
+      ),
+      bottomLeft: Radius.circular(
+        (effectiveBorderRadius.bottomLeft.x - effectiveBorderWidth).clamp(
+          0,
+          double.infinity,
+        ),
+      ),
+      bottomRight: Radius.circular(
+        (effectiveBorderRadius.bottomRight.x - effectiveBorderWidth).clamp(
+          0,
+          double.infinity,
+        ),
+      ),
     );
 
     final cardContent = ClipRRect(
       borderRadius: innerBorderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
+        filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
         child: Container(
           margin: EdgeInsets.all(effectiveBorderWidth),
           padding: effectivePadding,
@@ -111,7 +131,9 @@ class NeoCardGlowOutlineState extends State<NeoCardGlowOutline> with SingleTicke
               borderRadius: effectiveBorderRadius,
               boxShadow: [
                 BoxShadow(
-                  color: colors.primary.withValues(alpha: 0.2 + (animationController!.value * 0.1)),
+                  color: colors.primary.withValues(
+                    alpha: 0.2 + (animationController!.value * 0.1),
+                  ),
                   blurRadius: NeoFadeSpacing.sm,
                   spreadRadius: 0,
                 ),

@@ -58,18 +58,13 @@ class NeoSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     } else if (title != null) {
       titleContent = Text(
         title!,
-        style: typography.titleLarge.copyWith(
-          color: colors.onSurface,
-        ),
+        style: typography.titleLarge.copyWith(color: colors.onSurface),
       );
     }
 
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: effectiveBlur,
-          sigmaY: effectiveBlur,
-        ),
+        filter: ImageFilter.blur(sigmaX: effectiveBlur, sigmaY: effectiveBlur),
         child: Container(
           decoration: BoxDecoration(
             color: colors.surface.withValues(
@@ -80,18 +75,16 @@ class NeoSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
             fit: StackFit.expand,
             children: [
               if (flexibleSpace != null)
-                Opacity(
-                  opacity: 1 - progress,
-                  child: flexibleSpace,
-                ),
+                Opacity(opacity: 1 - progress, child: flexibleSpace),
               Positioned(
                 left: 0,
                 right: 0,
                 bottom: gradientBorderHeight,
                 height: collapsedHeight,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.lg),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: NeoFadeSpacing.lg,
+                  ),
                   child: Row(
                     children: [
                       if (leading != null) ...[
@@ -108,10 +101,7 @@ class NeoSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
                             ),
                           )
                         else
-                          Opacity(
-                            opacity: progress,
-                            child: titleContent,
-                          ),
+                          Opacity(opacity: progress, child: titleContent),
                       ] else if (!centerTitle)
                         const Spacer(),
                       if (centerTitle) const Spacer(),

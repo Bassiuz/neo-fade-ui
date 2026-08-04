@@ -36,7 +36,8 @@ class NeoTextFieldFloatingLabel extends StatefulWidget {
   });
 
   @override
-  State<NeoTextFieldFloatingLabel> createState() => NeoTextFieldFloatingLabelState();
+  State<NeoTextFieldFloatingLabel> createState() =>
+      NeoTextFieldFloatingLabelState();
 }
 
 class NeoTextFieldFloatingLabelState extends State<NeoTextFieldFloatingLabel>
@@ -128,8 +129,9 @@ class NeoTextFieldFloatingLabelState extends State<NeoTextFieldFloatingLabel>
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
     final borderRadius = BorderRadius.circular(NeoFadeRadii.input);
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,
@@ -148,7 +150,8 @@ class NeoTextFieldFloatingLabelState extends State<NeoTextFieldFloatingLabel>
                             alpha: 0.3 * _glowAnimation.value,
                           ),
                           blurRadius: NeoFadeSpacing.lg * _glowAnimation.value,
-                          spreadRadius: NeoFadeSpacing.xxs * i * _glowAnimation.value,
+                          spreadRadius:
+                              NeoFadeSpacing.xxs * i * _glowAnimation.value,
                         ),
                     ]
                   : null,
@@ -158,7 +161,8 @@ class NeoTextFieldFloatingLabelState extends State<NeoTextFieldFloatingLabel>
               padding: EdgeInsets.only(
                 left: NeoFadeSpacing.inputPaddingHorizontal,
                 right: NeoFadeSpacing.inputPaddingHorizontal,
-                top: NeoFadeSpacing.inputPaddingVertical +
+                top:
+                    NeoFadeSpacing.inputPaddingVertical +
                     (_floatAnimation.value * NeoFadeSpacing.md),
                 bottom: NeoFadeSpacing.inputPaddingVertical,
               ),
@@ -167,12 +171,15 @@ class NeoTextFieldFloatingLabelState extends State<NeoTextFieldFloatingLabel>
                 children: [
                   Positioned(
                     left: 0,
-                    top: -NeoFadeSpacing.md * _floatAnimation.value -
-                        NeoFadeSpacing.inputPaddingVertical * (1 - _floatAnimation.value),
+                    top:
+                        -NeoFadeSpacing.md * _floatAnimation.value -
+                        NeoFadeSpacing.inputPaddingVertical *
+                            (1 - _floatAnimation.value),
                     child: AnimatedDefaultTextStyle(
                       duration: NeoFadeAnimations.fast,
                       style: TextStyle(
-                        fontSize: typography.bodyMedium.fontSize! -
+                        fontSize:
+                            typography.bodyMedium.fontSize! -
                             (_floatAnimation.value * 2),
                         color: _isFocused
                             ? colors.primary

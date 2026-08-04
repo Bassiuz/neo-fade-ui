@@ -46,14 +46,16 @@ class NeoIconButton extends StatefulWidget {
 }
 
 /// State for [NeoIconButton], managing press animations and hover/focus interactions.
-class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderStateMixin {
+class NeoIconButtonState extends State<NeoIconButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
 
   bool _isHovered = false;
   bool _isFocused = false;
 
-  bool get _isEnabled => widget.enabled && !widget.loading && widget.onPressed != null;
+  bool get _isEnabled =>
+      widget.enabled && !widget.loading && widget.onPressed != null;
 
   @override
   void initState() {
@@ -62,9 +64,13 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
       duration: NeoFadeAnimations.fast,
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: NeoFadeAnimations.pressedScale).animate(
-      CurvedAnimation(parent: _animationController, curve: NeoFadeAnimations.defaultCurve),
-    );
+    _scaleAnimation =
+        Tween<double>(begin: 1.0, end: NeoFadeAnimations.pressedScale).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: NeoFadeAnimations.defaultCurve,
+          ),
+        );
   }
 
   @override
@@ -128,7 +134,9 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
 
-    final effectiveOpacity = _isEnabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = _isEnabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     Color backgroundColor;
     Color iconColor;
@@ -154,7 +162,9 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
     }
 
     final innerBorderOpacity = colors.isLight ? 0.3 : 0.15;
-    final innerBorderColor = const Color(0xFFFFFFFF).withValues(alpha: innerBorderOpacity);
+    final innerBorderColor = const Color(
+      0xFFFFFFFF,
+    ).withValues(alpha: innerBorderOpacity);
 
     final borderRadius = NeoFadeRadii.fullRadius;
 
@@ -180,8 +190,8 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
           border: _isFocused
               ? Border.all(color: colors.borderFocus, width: 2)
               : widget.variant == NeoButtonVariant.outlined
-                  ? Border.all(color: colors.primary, width: 1.5)
-                  : null,
+              ? Border.all(color: colors.primary, width: 1.5)
+              : null,
         ),
         child: ClipOval(
           child: BackdropFilter(
@@ -206,11 +216,7 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
                           height: _iconSize,
                           child: _buildLoadingIndicator(iconColor),
                         )
-                      : Icon(
-                          widget.icon,
-                          size: _iconSize,
-                          color: iconColor,
-                        ),
+                      : Icon(widget.icon, size: _iconSize, color: iconColor),
                 ),
               ),
             ),
@@ -224,7 +230,9 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
       autofocus: widget.autofocus,
       onFocusChange: _handleFocusChange,
       child: MouseRegion(
-        cursor: _isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+        cursor: _isEnabled
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
         onEnter: _handleHoverEnter,
         onExit: _handleHoverExit,
         child: GestureDetector(
@@ -239,10 +247,7 @@ class NeoIconButtonState extends State<NeoIconButton> with SingleTickerProviderS
     );
 
     if (widget.tooltip != null) {
-      return Tooltip(
-        message: widget.tooltip!,
-        child: button,
-      );
+      return Tooltip(message: widget.tooltip!, child: button);
     }
 
     return button;
@@ -333,17 +338,10 @@ class Tooltip extends StatelessWidget {
   final String message;
   final Widget child;
 
-  const Tooltip({
-    super.key,
-    required this.message,
-    required this.child,
-  });
+  const Tooltip({super.key, required this.message, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      label: message,
-      child: child,
-    );
+    return Semantics(label: message, child: child);
   }
 }

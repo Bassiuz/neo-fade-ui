@@ -73,89 +73,86 @@ class NeoSnackbar extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(NeoFadeRadii.md),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
-        child: Container(
-          constraints: const BoxConstraints(minWidth: 288, maxWidth: 568),
-          decoration: BoxDecoration(
-            color: colors.surface.withValues(alpha: glass.tintOpacity + 0.1),
-            borderRadius: BorderRadius.circular(NeoFadeRadii.md),
-            boxShadow: [
-              BoxShadow(
-                color: accentColors[0].withValues(alpha: 0.2),
-                blurRadius: 12,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  NeoFadeSpacing.lg,
-                  NeoFadeSpacing.md,
-                  NeoFadeSpacing.md,
-                  NeoFadeSpacing.md,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
+          child: Container(
+            constraints: const BoxConstraints(minWidth: 288, maxWidth: 568),
+            decoration: BoxDecoration(
+              color: colors.surface.withValues(alpha: glass.tintOpacity + 0.1),
+              borderRadius: BorderRadius.circular(NeoFadeRadii.md),
+              boxShadow: [
+                BoxShadow(
+                  color: accentColors[0].withValues(alpha: 0.2),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
                 ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        message,
-                        style: theme.typography.bodyMedium.copyWith(
-                          color: colors.onSurface,
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    NeoFadeSpacing.lg,
+                    NeoFadeSpacing.md,
+                    NeoFadeSpacing.md,
+                    NeoFadeSpacing.md,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          message,
+                          style: theme.typography.bodyMedium.copyWith(
+                            color: colors.onSurface,
+                          ),
                         ),
                       ),
-                    ),
-                    if (actionLabel != null) ...[
-                      const SizedBox(width: NeoFadeSpacing.sm),
-                      GestureDetector(
-                        onTap: onAction,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Text(
-                            actionLabel!,
-                            style: theme.typography.labelLarge.copyWith(
-                              color: colors.primary,
+                      if (actionLabel != null) ...[
+                        const SizedBox(width: NeoFadeSpacing.sm),
+                        GestureDetector(
+                          onTap: onAction,
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: Text(
+                              actionLabel!,
+                              style: theme.typography.labelLarge.copyWith(
+                                color: colors.primary,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                    if (onDismiss != null) ...[
-                      const SizedBox(width: NeoFadeSpacing.xs),
-                      GestureDetector(
-                        onTap: onDismiss,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Icon(
-                            Icons.close,
-                            size: 18,
-                            color: colors.onSurfaceVariant,
+                      ],
+                      if (onDismiss != null) ...[
+                        const SizedBox(width: NeoFadeSpacing.xs),
+                        GestureDetector(
+                          onTap: onDismiss,
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: Icon(
+                              Icons.close,
+                              size: 18,
+                              color: colors.onSurfaceVariant,
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ],
-                  ],
-                ),
-              ),
-              Container(
-                height: 3,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: accentColors),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(NeoFadeRadii.md),
-                    bottomRight: Radius.circular(NeoFadeRadii.md),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  height: 3,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: accentColors),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(NeoFadeRadii.md),
+                      bottomRight: Radius.circular(NeoFadeRadii.md),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
         ),
       ),
     );
@@ -163,9 +160,4 @@ class NeoSnackbar extends StatelessWidget {
 }
 
 /// Type of snackbar that determines the accent color.
-enum NeoSnackbarType {
-  info,
-  success,
-  warning,
-  error,
-}
+enum NeoSnackbarType { info, success, warning, error }

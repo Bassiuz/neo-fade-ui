@@ -54,8 +54,10 @@ class NeoSwitchBouncyState extends State<NeoSwitchBouncy>
         weight: 40,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.15, end: 1.0)
-            .chain(CurveTween(curve: Curves.elasticOut)),
+        tween: Tween<double>(
+          begin: 1.15,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.elasticOut)),
         weight: 40,
       ),
     ]).animate(_controller);
@@ -127,14 +129,16 @@ class NeoSwitchBouncyState extends State<NeoSwitchBouncy>
                           end: Alignment.bottomRight,
                           colors: [
                             Color.lerp(
-                              colors.surfaceVariant
-                                  .withValues(alpha: glass.tintOpacity),
+                              colors.surfaceVariant.withValues(
+                                alpha: glass.tintOpacity,
+                              ),
                               colors.primary.withValues(alpha: 0.3),
                               _positionAnimation.value,
                             )!,
                             Color.lerp(
-                              colors.surfaceVariant
-                                  .withValues(alpha: glass.tintOpacity * 0.8),
+                              colors.surfaceVariant.withValues(
+                                alpha: glass.tintOpacity * 0.8,
+                              ),
                               colors.secondary.withValues(alpha: 0.3),
                               _positionAnimation.value,
                             )!,
@@ -153,9 +157,12 @@ class NeoSwitchBouncyState extends State<NeoSwitchBouncy>
                       child: Stack(
                         children: [
                           Positioned(
-                            left: thumbPadding +
+                            left:
+                                thumbPadding +
                                 (_positionAnimation.value *
-                                    (trackWidth - thumbSize - thumbPadding * 2)),
+                                    (trackWidth -
+                                        thumbSize -
+                                        thumbPadding * 2)),
                             top: thumbPadding,
                             child: Transform.scale(
                               scale: _scaleAnimation.value,
@@ -167,15 +174,13 @@ class NeoSwitchBouncyState extends State<NeoSwitchBouncy>
                                   gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
-                                    colors: [
-                                      colors.primary,
-                                      colors.secondary,
-                                    ],
+                                    colors: [colors.primary, colors.secondary],
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color:
-                                          colors.primary.withValues(alpha: 0.4),
+                                      color: colors.primary.withValues(
+                                        alpha: 0.4,
+                                      ),
                                       blurRadius: 8,
                                       offset: const Offset(0, 2),
                                     ),
@@ -187,8 +192,9 @@ class NeoSwitchBouncyState extends State<NeoSwitchBouncy>
                                     height: thumbSize * 0.5,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: colors.surface
-                                          .withValues(alpha: 0.9),
+                                      color: colors.surface.withValues(
+                                        alpha: 0.9,
+                                      ),
                                     ),
                                   ),
                                 ),

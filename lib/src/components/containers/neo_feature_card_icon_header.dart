@@ -64,21 +64,14 @@ class NeoFeatureCardIconHeader extends StatelessWidget {
                       topRight: Radius.circular(NeoFadeRadii.lg),
                     ),
                   ),
-                  child: Icon(
-                    icon,
-                    size: 48,
-                    color: colors.primary,
-                  ),
+                  child: Icon(icon, size: 48, color: colors.primary),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(NeoFadeSpacing.md),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: typography.titleMedium,
-                      ),
+                      Text(title, style: typography.titleMedium),
                       if (subtitle != null) ...[
                         const SizedBox(height: NeoFadeSpacing.xs),
                         Text(

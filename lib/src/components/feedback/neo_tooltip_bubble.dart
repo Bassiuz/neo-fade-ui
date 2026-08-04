@@ -40,17 +40,16 @@ class NeoTooltipBubble extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
             child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: glass.blur,
-                sigmaY: glass.blur,
-              ),
+              filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: NeoFadeSpacing.sm,
                   vertical: NeoFadeSpacing.xs,
                 ),
                 decoration: BoxDecoration(
-                  color: colors.surface.withValues(alpha: glass.tintOpacity + 0.2),
+                  color: colors.surface.withValues(
+                    alpha: glass.tintOpacity + 0.2,
+                  ),
                   borderRadius: BorderRadius.circular(NeoFadeRadii.sm),
                   border: Border.all(
                     color: colors.primary.withValues(alpha: 0.3),
@@ -112,10 +111,7 @@ class NeoTooltipPointerPainter extends CustomPainter {
   final List<Color> colors;
   final bool isPointingUp;
 
-  NeoTooltipPointerPainter({
-    required this.colors,
-    required this.isPointingUp,
-  });
+  NeoTooltipPointerPainter({required this.colors, required this.isPointingUp});
 
   @override
   void paint(Canvas canvas, Size size) {

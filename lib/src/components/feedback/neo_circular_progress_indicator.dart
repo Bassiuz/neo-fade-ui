@@ -133,7 +133,9 @@ class NeoCircularProgressPainter extends CustomPainter {
         startAngle: 0,
         endAngle: math.pi * 2,
         colors: [...gradientColors, gradientColors.first],
-        transform: GradientRotation(-math.pi / 2 + animationValue * math.pi * 2),
+        transform: GradientRotation(
+          -math.pi / 2 + animationValue * math.pi * 2,
+        ),
       ).createShader(rect)
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
@@ -149,45 +151,21 @@ class NeoCircularProgressPainter extends CustomPainter {
 
       if (value != null) {
         final sweepAngle = math.pi * 2 * value!.clamp(0.0, 1.0);
-        canvas.drawArc(
-          rect,
-          -math.pi / 2,
-          sweepAngle,
-          false,
-          glowPaint,
-        );
+        canvas.drawArc(rect, -math.pi / 2, sweepAngle, false, glowPaint);
       } else {
         final startAngle = -math.pi / 2 + animationValue * math.pi * 2;
         final sweepAngle = math.pi * 0.75;
-        canvas.drawArc(
-          rect,
-          startAngle,
-          sweepAngle,
-          false,
-          glowPaint,
-        );
+        canvas.drawArc(rect, startAngle, sweepAngle, false, glowPaint);
       }
     }
 
     if (value != null) {
       final sweepAngle = math.pi * 2 * value!.clamp(0.0, 1.0);
-      canvas.drawArc(
-        rect,
-        -math.pi / 2,
-        sweepAngle,
-        false,
-        progressPaint,
-      );
+      canvas.drawArc(rect, -math.pi / 2, sweepAngle, false, progressPaint);
     } else {
       final startAngle = -math.pi / 2 + animationValue * math.pi * 2;
       final sweepAngle = math.pi * 0.75;
-      canvas.drawArc(
-        rect,
-        startAngle,
-        sweepAngle,
-        false,
-        progressPaint,
-      );
+      canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
     }
   }
 

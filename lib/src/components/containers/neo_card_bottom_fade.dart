@@ -31,17 +31,16 @@ class NeoCardBottomFade extends StatelessWidget {
     final colors = theme.colors;
     final glass = theme.glass;
 
-    final effectivePadding = padding ?? const EdgeInsets.all(NeoFadeSpacing.cardPadding);
-    final effectiveBorderRadius = borderRadius ?? BorderRadius.circular(NeoFadeRadii.card);
+    final effectivePadding =
+        padding ?? const EdgeInsets.all(NeoFadeSpacing.cardPadding);
+    final effectiveBorderRadius =
+        borderRadius ?? BorderRadius.circular(NeoFadeRadii.card);
     final effectiveFadeHeight = fadeHeight ?? NeoFadeSpacing.xl;
 
     return ClipRRect(
       borderRadius: effectiveBorderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
+        filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
         child: InnerBorder(
           color: const Color(0xFFFFFFFF).withValues(alpha: glass.borderOpacity),
           width: glass.innerBorderWidth,
@@ -53,10 +52,7 @@ class NeoCardBottomFade extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                Padding(
-                  padding: effectivePadding,
-                  child: child,
-                ),
+                Padding(padding: effectivePadding, child: child),
                 Positioned(
                   left: 0,
                   right: 0,

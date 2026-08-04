@@ -25,12 +25,14 @@ class NeoSliderParticles extends StatefulWidget {
   State<NeoSliderParticles> createState() => NeoSliderParticlesState();
 }
 
-class NeoSliderParticlesState extends State<NeoSliderParticles> with SingleTickerProviderStateMixin {
+class NeoSliderParticlesState extends State<NeoSliderParticles>
+    with SingleTickerProviderStateMixin {
   bool isDragging = false;
   late AnimationController shimmerController;
   late Animation<double> shimmerAnimation;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   @override
   void initState() {
@@ -39,7 +41,10 @@ class NeoSliderParticlesState extends State<NeoSliderParticles> with SingleTicke
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     )..repeat();
-    shimmerAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(shimmerController);
+    shimmerAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(shimmerController);
   }
 
   @override
@@ -70,8 +75,12 @@ class NeoSliderParticlesState extends State<NeoSliderParticles> with SingleTicke
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double thumbRadius = 14.0;
     final double trackWidth = box.size.width - thumbRadius * 2;
-    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 
@@ -103,10 +112,7 @@ class NeoSliderParticlesState extends State<NeoSliderParticles> with SingleTicke
               shimmerProgress: shimmerAnimation.value,
               isLight: colors.isLight,
             ),
-            child: const SizedBox(
-              height: 48,
-              width: double.infinity,
-            ),
+            child: const SizedBox(height: 48, width: double.infinity),
           );
         },
       ),

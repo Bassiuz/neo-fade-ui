@@ -107,8 +107,9 @@ class NeoSwitchIosState extends State<NeoSwitchIos>
                     child: CustomPaint(
                       painter: NeoSwitchIosTrackPainter(
                         progress: _animation.value,
-                        offColor: colors.surfaceVariant
-                            .withValues(alpha: glass.tintOpacity),
+                        offColor: colors.surfaceVariant.withValues(
+                          alpha: glass.tintOpacity,
+                        ),
                         gradientColors: [
                           colors.primary,
                           colors.secondary,
@@ -119,9 +120,12 @@ class NeoSwitchIosState extends State<NeoSwitchIos>
                       child: Stack(
                         children: [
                           Positioned(
-                            left: thumbPadding +
+                            left:
+                                thumbPadding +
                                 (_animation.value *
-                                    (trackWidth - thumbSize - thumbPadding * 2)),
+                                    (trackWidth -
+                                        thumbSize -
+                                        thumbPadding * 2)),
                             top: thumbPadding,
                             child: Container(
                               width: thumbSize,
@@ -131,7 +135,9 @@ class NeoSwitchIosState extends State<NeoSwitchIos>
                                 color: colors.surface,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: colors.onSurface.withValues(alpha: 0.15),
+                                    color: colors.onSurface.withValues(
+                                      alpha: 0.15,
+                                    ),
                                     blurRadius: 4,
                                     offset: const Offset(0, 2),
                                   ),

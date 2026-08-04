@@ -111,12 +111,15 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                       ),
                       NeoIconButton(
                         icon: showSettings ? Icons.close : Icons.palette,
-                        onPressed: () => setState(() => showSettings = !showSettings),
+                        onPressed: () =>
+                            setState(() => showSettings = !showSettings),
                         variant: NeoButtonVariant.ghost,
                       ),
                       const SizedBox(width: NeoFadeSpacing.sm),
                       NeoIconButton(
-                        icon: widget.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                        icon: widget.isDarkMode
+                            ? Icons.light_mode
+                            : Icons.dark_mode,
                         onPressed: widget.onThemeToggle,
                         variant: NeoButtonVariant.ghost,
                       ),
@@ -127,11 +130,16 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                 // Settings panel (collapsible)
                 if (showSettings)
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.lg),
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: NeoFadeSpacing.lg,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Theme Colors', style: theme.typography.labelMedium),
+                        Text(
+                          'Theme Colors',
+                          style: theme.typography.labelMedium,
+                        ),
                         const SizedBox(height: NeoFadeSpacing.sm),
                         Row(
                           children: [
@@ -202,53 +210,62 @@ class ComponentBrowserHomeState extends State<ComponentBrowserHome> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(categories.length, (index) {
-                        final isSelected = selectedCategoryIndex == index;
-                        final category = categories[index];
-                        return GestureDetector(
-                          onTap: () => setState(() => selectedCategoryIndex = index),
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: NeoFadeSpacing.md,
-                              vertical: NeoFadeSpacing.sm,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: isSelected
-                                  ? LinearGradient(
-                                      colors: [
-                                        theme.colors.primary.withValues(alpha: 0.3),
-                                        theme.colors.secondary.withValues(alpha: 0.2),
-                                      ],
-                                    )
-                                  : null,
-                              borderRadius: NeoFadeRadii.mdRadius,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  category.icon,
-                                  size: 24,
-                                  color: isSelected
-                                      ? theme.colors.primary
-                                      : theme.colors.onSurface.withValues(alpha: 0.6),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  category.name,
-                                  style: theme.typography.labelSmall.copyWith(
+                          final isSelected = selectedCategoryIndex == index;
+                          final category = categories[index];
+                          return GestureDetector(
+                            onTap: () =>
+                                setState(() => selectedCategoryIndex = index),
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 200),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: NeoFadeSpacing.md,
+                                vertical: NeoFadeSpacing.sm,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: isSelected
+                                    ? LinearGradient(
+                                        colors: [
+                                          theme.colors.primary.withValues(
+                                            alpha: 0.3,
+                                          ),
+                                          theme.colors.secondary.withValues(
+                                            alpha: 0.2,
+                                          ),
+                                        ],
+                                      )
+                                    : null,
+                                borderRadius: NeoFadeRadii.mdRadius,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    category.icon,
+                                    size: 24,
                                     color: isSelected
                                         ? theme.colors.primary
-                                        : theme.colors.onSurface.withValues(alpha: 0.6),
-                                    fontSize: 10,
+                                        : theme.colors.onSurface.withValues(
+                                            alpha: 0.6,
+                                          ),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    category.name,
+                                    style: theme.typography.labelSmall.copyWith(
+                                      color: isSelected
+                                          ? theme.colors.primary
+                                          : theme.colors.onSurface.withValues(
+                                              alpha: 0.6,
+                                            ),
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      }),
-                    ),
+                          );
+                        }),
+                      ),
                     ),
                   ),
                 ),

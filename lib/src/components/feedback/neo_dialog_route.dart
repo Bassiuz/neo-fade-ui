@@ -7,10 +7,7 @@ class NeoDialogRoute<T> extends PopupRoute<T> {
   final WidgetBuilder builder;
   final bool dismissible;
 
-  NeoDialogRoute({
-    required this.builder,
-    this.dismissible = true,
-  });
+  NeoDialogRoute({required this.builder, this.dismissible = true});
 
   @override
   Color? get barrierColor => const Color(0x80000000);

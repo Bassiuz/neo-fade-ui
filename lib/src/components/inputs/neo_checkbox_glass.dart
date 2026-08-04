@@ -44,13 +44,17 @@ class NeoCheckboxGlassState extends State<NeoCheckboxGlass>
 
     _scaleAnimation = TweenSequence<double>([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.0, end: 1.15)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 1.0,
+          end: 1.15,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 50,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.15, end: 1.0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: 1.15,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 50,
       ),
     ]).animate(_controller);
@@ -114,7 +118,9 @@ class NeoCheckboxGlassState extends State<NeoCheckboxGlass>
                     width: widget.size,
                     height: widget.size,
                     decoration: BoxDecoration(
-                      color: colors.surface.withValues(alpha: glass.tintOpacity),
+                      color: colors.surface.withValues(
+                        alpha: glass.tintOpacity,
+                      ),
                       borderRadius: BorderRadius.circular(6),
                       border: Border.all(
                         color: colors.border.withValues(alpha: 0.5),
@@ -145,7 +151,9 @@ class NeoCheckboxGlassState extends State<NeoCheckboxGlass>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

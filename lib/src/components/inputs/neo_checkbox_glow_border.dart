@@ -108,7 +108,9 @@ class NeoCheckboxGlowBorderState extends State<NeoCheckboxGlowBorder>
                           spreadRadius: 2 * _glowAnimation.value,
                         ),
                         BoxShadow(
-                          color: colors.secondary.withValues(alpha: glowOpacity * 0.7),
+                          color: colors.secondary.withValues(
+                            alpha: glowOpacity * 0.7,
+                          ),
                           blurRadius: 8 * _glowAnimation.value,
                           spreadRadius: 1 * _glowAnimation.value,
                           offset: const Offset(2, 2),
@@ -128,7 +130,9 @@ class NeoCheckboxGlowBorderState extends State<NeoCheckboxGlowBorder>
                       width: widget.size,
                       height: widget.size,
                       decoration: BoxDecoration(
-                        color: colors.surface.withValues(alpha: glass.tintOpacity),
+                        color: colors.surface.withValues(
+                          alpha: glass.tintOpacity,
+                        ),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: CustomPaint(
@@ -157,7 +161,9 @@ class NeoCheckboxGlowBorderState extends State<NeoCheckboxGlowBorder>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

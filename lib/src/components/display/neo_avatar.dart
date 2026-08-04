@@ -38,10 +38,7 @@ class NeoAvatar extends StatelessWidget {
 
     Widget avatar = ClipOval(
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
+        filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
         child: Container(
           width: innerSize,
           height: innerSize,
@@ -88,10 +85,7 @@ class NeoAvatar extends StatelessWidget {
     if (onTap != null) {
       return GestureDetector(
         onTap: onTap,
-        child: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: avatar,
-        ),
+        child: MouseRegion(cursor: SystemMouseCursors.click, child: avatar),
       );
     }
 
@@ -122,11 +116,7 @@ class NeoAvatar extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: [colors.primary, colors.secondary],
           ).createShader(bounds),
-          child: Icon(
-            icon,
-            size: innerSize * 0.5,
-            color: colors.onPrimary,
-          ),
+          child: Icon(icon, size: innerSize * 0.5, color: colors.onPrimary),
         ),
       );
     }

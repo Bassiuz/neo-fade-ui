@@ -114,10 +114,12 @@ class NeoSwitchMinimalState extends State<NeoSwitchMinimal>
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: colors.surfaceVariant
-                                  .withValues(alpha: glass.tintOpacity * 0.6),
-                              borderRadius:
-                                  BorderRadius.circular(NeoFadeRadii.full),
+                              color: colors.surfaceVariant.withValues(
+                                alpha: glass.tintOpacity * 0.6,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                NeoFadeRadii.full,
+                              ),
                               border: Border.all(
                                 color: colors.border.withValues(alpha: 0.2),
                                 width: 1,
@@ -126,7 +128,8 @@ class NeoSwitchMinimalState extends State<NeoSwitchMinimal>
                             child: Stack(
                               children: [
                                 Positioned(
-                                  left: thumbPadding +
+                                  left:
+                                      thumbPadding +
                                       (_animation.value *
                                           (trackWidth -
                                               thumbSize -
@@ -144,8 +147,9 @@ class NeoSwitchMinimalState extends State<NeoSwitchMinimal>
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: colors.onSurface
-                                              .withValues(alpha: 0.1),
+                                          color: colors.onSurface.withValues(
+                                            alpha: 0.1,
+                                          ),
                                           blurRadius: 4,
                                           offset: const Offset(0, 1),
                                         ),
@@ -165,21 +169,26 @@ class NeoSwitchMinimalState extends State<NeoSwitchMinimal>
                       width: trackWidth,
                       height: indicatorHeight,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(indicatorHeight / 2),
+                        borderRadius: BorderRadius.circular(
+                          indicatorHeight / 2,
+                        ),
                         gradient: LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           colors: [
                             colors.primary.withValues(alpha: _animation.value),
-                            colors.secondary.withValues(alpha: _animation.value),
+                            colors.secondary.withValues(
+                              alpha: _animation.value,
+                            ),
                             colors.tertiary.withValues(alpha: _animation.value),
                           ],
                         ),
                         boxShadow: _animation.value > 0
                             ? [
                                 BoxShadow(
-                                  color: colors.primary
-                                      .withValues(alpha: 0.3 * _animation.value),
+                                  color: colors.primary.withValues(
+                                    alpha: 0.3 * _animation.value,
+                                  ),
                                   blurRadius: 6,
                                   spreadRadius: 1,
                                 ),

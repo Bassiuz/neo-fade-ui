@@ -55,23 +55,31 @@ class NeoCheckboxBouncyState extends State<NeoCheckboxBouncy>
 
     _scaleAnimation = TweenSequence<double>([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.0, end: 0.85)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: 1.0,
+          end: 0.85,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 15,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.85, end: 1.1)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 0.85,
+          end: 1.1,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 35,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 1.1, end: 0.95)
-            .chain(CurveTween(curve: Curves.easeInOut)),
+        tween: Tween<double>(
+          begin: 1.1,
+          end: 0.95,
+        ).chain(CurveTween(curve: Curves.easeInOut)),
         weight: 25,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.95, end: 1.0)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 0.95,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 25,
       ),
     ]).animate(_controller);
@@ -135,8 +143,16 @@ class NeoCheckboxBouncyState extends State<NeoCheckboxBouncy>
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                colors.primary.withValues(alpha: glass.tintOpacity * _bounceAnimation.value),
-                                colors.secondary.withValues(alpha: glass.tintOpacity * _bounceAnimation.value),
+                                colors.primary.withValues(
+                                  alpha:
+                                      glass.tintOpacity *
+                                      _bounceAnimation.value,
+                                ),
+                                colors.secondary.withValues(
+                                  alpha:
+                                      glass.tintOpacity *
+                                      _bounceAnimation.value,
+                                ),
                               ],
                             )
                           : null,
@@ -178,7 +194,9 @@ class NeoCheckboxBouncyState extends State<NeoCheckboxBouncy>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -59,13 +59,9 @@ class NeoNavCTAButtonState extends State<NeoNavCTAButton>
       _floatController.repeat(reverse: true);
     }
 
-    _floatAnimation = Tween<double>(
-      begin: 0,
-      end: 4,
-    ).animate(CurvedAnimation(
-      parent: _floatController,
-      curve: Curves.easeInOut,
-    ));
+    _floatAnimation = Tween<double>(begin: 0, end: 4).animate(
+      CurvedAnimation(parent: _floatController, curve: Curves.easeInOut),
+    );
 
     // Press animation
     _pressController = AnimationController(
@@ -76,18 +72,12 @@ class NeoNavCTAButtonState extends State<NeoNavCTAButton>
     _scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 0.9,
-    ).animate(CurvedAnimation(
-      parent: _pressController,
-      curve: Curves.easeOut,
-    ));
+    ).animate(CurvedAnimation(parent: _pressController, curve: Curves.easeOut));
 
     _rotationAnimation = Tween<double>(
       begin: 0,
       end: math.pi / 36, // ~5 degrees
-    ).animate(CurvedAnimation(
-      parent: _pressController,
-      curve: Curves.easeOut,
-    ));
+    ).animate(CurvedAnimation(parent: _pressController, curve: Curves.easeOut));
   }
 
   @override
@@ -155,11 +145,7 @@ class NeoNavCTAButtonState extends State<NeoNavCTAButton>
               ),
             ],
           ),
-          child: Icon(
-            widget.icon,
-            size: 28,
-            color: widget.colors.onPrimary,
-          ),
+          child: Icon(widget.icon, size: 28, color: widget.colors.onPrimary),
         ),
       ),
     );

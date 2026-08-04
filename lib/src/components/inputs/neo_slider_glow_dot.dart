@@ -25,12 +25,14 @@ class NeoSliderGlowDot extends StatefulWidget {
   State<NeoSliderGlowDot> createState() => NeoSliderGlowDotState();
 }
 
-class NeoSliderGlowDotState extends State<NeoSliderGlowDot> with SingleTickerProviderStateMixin {
+class NeoSliderGlowDotState extends State<NeoSliderGlowDot>
+    with SingleTickerProviderStateMixin {
   bool isDragging = false;
   late AnimationController glowController;
   late Animation<double> glowAnimation;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   @override
   void initState() {
@@ -39,9 +41,10 @@ class NeoSliderGlowDotState extends State<NeoSliderGlowDot> with SingleTickerPro
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     )..repeat(reverse: true);
-    glowAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(
-      CurvedAnimation(parent: glowController, curve: Curves.easeInOut),
-    );
+    glowAnimation = Tween<double>(
+      begin: 0.6,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: glowController, curve: Curves.easeInOut));
   }
 
   @override
@@ -72,8 +75,12 @@ class NeoSliderGlowDotState extends State<NeoSliderGlowDot> with SingleTickerPro
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double padding = 16.0;
     final double trackWidth = box.size.width - padding * 2;
-    final double newValue = ((position.dx - padding) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - padding) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 
@@ -100,10 +107,7 @@ class NeoSliderGlowDotState extends State<NeoSliderGlowDot> with SingleTickerPro
               isDragging: isDragging,
               glowIntensity: glowAnimation.value,
             ),
-            child: const SizedBox(
-              height: 48,
-              width: double.infinity,
-            ),
+            child: const SizedBox(height: 48, width: double.infinity),
           );
         },
       ),

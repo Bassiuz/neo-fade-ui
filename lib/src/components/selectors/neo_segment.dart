@@ -6,9 +6,5 @@ class NeoSegment<T> {
   final String label;
   final IconData? icon;
 
-  const NeoSegment({
-    required this.value,
-    required this.label,
-    this.icon,
-  });
+  const NeoSegment({required this.value, required this.label, this.icon});
 }

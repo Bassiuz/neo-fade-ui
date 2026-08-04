@@ -37,10 +37,7 @@ class ShowcaseLayoutPage extends StatelessWidget {
               children: [
                 NeoAppBar(
                   title: 'App Title',
-                  leading: IconButton(
-                    icon: Icon(Icons.menu),
-                    onPressed: () {},
-                  ),
+                  leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
                   actions: [
                     IconButton(icon: Icon(Icons.search), onPressed: () {}),
                     IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
@@ -89,10 +86,7 @@ class ShowcaseLayoutPage extends StatelessWidget {
               children: [
                 Text('Left', style: theme.typography.bodyMedium),
                 const SizedBox(width: NeoFadeSpacing.md),
-                SizedBox(
-                  height: 30,
-                  child: NeoDivider.vertical(),
-                ),
+                SizedBox(height: 30, child: NeoDivider.vertical()),
                 const SizedBox(width: NeoFadeSpacing.md),
                 Text('Right', style: theme.typography.bodyMedium),
               ],

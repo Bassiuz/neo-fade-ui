@@ -28,7 +28,10 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // NeoTextField.outlined Section
-          Text('NeoTextField.outlined - Gradient Border on Focus', style: theme.typography.titleMedium),
+          Text(
+            'NeoTextField.outlined - Gradient Border on Focus',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A text field that reveals a gradient border when focused.',
@@ -42,7 +45,10 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoCheckbox.glowBorder() Section
-          Text('NeoCheckbox.glowBorder() - Glow Border', style: theme.typography.titleMedium),
+          Text(
+            'NeoCheckbox.glowBorder() - Glow Border',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A checkbox with a glowing border effect when checked.',
@@ -65,22 +71,19 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.md),
           Row(
             children: [
-              NeoCheckbox.glowBorder(
-                value: true,
-                onChanged: (v) {},
-              ),
+              NeoCheckbox.glowBorder(value: true, onChanged: (v) {}),
               const SizedBox(width: NeoFadeSpacing.md),
-              Text(
-                'Always checked (demo)',
-                style: theme.typography.bodyMedium,
-              ),
+              Text('Always checked (demo)', style: theme.typography.bodyMedium),
             ],
           ),
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoSwitch.ios() Section
-          Text('NeoSwitch.ios() - iOS Style', style: theme.typography.titleMedium),
+          Text(
+            'NeoSwitch.ios() - iOS Style',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'An iOS-style switch with gradient track when active.',
@@ -103,22 +106,19 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.md),
           Row(
             children: [
-              NeoSwitch.ios(
-                value: true,
-                onChanged: (v) {},
-              ),
+              NeoSwitch.ios(value: true, onChanged: (v) {}),
               const SizedBox(width: NeoFadeSpacing.md),
-              Text(
-                'Always on (demo)',
-                style: theme.typography.bodyMedium,
-              ),
+              Text('Always on (demo)', style: theme.typography.bodyMedium),
             ],
           ),
 
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoSlider Section
-          Text('NeoSlider - Subtle Gradient', style: theme.typography.titleMedium),
+          Text(
+            'NeoSlider - Subtle Gradient',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A slider with gradient fill and subtle glow effect.',
@@ -138,7 +138,10 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
           const SizedBox(height: NeoFadeSpacing.xxl),
 
           // NeoNumberSelector.horizontal() Section
-          Text('NeoNumberSelector.horizontal() - Horizontal +/-', style: theme.typography.titleMedium),
+          Text(
+            'NeoNumberSelector.horizontal() - Horizontal +/-',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'A number selector with increment/decrement buttons.',
@@ -152,10 +155,7 @@ class ShowcaseInputsPageState extends State<ShowcaseInputsPage> {
             max: 20,
           ),
           const SizedBox(height: NeoFadeSpacing.xs),
-          Text(
-            'Range: 0 - 20',
-            style: theme.typography.labelSmall,
-          ),
+          Text('Range: 0 - 20', style: theme.typography.labelSmall),
 
           const SizedBox(height: NeoFadeSpacing.xxl),
         ],

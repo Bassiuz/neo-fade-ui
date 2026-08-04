@@ -6,9 +6,5 @@ class NeoFloatingActionItem {
   final String? label;
   final VoidCallback? onPressed;
 
-  const NeoFloatingActionItem({
-    required this.icon,
-    this.label,
-    this.onPressed,
-  });
+  const NeoFloatingActionItem({required this.icon, this.label, this.onPressed});
 }

@@ -27,7 +27,9 @@ class NeoCheckboxSweepPainter extends CustomPainter {
 
       // Clip to rounded rect
       final clipPath = Path()
-        ..addRRect(RRect.fromRectAndRadius(rect.deflate(1), const Radius.circular(5)));
+        ..addRRect(
+          RRect.fromRectAndRadius(rect.deflate(1), const Radius.circular(5)),
+        );
       canvas.clipPath(clipPath);
 
       // Create sweep gradient that rotates and fills

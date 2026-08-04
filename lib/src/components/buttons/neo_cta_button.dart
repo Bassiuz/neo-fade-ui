@@ -44,14 +44,16 @@ class NeoCTAButton extends StatefulWidget {
 }
 
 /// State for [NeoCTAButton], managing press animations and gradient background.
-class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderStateMixin {
+class NeoCTAButtonState extends State<NeoCTAButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
   late Animation<double> _opacityAnimation;
 
   bool _isFocused = false;
 
-  bool get _isEnabled => widget.enabled && !widget.loading && widget.onPressed != null;
+  bool get _isEnabled =>
+      widget.enabled && !widget.loading && widget.onPressed != null;
 
   @override
   void initState() {
@@ -60,11 +62,18 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
       duration: NeoFadeAnimations.fast,
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: NeoFadeAnimations.pressedScale).animate(
-      CurvedAnimation(parent: _animationController, curve: NeoFadeAnimations.defaultCurve),
-    );
+    _scaleAnimation =
+        Tween<double>(begin: 1.0, end: NeoFadeAnimations.pressedScale).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: NeoFadeAnimations.defaultCurve,
+          ),
+        );
     _opacityAnimation = Tween<double>(begin: 1.0, end: 0.8).animate(
-      CurvedAnimation(parent: _animationController, curve: NeoFadeAnimations.defaultCurve),
+      CurvedAnimation(
+        parent: _animationController,
+        curve: NeoFadeAnimations.defaultCurve,
+      ),
     );
   }
 
@@ -98,20 +107,19 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
 
-    final gradientColors = widget.gradientColors ??
-        [
-          colors.primary,
-          colors.secondary,
-          colors.tertiary,
-        ];
+    final gradientColors =
+        widget.gradientColors ??
+        [colors.primary, colors.secondary, colors.tertiary];
 
-    final effectiveOpacity = _isEnabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = _isEnabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
     final borderRadius = BorderRadius.circular(
       widget.size == NeoButtonSize.small
           ? 8
           : widget.size == NeoButtonSize.large
-              ? 16
-              : 12,
+          ? 16
+          : 12,
     );
 
     final focusBorderColor = _isFocused ? colors.borderFocus : null;
@@ -121,7 +129,9 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
       autofocus: widget.autofocus,
       onFocusChange: _handleFocusChange,
       child: MouseRegion(
-        cursor: _isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+        cursor: _isEnabled
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
         child: GestureDetector(
           onTapDown: _handleTapDown,
           onTapUp: _handleTapUp,
@@ -187,10 +197,22 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
 
     return MeshGradient(
       points: [
-        MeshGradientPoint(position: const Offset(0.1, 0.1), color: fourColors[0]),
-        MeshGradientPoint(position: const Offset(0.9, 0.2), color: fourColors[1]),
-        MeshGradientPoint(position: const Offset(0.2, 0.8), color: fourColors[2]),
-        MeshGradientPoint(position: const Offset(0.8, 0.9), color: fourColors[3]),
+        MeshGradientPoint(
+          position: const Offset(0.1, 0.1),
+          color: fourColors[0],
+        ),
+        MeshGradientPoint(
+          position: const Offset(0.9, 0.2),
+          color: fourColors[1],
+        ),
+        MeshGradientPoint(
+          position: const Offset(0.2, 0.8),
+          color: fourColors[2],
+        ),
+        MeshGradientPoint(
+          position: const Offset(0.8, 0.9),
+          color: fourColors[3],
+        ),
       ],
       options: MeshGradientOptions(blend: 3.5, noiseIntensity: 0.3),
     );
@@ -222,10 +244,7 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
           child: SizedBox(
             width: fontSize,
             height: fontSize,
-            child: CTAProgressIndicator(
-              strokeWidth: 2,
-              color: foregroundColor,
-            ),
+            child: CTAProgressIndicator(strokeWidth: 2, color: foregroundColor),
           ),
         ),
       );
@@ -248,7 +267,9 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
     final children = <Widget>[];
 
     if (hasIcon) {
-      children.add(Icon(widget.icon, color: foregroundColor, size: fontSize + 4));
+      children.add(
+        Icon(widget.icon, color: foregroundColor, size: fontSize + 4),
+      );
       if (hasLabel) children.add(const SizedBox(width: 8));
     }
 
@@ -258,7 +279,9 @@ class NeoCTAButtonState extends State<NeoCTAButton> with SingleTickerProviderSta
 
     if (hasTrailingIcon) {
       if (hasLabel || hasIcon) children.add(const SizedBox(width: 8));
-      children.add(Icon(widget.trailingIcon, color: foregroundColor, size: fontSize + 4));
+      children.add(
+        Icon(widget.trailingIcon, color: foregroundColor, size: fontSize + 4),
+      );
     }
 
     if (children.length == 1) return children.first;

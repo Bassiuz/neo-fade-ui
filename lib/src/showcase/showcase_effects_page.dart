@@ -18,7 +18,10 @@ class ShowcaseEffectsPage extends StatelessWidget {
           const SizedBox(height: NeoFadeSpacing.lg),
 
           // NeoPulsingGlow Section
-          Text('NeoPulsingGlow - Animated Glow Wrapper', style: theme.typography.titleMedium),
+          Text(
+            'NeoPulsingGlow - Animated Glow Wrapper',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'Wraps any widget with a pulsing glow effect to draw attention.',
@@ -55,7 +58,10 @@ class ShowcaseEffectsPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Special Offer!', style: theme.typography.titleSmall),
+                        Text(
+                          'Special Offer!',
+                          style: theme.typography.titleSmall,
+                        ),
                         Text(
                           'Limited time discount available',
                           style: theme.typography.bodySmall,

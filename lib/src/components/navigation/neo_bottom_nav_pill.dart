@@ -102,7 +102,9 @@ class NeoBottomNavPill extends StatelessWidget {
                                 Icon(
                                   items[index].icon,
                                   size: 24,
-                                  color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                                  color: isSelected
+                                      ? colors.primary
+                                      : colors.onSurfaceVariant,
                                 ),
                                 if (items[index].label != null) ...[
                                   const SizedBox(height: NeoFadeSpacing.xxs),
@@ -110,8 +112,12 @@ class NeoBottomNavPill extends StatelessWidget {
                                     items[index].label!,
                                     style: TextStyle(
                                       fontSize: 10,
-                                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                                      color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                                      fontWeight: isSelected
+                                          ? FontWeight.w600
+                                          : FontWeight.normal,
+                                      color: isSelected
+                                          ? colors.primary
+                                          : colors.onSurfaceVariant,
                                     ),
                                   ),
                                 ],
@@ -174,7 +180,9 @@ class NeoBottomNavPill extends StatelessWidget {
                   child: AnimatedContainer(
                     duration: NeoFadeAnimations.normal,
                     curve: NeoFadeAnimations.defaultCurve,
-                    margin: const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.xxs),
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: NeoFadeSpacing.xxs,
+                    ),
                     padding: const EdgeInsets.all(NeoFadeSpacing.sm),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -198,7 +206,9 @@ class NeoBottomNavPill extends StatelessWidget {
                     child: Icon(
                       items[index].icon,
                       size: 22,
-                      color: isSelected ? colors.onPrimary : colors.onSurfaceVariant,
+                      color: isSelected
+                          ? colors.onPrimary
+                          : colors.onSurfaceVariant,
                     ),
                   ),
                 );

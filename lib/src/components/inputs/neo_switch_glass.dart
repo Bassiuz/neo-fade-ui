@@ -105,7 +105,9 @@ class NeoSwitchGlassState extends State<NeoSwitchGlass>
                   animation: _positionAnimation,
                   builder: (context, child) {
                     final trackColor = Color.lerp(
-                      colors.surfaceVariant.withValues(alpha: glass.tintOpacity),
+                      colors.surfaceVariant.withValues(
+                        alpha: glass.tintOpacity,
+                      ),
                       colors.primary.withValues(alpha: 0.3),
                       _positionAnimation.value,
                     )!;
@@ -122,9 +124,12 @@ class NeoSwitchGlassState extends State<NeoSwitchGlass>
                       child: Stack(
                         children: [
                           Positioned(
-                            left: thumbPadding +
+                            left:
+                                thumbPadding +
                                 (_positionAnimation.value *
-                                    (trackWidth - thumbSize - thumbPadding * 2)),
+                                    (trackWidth -
+                                        thumbSize -
+                                        thumbPadding * 2)),
                             top: thumbPadding,
                             child: Container(
                               width: thumbSize,
@@ -142,7 +147,9 @@ class NeoSwitchGlassState extends State<NeoSwitchGlass>
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: colors.primary.withValues(alpha: 0.3),
+                                    color: colors.primary.withValues(
+                                      alpha: 0.3,
+                                    ),
                                     blurRadius: 8,
                                     offset: const Offset(0, 2),
                                   ),

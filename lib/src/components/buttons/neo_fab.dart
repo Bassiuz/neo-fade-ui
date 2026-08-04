@@ -84,12 +84,11 @@ class NeoFABState extends State<NeoFAB> with SingleTickerProviderStateMixin {
           animation: _controller,
           builder: (context, child) {
             final scale = 1.0 - (_controller.value * 0.05);
-            final hoverScale = _isHovered && isEnabled ? NeoFadeAnimations.hoverScale : 1.0;
+            final hoverScale = _isHovered && isEnabled
+                ? NeoFadeAnimations.hoverScale
+                : 1.0;
 
-            return Transform.scale(
-              scale: scale * hoverScale,
-              child: child,
-            );
+            return Transform.scale(scale: scale * hoverScale, child: child);
           },
           child: AnimatedContainer(
             duration: NeoFadeAnimations.fast,
@@ -116,7 +115,9 @@ class NeoFABState extends State<NeoFAB> with SingleTickerProviderStateMixin {
                         color: colors.primary.withValues(
                           alpha: _isHovered ? 0.5 : 0.4,
                         ),
-                        blurRadius: _isHovered ? NeoFadeSpacing.lg : NeoFadeSpacing.md,
+                        blurRadius: _isHovered
+                            ? NeoFadeSpacing.lg
+                            : NeoFadeSpacing.md,
                         offset: const Offset(0, 4),
                         spreadRadius: _isHovered ? 2 : 0,
                       ),

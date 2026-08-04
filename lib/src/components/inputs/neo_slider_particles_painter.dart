@@ -52,17 +52,24 @@ class NeoSliderParticlesPainter extends CustomPainter {
 
       // Calculate shimmer effect for active dots
       final double shimmerOffset = (shimmerProgress + dotProgress) % 1.0;
-      final double shimmerIntensity = isActive ? math.sin(shimmerOffset * math.pi) * 0.3 + 0.7 : 0.3;
+      final double shimmerIntensity = isActive
+          ? math.sin(shimmerOffset * math.pi) * 0.3 + 0.7
+          : 0.3;
 
       // Dot size varies slightly based on position
-      final double dotRadius = baseDotRadius * (isActive ? (isDragging ? 1.3 : 1.1) : 0.8);
+      final double dotRadius =
+          baseDotRadius * (isActive ? (isDragging ? 1.3 : 1.1) : 0.8);
 
       // Calculate gradient color for this dot position
       Color dotColor;
       if (dotProgress < 0.5) {
         dotColor = Color.lerp(primaryColor, secondaryColor, dotProgress * 2)!;
       } else {
-        dotColor = Color.lerp(secondaryColor, tertiaryColor, (dotProgress - 0.5) * 2)!;
+        dotColor = Color.lerp(
+          secondaryColor,
+          tertiaryColor,
+          (dotProgress - 0.5) * 2,
+        )!;
       }
 
       if (isActive) {
@@ -74,27 +81,45 @@ class NeoSliderParticlesPainter extends CustomPainter {
 
         // Active dot fill
         final dotPaint = Paint()
-          ..shader = RadialGradient(
-            colors: [
-              dotColor.withValues(alpha: shimmerIntensity),
-              dotColor.withValues(alpha: shimmerIntensity * 0.7),
-            ],
-          ).createShader(Rect.fromCircle(center: Offset(dotX, centerY), radius: dotRadius))
+          ..shader =
+              RadialGradient(
+                colors: [
+                  dotColor.withValues(alpha: shimmerIntensity),
+                  dotColor.withValues(alpha: shimmerIntensity * 0.7),
+                ],
+              ).createShader(
+                Rect.fromCircle(
+                  center: Offset(dotX, centerY),
+                  radius: dotRadius,
+                ),
+              )
           ..style = PaintingStyle.fill;
         canvas.drawCircle(Offset(dotX, centerY), dotRadius, dotPaint);
 
         // Dot highlight
         final highlightPaint = Paint()
-          ..shader = RadialGradient(
-            center: const Alignment(-0.3, -0.3),
-            radius: 0.8,
-            colors: [
-              const Color(0xFFFFFFFF).withValues(alpha: 0.6 * shimmerIntensity),
-              const Color(0xFFFFFFFF).withValues(alpha: 0.0),
-            ],
-          ).createShader(Rect.fromCircle(center: Offset(dotX, centerY), radius: dotRadius))
+          ..shader =
+              RadialGradient(
+                center: const Alignment(-0.3, -0.3),
+                radius: 0.8,
+                colors: [
+                  const Color(
+                    0xFFFFFFFF,
+                  ).withValues(alpha: 0.6 * shimmerIntensity),
+                  const Color(0xFFFFFFFF).withValues(alpha: 0.0),
+                ],
+              ).createShader(
+                Rect.fromCircle(
+                  center: Offset(dotX, centerY),
+                  radius: dotRadius,
+                ),
+              )
           ..style = PaintingStyle.fill;
-        canvas.drawCircle(Offset(dotX, centerY), dotRadius * 0.7, highlightPaint);
+        canvas.drawCircle(
+          Offset(dotX, centerY),
+          dotRadius * 0.7,
+          highlightPaint,
+        );
       } else {
         // Inactive dot
         final inactivePaint = Paint()
@@ -120,15 +145,27 @@ class NeoSliderParticlesPainter extends CustomPainter {
       final nearestDotX = trackLeft + nearestDotIndex * dotSpacing;
 
       final linePaint = Paint()
-        ..shader = LinearGradient(
-          colors: [
-            primaryColor.withValues(alpha: 0.3),
-            secondaryColor.withValues(alpha: 0.3),
-          ],
-        ).createShader(Rect.fromLTWH(math.min(thumbX, nearestDotX), centerY - 1, (thumbX - nearestDotX).abs(), 2))
+        ..shader =
+            LinearGradient(
+              colors: [
+                primaryColor.withValues(alpha: 0.3),
+                secondaryColor.withValues(alpha: 0.3),
+              ],
+            ).createShader(
+              Rect.fromLTWH(
+                math.min(thumbX, nearestDotX),
+                centerY - 1,
+                (thumbX - nearestDotX).abs(),
+                2,
+              ),
+            )
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2.0;
-      canvas.drawLine(Offset(nearestDotX, centerY), Offset(thumbX, centerY), linePaint);
+      canvas.drawLine(
+        Offset(nearestDotX, centerY),
+        Offset(thumbX, centerY),
+        linePaint,
+      );
     }
 
     // Thumb shadow
@@ -145,14 +182,20 @@ class NeoSliderParticlesPainter extends CustomPainter {
 
     // Thumb gradient
     final thumbGradientPaint = Paint()
-      ..shader = RadialGradient(
-        center: const Alignment(-0.2, -0.2),
-        colors: [
-          primaryColor.withValues(alpha: 0.8),
-          secondaryColor.withValues(alpha: 0.5),
-          tertiaryColor.withValues(alpha: 0.3),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, centerY), radius: thumbRadius))
+      ..shader =
+          RadialGradient(
+            center: const Alignment(-0.2, -0.2),
+            colors: [
+              primaryColor.withValues(alpha: 0.8),
+              secondaryColor.withValues(alpha: 0.5),
+              tertiaryColor.withValues(alpha: 0.3),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, centerY),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
     canvas.drawCircle(Offset(thumbX, centerY), thumbRadius, thumbGradientPaint);
 
@@ -165,16 +208,26 @@ class NeoSliderParticlesPainter extends CustomPainter {
 
     // Thumb highlight
     final thumbHighlightPaint = Paint()
-      ..shader = RadialGradient(
-        center: const Alignment(-0.4, -0.4),
-        radius: 0.6,
-        colors: [
-          const Color(0xFFFFFFFF).withValues(alpha: 0.6),
-          const Color(0xFFFFFFFF).withValues(alpha: 0.0),
-        ],
-      ).createShader(Rect.fromCircle(center: Offset(thumbX, centerY), radius: thumbRadius))
+      ..shader =
+          RadialGradient(
+            center: const Alignment(-0.4, -0.4),
+            radius: 0.6,
+            colors: [
+              const Color(0xFFFFFFFF).withValues(alpha: 0.6),
+              const Color(0xFFFFFFFF).withValues(alpha: 0.0),
+            ],
+          ).createShader(
+            Rect.fromCircle(
+              center: Offset(thumbX, centerY),
+              radius: thumbRadius,
+            ),
+          )
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(thumbX, centerY), thumbRadius * 0.5, thumbHighlightPaint);
+    canvas.drawCircle(
+      Offset(thumbX, centerY),
+      thumbRadius * 0.5,
+      thumbHighlightPaint,
+    );
   }
 
   @override

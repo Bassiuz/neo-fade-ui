@@ -25,12 +25,14 @@ class NeoSliderBouncy extends StatefulWidget {
   State<NeoSliderBouncy> createState() => NeoSliderBouncyState();
 }
 
-class NeoSliderBouncyState extends State<NeoSliderBouncy> with SingleTickerProviderStateMixin {
+class NeoSliderBouncyState extends State<NeoSliderBouncy>
+    with SingleTickerProviderStateMixin {
   bool isDragging = false;
   late AnimationController bounceController;
   late Animation<double> bounceAnimation;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   @override
   void initState() {
@@ -75,8 +77,12 @@ class NeoSliderBouncyState extends State<NeoSliderBouncy> with SingleTickerProvi
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double thumbRadius = 16.0;
     final double trackWidth = box.size.width - thumbRadius * 2;
-    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 
@@ -108,10 +114,7 @@ class NeoSliderBouncyState extends State<NeoSliderBouncy> with SingleTickerProvi
               thumbScale: bounceAnimation.value,
               isLight: colors.isLight,
             ),
-            child: const SizedBox(
-              height: 56,
-              width: double.infinity,
-            ),
+            child: const SizedBox(height: 56, width: double.infinity),
           );
         },
       ),

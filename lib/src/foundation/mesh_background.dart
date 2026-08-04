@@ -32,7 +32,8 @@ class MeshBackground extends StatelessWidget {
     final theme = NeoFadeTheme.of(context);
     final themeColors = theme.colors;
 
-    final effectiveColors = colors ??
+    final effectiveColors =
+        colors ??
         [
           themeColors.primary,
           themeColors.secondary,
@@ -46,10 +47,7 @@ class MeshBackground extends StatelessWidget {
     if (kIsWeb && useFallbackOnWeb) {
       return Stack(
         fit: StackFit.expand,
-        children: [
-          _buildFallbackGradient(gradientColors),
-          child,
-        ],
+        children: [_buildFallbackGradient(gradientColors), child],
       );
     }
 
@@ -113,7 +111,8 @@ class _MeshGradientWithFallback extends StatefulWidget {
   });
 
   @override
-  State<_MeshGradientWithFallback> createState() => _MeshGradientWithFallbackState();
+  State<_MeshGradientWithFallback> createState() =>
+      _MeshGradientWithFallbackState();
 }
 
 class _MeshGradientWithFallbackState extends State<_MeshGradientWithFallback> {
@@ -143,10 +142,7 @@ class _MeshGradientWithFallbackState extends State<_MeshGradientWithFallback> {
             )
           : MeshGradient(
               points: _createStaticPoints(widget.colors),
-              options: MeshGradientOptions(
-                blend: 3.5,
-                noiseIntensity: 0.5,
-              ),
+              options: MeshGradientOptions(blend: 3.5, noiseIntensity: 0.5),
             ),
     );
   }
@@ -166,22 +162,10 @@ class _MeshGradientWithFallbackState extends State<_MeshGradientWithFallback> {
 
   List<MeshGradientPoint> _createStaticPoints(List<Color> colors) {
     return [
-      MeshGradientPoint(
-        position: const Offset(0.1, 0.1),
-        color: colors[0],
-      ),
-      MeshGradientPoint(
-        position: const Offset(0.9, 0.2),
-        color: colors[1],
-      ),
-      MeshGradientPoint(
-        position: const Offset(0.2, 0.8),
-        color: colors[2],
-      ),
-      MeshGradientPoint(
-        position: const Offset(0.8, 0.9),
-        color: colors[3],
-      ),
+      MeshGradientPoint(position: const Offset(0.1, 0.1), color: colors[0]),
+      MeshGradientPoint(position: const Offset(0.9, 0.2), color: colors[1]),
+      MeshGradientPoint(position: const Offset(0.2, 0.8), color: colors[2]),
+      MeshGradientPoint(position: const Offset(0.8, 0.9), color: colors[3]),
     ];
   }
 }
@@ -190,10 +174,7 @@ class _ErrorBoundary extends StatefulWidget {
   final Widget child;
   final VoidCallback onError;
 
-  const _ErrorBoundary({
-    required this.child,
-    required this.onError,
-  });
+  const _ErrorBoundary({required this.child, required this.onError});
 
   @override
   State<_ErrorBoundary> createState() => _ErrorBoundaryState();

@@ -29,7 +29,8 @@ class NeoSliderGlassFill extends StatefulWidget {
 class NeoSliderGlassFillState extends State<NeoSliderGlassFill> {
   bool isDragging = false;
 
-  double get normalizedValue => ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
+  double get normalizedValue =>
+      ((widget.value - widget.min) / (widget.max - widget.min)).clamp(0.0, 1.0);
 
   void handleDragStart(DragStartDetails details) {
     setState(() => isDragging = true);
@@ -53,8 +54,12 @@ class NeoSliderGlassFillState extends State<NeoSliderGlassFill> {
     final RenderBox box = context.findRenderObject() as RenderBox;
     final double thumbRadius = 14.0;
     final double trackWidth = box.size.width - thumbRadius * 2;
-    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(0.0, 1.0);
-    final double mappedValue = widget.min + newValue * (widget.max - widget.min);
+    final double newValue = ((position.dx - thumbRadius) / trackWidth).clamp(
+      0.0,
+      1.0,
+    );
+    final double mappedValue =
+        widget.min + newValue * (widget.max - widget.min);
     widget.onChanged!(mappedValue);
   }
 

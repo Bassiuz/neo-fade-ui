@@ -30,8 +30,7 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
     required this.onIndexChanged,
     required this.items,
     required this.onCenterPressed,
-    this.centerIcon =
-        Icons.add,
+    this.centerIcon = Icons.add,
     this.floating = false,
   });
 
@@ -76,7 +75,12 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
                 final index = entry.key;
                 final item = entry.value;
                 final isSelected = index == selectedIndex;
-                return _buildNavItem(item, isSelected, () => onIndexChanged(index), colors);
+                return _buildNavItem(
+                  item,
+                  isSelected,
+                  () => onIndexChanged(index),
+                  colors,
+                );
               }),
 
               // Center CTA button
@@ -91,7 +95,12 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
                 final index = entry.key + leftItems.length;
                 final item = entry.value;
                 final isSelected = index == selectedIndex;
-                return _buildNavItem(item, isSelected, () => onIndexChanged(index), colors);
+                return _buildNavItem(
+                  item,
+                  isSelected,
+                  () => onIndexChanged(index),
+                  colors,
+                );
               }),
             ],
           ),
@@ -123,7 +132,9 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
                 vertical: NeoFadeSpacing.sm,
               ),
               decoration: BoxDecoration(
-                color: colors.surface.withValues(alpha: glass.tintOpacity + 0.1),
+                color: colors.surface.withValues(
+                  alpha: glass.tintOpacity + 0.1,
+                ),
                 borderRadius: BorderRadius.circular(NeoFadeRadii.lg),
                 border: Border.all(
                   color: colors.border.withValues(alpha: 0.3),
@@ -140,7 +151,11 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
                     final isSelected = index == selectedIndex;
                     return Expanded(
                       child: _buildFloatingNavItem(
-                          item, isSelected, () => onIndexChanged(index), colors),
+                        item,
+                        isSelected,
+                        () => onIndexChanged(index),
+                        colors,
+                      ),
                     );
                   }),
 
@@ -154,7 +169,11 @@ class NeoBottomNavCtaSimple extends StatelessWidget {
                     final isSelected = index == selectedIndex;
                     return Expanded(
                       child: _buildFloatingNavItem(
-                          item, isSelected, () => onIndexChanged(index), colors),
+                        item,
+                        isSelected,
+                        () => onIndexChanged(index),
+                        colors,
+                      ),
                     );
                   }),
                 ],

@@ -112,17 +112,23 @@ class NeoSwitchPillState extends State<NeoSwitchPill>
                           end: Alignment.bottomRight,
                           colors: [
                             Color.lerp(
-                              colors.surfaceVariant.withValues(alpha: glass.tintOpacity),
+                              colors.surfaceVariant.withValues(
+                                alpha: glass.tintOpacity,
+                              ),
                               colors.primary,
                               _animation.value,
                             )!,
                             Color.lerp(
-                              colors.surfaceVariant.withValues(alpha: glass.tintOpacity),
+                              colors.surfaceVariant.withValues(
+                                alpha: glass.tintOpacity,
+                              ),
                               colors.secondary,
                               _animation.value,
                             )!,
                             Color.lerp(
-                              colors.surfaceVariant.withValues(alpha: glass.tintOpacity),
+                              colors.surfaceVariant.withValues(
+                                alpha: glass.tintOpacity,
+                              ),
                               colors.tertiary,
                               _animation.value,
                             )!,
@@ -139,8 +145,9 @@ class NeoSwitchPillState extends State<NeoSwitchPill>
                         boxShadow: _animation.value > 0
                             ? [
                                 BoxShadow(
-                                  color: colors.primary
-                                      .withValues(alpha: 0.2 * _animation.value),
+                                  color: colors.primary.withValues(
+                                    alpha: 0.2 * _animation.value,
+                                  ),
                                   blurRadius: 12,
                                   spreadRadius: 2,
                                 ),
@@ -150,9 +157,12 @@ class NeoSwitchPillState extends State<NeoSwitchPill>
                       child: Stack(
                         children: [
                           Positioned(
-                            left: thumbPadding +
+                            left:
+                                thumbPadding +
                                 (_animation.value *
-                                    (trackWidth - thumbSize - thumbPadding * 2)),
+                                    (trackWidth -
+                                        thumbSize -
+                                        thumbPadding * 2)),
                             top: thumbPadding,
                             child: Container(
                               width: thumbSize,
@@ -166,7 +176,9 @@ class NeoSwitchPillState extends State<NeoSwitchPill>
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: colors.onSurface.withValues(alpha: 0.1),
+                                    color: colors.onSurface.withValues(
+                                      alpha: 0.1,
+                                    ),
                                     blurRadius: 4,
                                     offset: const Offset(0, 2),
                                   ),

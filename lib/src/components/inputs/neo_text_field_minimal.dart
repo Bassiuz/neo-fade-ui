@@ -101,8 +101,9 @@ class NeoTextFieldMinimalState extends State<NeoTextFieldMinimal>
 
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,

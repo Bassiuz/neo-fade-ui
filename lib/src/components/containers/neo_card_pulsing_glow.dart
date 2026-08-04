@@ -32,7 +32,8 @@ class NeoCardPulsingGlow extends StatefulWidget {
   State<NeoCardPulsingGlow> createState() => NeoCardPulsingGlowState();
 }
 
-class NeoCardPulsingGlowState extends State<NeoCardPulsingGlow> with SingleTickerProviderStateMixin {
+class NeoCardPulsingGlowState extends State<NeoCardPulsingGlow>
+    with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> pulseAnimation;
 
@@ -45,10 +46,7 @@ class NeoCardPulsingGlowState extends State<NeoCardPulsingGlow> with SingleTicke
     )..repeat(reverse: true);
 
     pulseAnimation = Tween<double>(begin: 0.3, end: 1.0).animate(
-      CurvedAnimation(
-        parent: animationController,
-        curve: Curves.easeInOut,
-      ),
+      CurvedAnimation(parent: animationController, curve: Curves.easeInOut),
     );
   }
 
@@ -64,8 +62,10 @@ class NeoCardPulsingGlowState extends State<NeoCardPulsingGlow> with SingleTicke
     final colors = theme.colors;
     final glass = theme.glass;
 
-    final effectivePadding = widget.padding ?? const EdgeInsets.all(NeoFadeSpacing.cardPadding);
-    final effectiveBorderRadius = widget.borderRadius ?? BorderRadius.circular(NeoFadeRadii.card);
+    final effectivePadding =
+        widget.padding ?? const EdgeInsets.all(NeoFadeSpacing.cardPadding);
+    final effectiveBorderRadius =
+        widget.borderRadius ?? BorderRadius.circular(NeoFadeRadii.card);
     final effectiveMaxGlowRadius = widget.maxGlowRadius ?? NeoFadeSpacing.lg;
 
     return AnimatedBuilder(
@@ -104,12 +104,11 @@ class NeoCardPulsingGlowState extends State<NeoCardPulsingGlow> with SingleTicke
       child: ClipRRect(
         borderRadius: effectiveBorderRadius,
         child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: glass.blur,
-            sigmaY: glass.blur,
-          ),
+          filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
           child: InnerBorder(
-            color: const Color(0xFFFFFFFF).withValues(alpha: glass.borderOpacity),
+            color: const Color(
+              0xFFFFFFFF,
+            ).withValues(alpha: glass.borderOpacity),
             width: glass.innerBorderWidth,
             borderRadius: effectiveBorderRadius,
             child: Container(

@@ -29,10 +29,18 @@ class InnerBorderPainter extends CustomPainter {
     );
 
     final adjustedRadius = BorderRadius.only(
-      topLeft: Radius.circular((borderRadius.topLeft.x - width / 2).clamp(0, double.infinity)),
-      topRight: Radius.circular((borderRadius.topRight.x - width / 2).clamp(0, double.infinity)),
-      bottomLeft: Radius.circular((borderRadius.bottomLeft.x - width / 2).clamp(0, double.infinity)),
-      bottomRight: Radius.circular((borderRadius.bottomRight.x - width / 2).clamp(0, double.infinity)),
+      topLeft: Radius.circular(
+        (borderRadius.topLeft.x - width / 2).clamp(0, double.infinity),
+      ),
+      topRight: Radius.circular(
+        (borderRadius.topRight.x - width / 2).clamp(0, double.infinity),
+      ),
+      bottomLeft: Radius.circular(
+        (borderRadius.bottomLeft.x - width / 2).clamp(0, double.infinity),
+      ),
+      bottomRight: Radius.circular(
+        (borderRadius.bottomRight.x - width / 2).clamp(0, double.infinity),
+      ),
     );
 
     final rrect = RRect.fromRectAndCorners(

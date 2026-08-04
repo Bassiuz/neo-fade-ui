@@ -104,8 +104,9 @@ class NeoTextFieldPillState extends State<NeoTextFieldPill>
     final gradientColors = [colors.primary, colors.secondary, colors.tertiary];
     final borderRadius = NeoFadeRadii.fullRadius;
 
-    final effectiveOpacity =
-        widget.enabled ? 1.0 : NeoFadeAnimations.disabledOpacity;
+    final effectiveOpacity = widget.enabled
+        ? 1.0
+        : NeoFadeAnimations.disabledOpacity;
 
     return AnimatedOpacity(
       duration: NeoFadeAnimations.fast,

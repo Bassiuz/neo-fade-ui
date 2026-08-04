@@ -56,14 +56,16 @@ class NeoButtonFilledState extends State<NeoButtonFilled>
     final theme = NeoFadeTheme.of(context);
     final colors = theme.colors;
 
-    final effectivePadding = widget.padding ??
+    final effectivePadding =
+        widget.padding ??
         const EdgeInsets.symmetric(
           horizontal: NeoFadeSpacing.lg,
           vertical: NeoFadeSpacing.sm,
         );
     final effectiveBorderRadius = widget.borderRadius ?? NeoFadeRadii.md;
     final effectiveIconSize = widget.iconSize ?? 18.0;
-    final effectiveTextStyle = widget.textStyle ??
+    final effectiveTextStyle =
+        widget.textStyle ??
         TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
@@ -106,13 +108,21 @@ class NeoButtonFilledState extends State<NeoButtonFilled>
             mainAxisSize: MainAxisSize.min,
             children: [
               if (widget.icon != null) ...[
-                Icon(widget.icon, size: effectiveIconSize, color: colors.onPrimary),
+                Icon(
+                  widget.icon,
+                  size: effectiveIconSize,
+                  color: colors.onPrimary,
+                ),
                 const SizedBox(width: NeoFadeSpacing.xs),
               ],
-              Text(
-                widget.label,
-                style: effectiveTextStyle.copyWith(
-                  color: effectiveTextStyle.color ?? colors.onPrimary,
+              Flexible(
+                child: Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  widget.label,
+                  style: effectiveTextStyle.copyWith(
+                    color: effectiveTextStyle.color ?? colors.onPrimary,
+                  ),
                 ),
               ),
             ],

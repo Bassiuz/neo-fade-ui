@@ -37,13 +37,17 @@ class CornerGradientBadgePainter extends CustomPainter {
     final topRightGradient = LinearGradient(
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
-      colors: gradientColors.reversed.map((c) => c.withValues(alpha: opacity)).toList(),
+      colors: gradientColors.reversed
+          .map((c) => c.withValues(alpha: opacity))
+          .toList(),
     );
 
     final bottomLeftGradient = LinearGradient(
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
-      colors: gradientColors.reversed.map((c) => c.withValues(alpha: opacity)).toList(),
+      colors: gradientColors.reversed
+          .map((c) => c.withValues(alpha: opacity))
+          .toList(),
     );
 
     final bottomRightGradient = LinearGradient(

@@ -93,10 +93,7 @@ class NeoSearchBarState extends State<NeoSearchBar> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(NeoFadeRadii.full),
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: glass.blur,
-          sigmaY: glass.blur,
-        ),
+        filter: ImageFilter.blur(sigmaX: glass.blur, sigmaY: glass.blur),
         child: AnimatedContainer(
           duration: NeoFadeAnimations.fast,
           decoration: BoxDecoration(
@@ -124,13 +121,13 @@ class NeoSearchBarState extends State<NeoSearchBar> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: NeoFadeSpacing.md,
-                  ),
+                  padding: const EdgeInsets.only(left: NeoFadeSpacing.md),
                   child: Icon(
                     Icons.search,
                     size: 20,
-                    color: _isFocused ? colors.primary : colors.onSurfaceVariant,
+                    color: _isFocused
+                        ? colors.primary
+                        : colors.onSurfaceVariant,
                   ),
                 ),
                 Expanded(
@@ -170,9 +167,7 @@ class NeoSearchBarState extends State<NeoSearchBar> {
                   GestureDetector(
                     onTap: _clearText,
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        right: NeoFadeSpacing.sm,
-                      ),
+                      padding: const EdgeInsets.only(right: NeoFadeSpacing.sm),
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: Icon(

@@ -50,7 +50,9 @@ class NeoSegmentedControlPillOutline<T> extends StatelessWidget {
                 child: AnimatedContainer(
                   duration: NeoFadeAnimations.normal,
                   curve: NeoFadeAnimations.defaultCurve,
-                  margin: const EdgeInsets.symmetric(horizontal: NeoFadeSpacing.xxs),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: NeoFadeSpacing.xxs,
+                  ),
                   padding: const EdgeInsets.symmetric(
                     vertical: NeoFadeSpacing.xs,
                     horizontal: NeoFadeSpacing.md,
@@ -61,10 +63,7 @@ class NeoSegmentedControlPillOutline<T> extends StatelessWidget {
                         : null,
                     borderRadius: BorderRadius.circular(NeoFadeRadii.full),
                     border: isSelected
-                        ? Border.all(
-                            color: colors.primary,
-                            width: 2,
-                          )
+                        ? Border.all(color: colors.primary, width: 2)
                         : null,
                     boxShadow: isSelected
                         ? [
@@ -83,7 +82,9 @@ class NeoSegmentedControlPillOutline<T> extends StatelessWidget {
                         Icon(
                           segment.icon,
                           size: 18,
-                          color: isSelected ? colors.primary : colors.onSurfaceVariant,
+                          color: isSelected
+                              ? colors.primary
+                              : colors.onSurfaceVariant,
                         ),
                         const SizedBox(width: NeoFadeSpacing.xs),
                       ],
@@ -91,7 +92,9 @@ class NeoSegmentedControlPillOutline<T> extends StatelessWidget {
                         segment.label,
                         style: TextStyle(
                           fontSize: 14,
-                          fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                          fontWeight: isSelected
+                              ? FontWeight.w600
+                              : FontWeight.normal,
                           color: isSelected ? colors.primary : colors.onSurface,
                         ),
                       ),

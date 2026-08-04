@@ -57,10 +57,18 @@ class NeoCardGlowOutlinePainter extends CustomPainter {
         size.width - borderWidth * 2,
         size.height - borderWidth * 2,
       ),
-      topLeft: Radius.circular((borderRadius.topLeft.x - borderWidth).clamp(0, double.infinity)),
-      topRight: Radius.circular((borderRadius.topRight.x - borderWidth).clamp(0, double.infinity)),
-      bottomLeft: Radius.circular((borderRadius.bottomLeft.x - borderWidth).clamp(0, double.infinity)),
-      bottomRight: Radius.circular((borderRadius.bottomRight.x - borderWidth).clamp(0, double.infinity)),
+      topLeft: Radius.circular(
+        (borderRadius.topLeft.x - borderWidth).clamp(0, double.infinity),
+      ),
+      topRight: Radius.circular(
+        (borderRadius.topRight.x - borderWidth).clamp(0, double.infinity),
+      ),
+      bottomLeft: Radius.circular(
+        (borderRadius.bottomLeft.x - borderWidth).clamp(0, double.infinity),
+      ),
+      bottomRight: Radius.circular(
+        (borderRadius.bottomRight.x - borderWidth).clamp(0, double.infinity),
+      ),
     );
 
     final path = Path()

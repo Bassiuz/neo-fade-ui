@@ -37,7 +37,8 @@ class ShowcaseEmojiPageState extends State<ShowcaseEmojiPage> {
           Center(
             child: NeoEmojiAvatarPicker(
               selectedEmoji: selectedEmoji1,
-              onEmojiSelected: (emoji) => setState(() => selectedEmoji1 = emoji),
+              onEmojiSelected: (emoji) =>
+                  setState(() => selectedEmoji1 = emoji),
             ),
           ),
           const SizedBox(height: NeoFadeSpacing.xl),
@@ -53,13 +54,17 @@ class ShowcaseEmojiPageState extends State<ShowcaseEmojiPage> {
           Center(
             child: NeoEmojiAvatarPickerGrid(
               selectedEmoji: selectedEmoji2,
-              onEmojiSelected: (emoji) => setState(() => selectedEmoji2 = emoji),
+              onEmojiSelected: (emoji) =>
+                  setState(() => selectedEmoji2 = emoji),
             ),
           ),
           const SizedBox(height: NeoFadeSpacing.xl),
 
           // Spiral Picker
-          Text('NeoEmojiAvatarPickerSpiral', style: theme.typography.titleMedium),
+          Text(
+            'NeoEmojiAvatarPickerSpiral',
+            style: theme.typography.titleMedium,
+          ),
           const SizedBox(height: NeoFadeSpacing.xs),
           Text(
             'Extra playful! Emojis spiral outward with staggered timing.',
@@ -69,7 +74,8 @@ class ShowcaseEmojiPageState extends State<ShowcaseEmojiPage> {
           Center(
             child: NeoEmojiAvatarPickerSpiral(
               selectedEmoji: selectedEmoji3,
-              onEmojiSelected: (emoji) => setState(() => selectedEmoji3 = emoji),
+              onEmojiSelected: (emoji) =>
+                  setState(() => selectedEmoji3 = emoji),
             ),
           ),
 
@@ -101,7 +107,11 @@ class ShowcaseEmojiPageState extends State<ShowcaseEmojiPage> {
     );
   }
 
-  Widget buildSelectedDisplay(String label, String emoji, NeoFadeThemeData theme) {
+  Widget buildSelectedDisplay(
+    String label,
+    String emoji,
+    NeoFadeThemeData theme,
+  ) {
     return Column(
       children: [
         Text(emoji, style: const TextStyle(fontSize: 32)),

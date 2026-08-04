@@ -67,7 +67,8 @@ class NeoFadeColors {
     Color? tertiary,
     required Brightness brightness,
   }) {
-    final effectiveTertiary = tertiary ?? ColorUtils.generateComplementary(primary);
+    final effectiveTertiary =
+        tertiary ?? ColorUtils.generateComplementary(primary);
 
     if (brightness == Brightness.light) {
       return NeoFadeColors._generateLight(

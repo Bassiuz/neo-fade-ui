@@ -58,7 +58,8 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
     final effectiveIconSize = iconSize ?? 22.0;
     final baseLabelStyle = labelStyle ?? const TextStyle(fontSize: 12);
     final effectiveIndicatorPadding = indicatorPadding ?? NeoFadeSpacing.xxs;
-    final effectiveIndicatorBorderRadius = indicatorBorderRadius ?? NeoFadeRadii.sm;
+    final effectiveIndicatorBorderRadius =
+        indicatorBorderRadius ?? NeoFadeRadii.sm;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(effectiveBorderRadius),
@@ -97,7 +98,9 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
                             colors.secondary.withValues(alpha: 0.6),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(effectiveIndicatorBorderRadius),
+                        borderRadius: BorderRadius.circular(
+                          effectiveIndicatorBorderRadius,
+                        ),
                         boxShadow: [
                           BoxShadow(
                             color: colors.primary.withValues(alpha: 0.3),
@@ -136,8 +139,9 @@ class NeoSegmentedControlIcons<T> extends StatelessWidget {
                                 Text(
                                   segment.label,
                                   style: baseLabelStyle.copyWith(
-                                    fontWeight:
-                                        isSelected ? FontWeight.w600 : FontWeight.normal,
+                                    fontWeight: isSelected
+                                        ? FontWeight.w600
+                                        : FontWeight.normal,
                                     color: isSelected
                                         ? colors.onPrimary
                                         : colors.onSurfaceVariant,

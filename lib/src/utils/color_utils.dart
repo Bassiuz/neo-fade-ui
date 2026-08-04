@@ -7,28 +7,36 @@ class ColorUtils {
   static Color darken(Color color, double amount) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(color);
-    final darkened = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
+    final darkened = hsl.withLightness(
+      (hsl.lightness - amount).clamp(0.0, 1.0),
+    );
     return darkened.toColor();
   }
 
   static Color lighten(Color color, double amount) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(color);
-    final lightened = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+    final lightened = hsl.withLightness(
+      (hsl.lightness + amount).clamp(0.0, 1.0),
+    );
     return lightened.toColor();
   }
 
   static Color saturate(Color color, double amount) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(color);
-    final saturated = hsl.withSaturation((hsl.saturation + amount).clamp(0.0, 1.0));
+    final saturated = hsl.withSaturation(
+      (hsl.saturation + amount).clamp(0.0, 1.0),
+    );
     return saturated.toColor();
   }
 
   static Color desaturate(Color color, double amount) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(color);
-    final desaturated = hsl.withSaturation((hsl.saturation - amount).clamp(0.0, 1.0));
+    final desaturated = hsl.withSaturation(
+      (hsl.saturation - amount).clamp(0.0, 1.0),
+    );
     return desaturated.toColor();
   }
 

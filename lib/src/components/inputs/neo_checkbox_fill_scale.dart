@@ -123,7 +123,9 @@ class NeoCheckboxFillScaleState extends State<NeoCheckboxFillScale>
                         colors.secondary,
                         colors.tertiary,
                       ],
-                      backgroundColor: colors.surface.withValues(alpha: glass.tintOpacity),
+                      backgroundColor: colors.surface.withValues(
+                        alpha: glass.tintOpacity,
+                      ),
                       checkColor: colors.onPrimary,
                       borderRadius: 8,
                     ),
@@ -140,7 +142,9 @@ class NeoCheckboxFillScaleState extends State<NeoCheckboxFillScale>
       return GestureDetector(
         onTap: isEnabled ? _handleTap : null,
         child: MouseRegion(
-          cursor: isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+          cursor: isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

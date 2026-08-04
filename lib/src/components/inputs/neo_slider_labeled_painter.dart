@@ -78,9 +78,12 @@ class NeoSliderLabeledPainter extends CustomPainter {
       );
 
       final fillPaint = Paint()
-        ..shader = LinearGradient(
-          colors: [primaryColor, secondaryColor, tertiaryColor],
-        ).createShader(Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight))
+        ..shader =
+            LinearGradient(
+              colors: [primaryColor, secondaryColor, tertiaryColor],
+            ).createShader(
+              Rect.fromLTWH(trackLeft, trackY, trackWidth, trackHeight),
+            )
         ..style = PaintingStyle.fill;
       canvas.drawRRect(fillRect, fillPaint);
     }
@@ -89,7 +92,11 @@ class NeoSliderLabeledPainter extends CustomPainter {
     final thumbX = trackLeft + trackWidth * value;
     final thumbY = size.height / 2;
     final thumbRect = RRect.fromRectAndRadius(
-      Rect.fromCenter(center: Offset(thumbX, thumbY), width: thumbWidth, height: thumbHeight),
+      Rect.fromCenter(
+        center: Offset(thumbX, thumbY),
+        width: thumbWidth,
+        height: thumbHeight,
+      ),
       Radius.circular(thumbHeight / 2),
     );
 
@@ -107,15 +114,22 @@ class NeoSliderLabeledPainter extends CustomPainter {
 
     // Thumb gradient fill
     final thumbGradientPaint = Paint()
-      ..shader = LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          primaryColor.withValues(alpha: 0.7),
-          secondaryColor.withValues(alpha: 0.5),
-          tertiaryColor.withValues(alpha: 0.4),
-        ],
-      ).createShader(Rect.fromCenter(center: Offset(thumbX, thumbY), width: thumbWidth, height: thumbHeight))
+      ..shader =
+          LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              primaryColor.withValues(alpha: 0.7),
+              secondaryColor.withValues(alpha: 0.5),
+              tertiaryColor.withValues(alpha: 0.4),
+            ],
+          ).createShader(
+            Rect.fromCenter(
+              center: Offset(thumbX, thumbY),
+              width: thumbWidth,
+              height: thumbHeight,
+            ),
+          )
       ..style = PaintingStyle.fill;
     canvas.drawRRect(thumbRect, thumbGradientPaint);
 
@@ -128,18 +142,29 @@ class NeoSliderLabeledPainter extends CustomPainter {
 
     // Thumb highlight
     final highlightRect = RRect.fromRectAndRadius(
-      Rect.fromCenter(center: Offset(thumbX, thumbY - thumbHeight * 0.15), width: thumbWidth * 0.8, height: thumbHeight * 0.4),
+      Rect.fromCenter(
+        center: Offset(thumbX, thumbY - thumbHeight * 0.15),
+        width: thumbWidth * 0.8,
+        height: thumbHeight * 0.4,
+      ),
       Radius.circular(thumbHeight / 4),
     );
     final highlightPaint = Paint()
-      ..shader = LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          const Color(0xFFFFFFFF).withValues(alpha: 0.4),
-          const Color(0xFFFFFFFF).withValues(alpha: 0.0),
-        ],
-      ).createShader(Rect.fromCenter(center: Offset(thumbX, thumbY - thumbHeight * 0.15), width: thumbWidth * 0.8, height: thumbHeight * 0.4))
+      ..shader =
+          LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xFFFFFFFF).withValues(alpha: 0.4),
+              const Color(0xFFFFFFFF).withValues(alpha: 0.0),
+            ],
+          ).createShader(
+            Rect.fromCenter(
+              center: Offset(thumbX, thumbY - thumbHeight * 0.15),
+              width: thumbWidth * 0.8,
+              height: thumbHeight * 0.4,
+            ),
+          )
       ..style = PaintingStyle.fill;
     canvas.drawRRect(highlightRect, highlightPaint);
 

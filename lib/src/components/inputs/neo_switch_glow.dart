@@ -106,8 +106,9 @@ class NeoSwitchGlowState extends State<NeoSwitchGlow>
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: colors.surfaceVariant
-                            .withValues(alpha: glass.tintOpacity),
+                        color: colors.surfaceVariant.withValues(
+                          alpha: glass.tintOpacity,
+                        ),
                         borderRadius: BorderRadius.circular(NeoFadeRadii.full),
                         border: Border.all(
                           color: colors.border.withValues(alpha: 0.3),
@@ -119,9 +120,12 @@ class NeoSwitchGlowState extends State<NeoSwitchGlow>
                         children: [
                           // Glow effect behind thumb
                           Positioned(
-                            left: thumbPadding +
+                            left:
+                                thumbPadding +
                                 (_animation.value *
-                                    (trackWidth - thumbSize - thumbPadding * 2)) -
+                                    (trackWidth -
+                                        thumbSize -
+                                        thumbPadding * 2)) -
                                 8,
                             top: thumbPadding - 8,
                             child: Container(
@@ -131,10 +135,12 @@ class NeoSwitchGlowState extends State<NeoSwitchGlow>
                                 shape: BoxShape.circle,
                                 gradient: RadialGradient(
                                   colors: [
-                                    colors.primary
-                                        .withValues(alpha: 0.5 * _animation.value),
-                                    colors.secondary
-                                        .withValues(alpha: 0.3 * _animation.value),
+                                    colors.primary.withValues(
+                                      alpha: 0.5 * _animation.value,
+                                    ),
+                                    colors.secondary.withValues(
+                                      alpha: 0.3 * _animation.value,
+                                    ),
                                     colors.tertiary.withValues(alpha: 0),
                                   ],
                                 ),
@@ -143,9 +149,12 @@ class NeoSwitchGlowState extends State<NeoSwitchGlow>
                           ),
                           // Thumb
                           Positioned(
-                            left: thumbPadding +
+                            left:
+                                thumbPadding +
                                 (_animation.value *
-                                    (trackWidth - thumbSize - thumbPadding * 2)),
+                                    (trackWidth -
+                                        thumbSize -
+                                        thumbPadding * 2)),
                             top: thumbPadding,
                             child: Container(
                               width: thumbSize,

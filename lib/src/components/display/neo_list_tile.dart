@@ -21,6 +21,16 @@ class NeoListTile extends StatefulWidget {
   final bool enabled;
   final EdgeInsetsGeometry? contentPadding;
 
+  /// Caps the title at this many lines, ellipsising the rest.
+  ///
+  /// Null — the default — lets it wrap, which is the original behaviour.
+  /// Set it to 1 when the tile sits in a list with a fixed `itemExtent`:
+  /// a wrapped title makes the row taller than the extent and overflows.
+  final int? titleMaxLines;
+
+  /// Caps the subtitle at this many lines, ellipsising the rest.
+  final int? subtitleMaxLines;
+
   const NeoListTile({
     super.key,
     this.leading,
@@ -31,6 +41,8 @@ class NeoListTile extends StatefulWidget {
     this.selected = false,
     this.enabled = true,
     this.contentPadding,
+    this.titleMaxLines,
+    this.subtitleMaxLines,
   });
 
   @override
@@ -94,7 +106,8 @@ class NeoListTileState extends State<NeoListTile>
               ),
               child: AnimatedContainer(
                 duration: NeoFadeAnimations.fast,
-                padding: widget.contentPadding ??
+                padding:
+                    widget.contentPadding ??
                     const EdgeInsets.symmetric(
                       horizontal: NeoFadeSpacing.lg,
                       vertical: NeoFadeSpacing.md,
@@ -138,11 +151,15 @@ class NeoListTileState extends State<NeoListTile>
                         children: [
                           Text(
                             widget.title,
+                            maxLines: widget.titleMaxLines,
+                            overflow: widget.titleMaxLines == null
+                                ? null
+                                : TextOverflow.ellipsis,
                             style: theme.typography.bodyLarge.copyWith(
                               color: widget.enabled
                                   ? (widget.selected
-                                      ? colors.primary
-                                      : colors.onSurface)
+                                        ? colors.primary
+                                        : colors.onSurface)
                                   : colors.disabledText,
                               fontWeight: widget.selected
                                   ? FontWeight.w600
@@ -153,6 +170,10 @@ class NeoListTileState extends State<NeoListTile>
                             const SizedBox(height: 2),
                             Text(
                               widget.subtitle!,
+                              maxLines: widget.subtitleMaxLines,
+                              overflow: widget.subtitleMaxLines == null
+                                  ? null
+                                  : TextOverflow.ellipsis,
                               style: theme.typography.bodySmall.copyWith(
                                 color: widget.enabled
                                     ? colors.onSurfaceVariant
