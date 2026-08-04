@@ -7,8 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 Future<void> _loadFont(String family, String path) async {
   final fontData = File(path).readAsBytesSync();
   final fontLoader = FontLoader(family)
-    ..addFont(
-        Future.value(ByteData.sublistView(Uint8List.fromList(fontData))));
+    ..addFont(Future.value(ByteData.sublistView(Uint8List.fromList(fontData))));
   await fontLoader.load();
 }
 

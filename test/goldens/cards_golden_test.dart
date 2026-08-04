@@ -14,9 +14,7 @@ void main() {
       await tester.pumpGoldenWidget(
         SizedBox(
           width: 300,
-          child: NeoCard.topBorder(
-            child: const Text('Card Content'),
-          ),
+          child: NeoCard.topBorder(child: const Text('Card Content')),
         ),
         size: GoldenTestSizes.card,
       );
@@ -37,10 +35,7 @@ void main() {
               children: [
                 Text(
                   'Card Title',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8),
                 Text(
@@ -62,9 +57,7 @@ void main() {
       await tester.pumpGoldenWidget(
         SizedBox(
           width: 300,
-          child: NeoCard.topBorder(
-            child: const Text('Card Content'),
-          ),
+          child: NeoCard.topBorder(child: const Text('Card Content')),
         ),
         size: GoldenTestSizes.card,
         isDark: true,

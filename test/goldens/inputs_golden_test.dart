@@ -14,9 +14,7 @@ void main() {
       await tester.pumpGoldenWidget(
         const SizedBox(
           width: 280,
-          child: NeoTextFieldOutlined(
-            hintText: 'Enter text...',
-          ),
+          child: NeoTextFieldOutlined(hintText: 'Enter text...'),
         ),
         size: GoldenTestSizes.input,
       );
@@ -64,9 +62,7 @@ void main() {
       await tester.pumpGoldenWidget(
         const SizedBox(
           width: 280,
-          child: NeoTextFieldOutlined(
-            hintText: 'Enter text...',
-          ),
+          child: NeoTextFieldOutlined(hintText: 'Enter text...'),
         ),
         size: GoldenTestSizes.input,
         isDark: true,
@@ -81,10 +77,7 @@ void main() {
   group('NeoCheckboxGlowBorder Goldens', () {
     testWidgets('unchecked state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckboxGlowBorder(
-          value: false,
-          onChanged: (value) {},
-        ),
+        NeoCheckboxGlowBorder(value: false, onChanged: (value) {}),
         size: const Size(60, 60),
       );
       await expectLater(
@@ -95,10 +88,7 @@ void main() {
 
     testWidgets('checked state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckboxGlowBorder(
-          value: true,
-          onChanged: (value) {},
-        ),
+        NeoCheckboxGlowBorder(value: true, onChanged: (value) {}),
         size: const Size(60, 60),
       );
       await expectLater(
@@ -124,10 +114,7 @@ void main() {
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoCheckboxGlowBorder(
-          value: false,
-          onChanged: null,
-        ),
+        const NeoCheckboxGlowBorder(value: false, onChanged: null),
         size: const Size(60, 60),
       );
       await expectLater(
@@ -138,10 +125,7 @@ void main() {
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoCheckboxGlowBorder(
-          value: true,
-          onChanged: (value) {},
-        ),
+        NeoCheckboxGlowBorder(value: true, onChanged: (value) {}),
         size: const Size(60, 60),
         isDark: true,
       );
@@ -155,10 +139,7 @@ void main() {
   group('NeoSwitchIos Goldens', () {
     testWidgets('off state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoSwitchIos(
-          value: false,
-          onChanged: (value) {},
-        ),
+        NeoSwitchIos(value: false, onChanged: (value) {}),
         size: const Size(80, 60),
       );
       await expectLater(
@@ -169,10 +150,7 @@ void main() {
 
     testWidgets('on state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoSwitchIos(
-          value: true,
-          onChanged: (value) {},
-        ),
+        NeoSwitchIos(value: true, onChanged: (value) {}),
         size: const Size(80, 60),
       );
       await expectLater(
@@ -183,10 +161,7 @@ void main() {
 
     testWidgets('disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoSwitchIos(
-          value: false,
-          enabled: false,
-        ),
+        const NeoSwitchIos(value: false, enabled: false),
         size: const Size(80, 60),
       );
       await expectLater(
@@ -197,10 +172,7 @@ void main() {
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoSwitchIos(
-          value: true,
-          onChanged: (value) {},
-        ),
+        NeoSwitchIos(value: true, onChanged: (value) {}),
         size: const Size(80, 60),
         isDark: true,
       );
@@ -216,10 +188,7 @@ void main() {
       await tester.pumpGoldenWidget(
         SizedBox(
           width: 280,
-          child: NeoSlider(
-            value: 0.5,
-            onChanged: (value) {},
-          ),
+          child: NeoSlider(value: 0.5, onChanged: (value) {}),
         ),
         size: const Size(300, 60),
       );
@@ -233,10 +202,7 @@ void main() {
       await tester.pumpGoldenWidget(
         SizedBox(
           width: 280,
-          child: NeoSlider(
-            value: 0.0,
-            onChanged: (value) {},
-          ),
+          child: NeoSlider(value: 0.0, onChanged: (value) {}),
         ),
         size: const Size(300, 60),
       );
@@ -250,10 +216,7 @@ void main() {
       await tester.pumpGoldenWidget(
         SizedBox(
           width: 280,
-          child: NeoSlider(
-            value: 1.0,
-            onChanged: (value) {},
-          ),
+          child: NeoSlider(value: 1.0, onChanged: (value) {}),
         ),
         size: const Size(300, 60),
       );
@@ -267,10 +230,7 @@ void main() {
       await tester.pumpGoldenWidget(
         SizedBox(
           width: 280,
-          child: NeoSlider(
-            value: 0.5,
-            onChanged: (value) {},
-          ),
+          child: NeoSlider(value: 0.5, onChanged: (value) {}),
         ),
         size: const Size(300, 60),
         isDark: true,
@@ -285,10 +245,7 @@ void main() {
   group('NeoNumberSelectorHorizontal Goldens', () {
     testWidgets('default state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector.horizontal(
-          value: 5,
-          onChanged: (value) {},
-        ),
+        NeoNumberSelector.horizontal(value: 5, onChanged: (value) {}),
         size: const Size(200, 80),
       );
       await expectLater(
@@ -299,11 +256,7 @@ void main() {
 
     testWidgets('at min value', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector.horizontal(
-          value: 0,
-          min: 0,
-          onChanged: (value) {},
-        ),
+        NeoNumberSelector.horizontal(value: 0, min: 0, onChanged: (value) {}),
         size: const Size(200, 80),
       );
       await expectLater(
@@ -329,10 +282,7 @@ void main() {
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoNumberSelector.horizontal(
-          value: 5,
-          onChanged: (value) {},
-        ),
+        NeoNumberSelector.horizontal(value: 5, onChanged: (value) {}),
         size: const Size(200, 80),
         isDark: true,
       );

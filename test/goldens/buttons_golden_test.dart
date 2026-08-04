@@ -23,11 +23,7 @@ void main() {
 
     testWidgets('with icon', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoButtonFilled(
-          label: 'Button',
-          icon: Icons.star,
-          onPressed: () {},
-        ),
+        NeoButtonFilled(label: 'Button', icon: Icons.star, onPressed: () {}),
         size: GoldenTestSizes.button,
       );
       await expectLater(

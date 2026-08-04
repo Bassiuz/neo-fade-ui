@@ -17,10 +17,7 @@ Future<void> setUpGoldenTests() async {
 /// Creates a test typography that uses system fonts instead of Google Fonts.
 /// This avoids network requests during tests.
 NeoFadeTypography createTestTypography(Color textColor) {
-  const baseStyle = TextStyle(
-    fontFamily: 'SourceSans3',
-    package: null,
-  );
+  const baseStyle = TextStyle(fontFamily: 'SourceSans3', package: null);
 
   return NeoFadeTypography(
     displayLarge: baseStyle.copyWith(

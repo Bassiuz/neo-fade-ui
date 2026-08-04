@@ -193,3 +193,4 @@ export 'src/components/display/neo_list_tile.dart';
 // Components - Layout
 export 'src/components/layout/neo_app_bar.dart';
 export 'src/components/layout/neo_divider.dart';
+export 'src/components/layout/neo_fading_app_bar.dart';

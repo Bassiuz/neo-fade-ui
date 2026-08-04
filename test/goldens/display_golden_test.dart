@@ -83,11 +83,7 @@ void main() {
     // receives only one color, causing an assertion error. Testing selected states instead.
     testWidgets('selected state', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoChip(
-          label: 'Selected',
-          selected: true,
-          onTap: () {},
-        ),
+        NeoChip(label: 'Selected', selected: true, onTap: () {}),
         size: GoldenTestSizes.chip,
       );
       await expectLater(
@@ -98,12 +94,7 @@ void main() {
 
     testWidgets('selected with icon', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoChip(
-          label: 'Tag',
-          icon: Icons.label,
-          selected: true,
-          onTap: () {},
-        ),
+        NeoChip(label: 'Tag', icon: Icons.label, selected: true, onTap: () {}),
         size: GoldenTestSizes.chip,
       );
       await expectLater(
@@ -114,11 +105,7 @@ void main() {
 
     testWidgets('selected disabled state', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoChip(
-          label: 'Disabled',
-          selected: true,
-          enabled: false,
-        ),
+        const NeoChip(label: 'Disabled', selected: true, enabled: false),
         size: GoldenTestSizes.chip,
       );
       await expectLater(
@@ -129,11 +116,7 @@ void main() {
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        NeoChip(
-          label: 'Chip',
-          selected: true,
-          onTap: () {},
-        ),
+        NeoChip(label: 'Chip', selected: true, onTap: () {}),
         size: GoldenTestSizes.chip,
         isDark: true,
       );
@@ -147,10 +130,7 @@ void main() {
   group('NeoAvatar Goldens', () {
     testWidgets('with initials', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoAvatar(
-          initials: 'JD',
-          size: 64,
-        ),
+        const NeoAvatar(initials: 'JD', size: 64),
         size: GoldenTestSizes.avatar,
       );
       await expectLater(
@@ -161,10 +141,7 @@ void main() {
 
     testWidgets('with icon', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoAvatar(
-          icon: Icons.person,
-          size: 64,
-        ),
+        const NeoAvatar(icon: Icons.person, size: 64),
         size: GoldenTestSizes.avatar,
       );
       await expectLater(
@@ -175,11 +152,7 @@ void main() {
 
     testWidgets('without ring', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoAvatar(
-          initials: 'AB',
-          size: 64,
-          showRing: false,
-        ),
+        const NeoAvatar(initials: 'AB', size: 64, showRing: false),
         size: GoldenTestSizes.avatar,
       );
       await expectLater(
@@ -190,10 +163,7 @@ void main() {
 
     testWidgets('dark theme', (tester) async {
       await tester.pumpGoldenWidget(
-        const NeoAvatar(
-          initials: 'JD',
-          size: 64,
-        ),
+        const NeoAvatar(initials: 'JD', size: 64),
         size: GoldenTestSizes.avatar,
         isDark: true,
       );
