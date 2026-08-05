@@ -107,7 +107,10 @@ class GradientBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: GradientBorderPainter(
+      // foregroundPainter, not painter: a background painter is drawn behind
+      // the child, so a field with its own glass fill covered the border and
+      // left only the slivers its rounded corners did not reach.
+      foregroundPainter: GradientBorderPainter(
         colors: colors,
         borderWidth: borderWidth,
         borderRadius: borderRadius,

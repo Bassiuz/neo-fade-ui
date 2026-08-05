@@ -1,3 +1,24 @@
+## 0.1.1
+
+### Fixed
+
+- **Text fields could not be pasted into.** `NeoTextFieldUnderline` was built
+  on a bare `EditableText`, which has no selection controls — no long-press
+  menu, so no select, copy or paste. Pasting a token on a phone was impossible.
+  It is now a `TextField`, which also renders the hint natively instead of
+  faking it behind the cursor.
+- **Gradient borders were drawn behind the field, not on it.** `GradientBorder`
+  used `CustomPaint(painter:)`, which paints beneath the child, so a field with
+  its own glass fill covered its own border — leaving only the slivers the
+  rounded corners did not reach. It now uses `foregroundPainter`.
+
+### Known
+
+The other seven text field variants (`outlined`, `pill`, `minimal`,
+`floatingLabel`, `leftAccent`, `shimmer`, `cornerBadges`) are still built on
+`EditableText` and have the same selection problem. Only `underline` is fixed
+here.
+
 ## 0.1.0
 
 Fixes found by building a full app (Moxly) on the library, each of which had

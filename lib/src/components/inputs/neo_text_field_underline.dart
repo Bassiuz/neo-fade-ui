@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../foundation/glass_container.dart';
 import '../../foundation/gradient_border.dart';
@@ -142,32 +142,33 @@ class NeoTextFieldUnderlineState extends State<NeoTextFieldUnderline>
                 horizontal: NeoFadeSpacing.inputPaddingHorizontal,
                 vertical: NeoFadeSpacing.inputPaddingVertical,
               ),
-              child: Stack(
-                children: [
-                  if (widget.hintText != null && _controller.text.isEmpty)
-                    IgnorePointer(
-                      child: Text(
-                        widget.hintText!,
-                        style: typography.bodyMedium.copyWith(
-                          color: colors.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                  EditableText(
-                    controller: _controller,
-                    focusNode: _focusNode,
-                    style: typography.bodyMedium.copyWith(
-                      color: colors.onSurface,
-                    ),
-                    cursorColor: colors.primary,
-                    backgroundCursorColor: colors.surfaceVariant,
-                    onChanged: _handleChanged,
-                    obscureText: widget.obscureText,
-                    keyboardType: widget.keyboardType,
-                    autofocus: widget.autofocus,
-                    readOnly: !widget.enabled,
+              // A TextField rather than a bare EditableText. EditableText is
+              // the raw editing primitive: no selection handles, so no
+              // long-press to select, copy or paste — which makes pasting a
+              // token on a phone impossible — and no decoration, so the hint
+              // had to be faked with a Stack.
+              child: TextField(
+                controller: _controller,
+                focusNode: _focusNode,
+                enabled: widget.enabled,
+                style: typography.bodyMedium.copyWith(color: colors.onSurface),
+                cursorColor: colors.primary,
+                onChanged: _handleChanged,
+                obscureText: widget.obscureText,
+                keyboardType: widget.keyboardType,
+                autofocus: widget.autofocus,
+                decoration: InputDecoration(
+                  isDense: true,
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  contentPadding: EdgeInsets.zero,
+                  hintText: widget.hintText,
+                  hintStyle: typography.bodyMedium.copyWith(
+                    color: colors.onSurfaceVariant,
                   ),
-                ],
+                ),
               ),
             ),
           ),
